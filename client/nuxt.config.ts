@@ -85,9 +85,7 @@ const configuration: NuxtConfig = {
       if (!songsApiUri) return []
       const res = await fetch(songsApiUri)
       const songs: SongInfo[] = await res.json()
-      return songs
-        .slice(0, 300)
-        .map(s => ({ route: `/songs/${s.id}`, payload: s }))
+      return songs.map(s => ({ route: `/songs/${s.id}`, payload: s }))
     },
   },
 }
