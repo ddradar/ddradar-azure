@@ -63,16 +63,34 @@ describe('/generateUserDetails/index.ts', () => {
   })
 
   test('merges old.id & new data', async () => {
+    const deletedClear: ClearStatusSchema & ItemDefinition = {
+      ...oldClear,
+      id: 'deleted_clear',
+      type: 'clear',
+      clearLamp: 4,
+    }
+    const deletedScore: ScoreStatusSchema & ItemDefinition = {
+      ...oldScore,
+      id: 'deleted_score',
+      rank: 'AA',
+    }
     // Arrange - Act
-    const result = await generateUserDetails(null, null, [oldScore, oldClear])
+    const result = await generateUserDetails(null, null, [
+      oldScore,
+      oldClear,
+      deletedClear,
+      deletedScore,
+    ])
 
     // Assert
-    expect(result).toHaveLength(4)
+    expect(result).toHaveLength(6)
     expect(result).toStrictEqual([
       { ...oldClear, count: 30 },
       { ...newClears[1], id: undefined },
       { ...oldScore, count: 30 },
       { ...newScores[1], id: undefined },
+      { ...deletedClear, count: 0 },
+      { ...deletedScore, count: 0 },
     ])
   })
 })

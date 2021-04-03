@@ -49,14 +49,14 @@
     </div>
     <footer class="card-footer">
       <a
-        v-if="this.$accessor.isLoggedIn"
+        v-if="$accessor.isLoggedIn"
         class="card-footer-item"
         @click="launchScoreEditor"
       >
         {{ $t('button.edit') }}
       </a>
       <a
-        v-if="this.$accessor.isLoggedIn"
+        v-if="$accessor.isLoggedIn"
         class="card-footer-item"
         @click="launchScoreImporter"
       >

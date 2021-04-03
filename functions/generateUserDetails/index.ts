@@ -14,6 +14,25 @@ export default async function (
 ): Promise<UserDetailSchema[]> {
   const newClearLampCounts = await fetchSummeryClearLampCount()
   const newRankCounts = await fetchSummeryRankCount()
+  const notExists = oldSummeries.filter(
+    o =>
+      !newClearLampCounts.find(
+        d =>
+          o.userId === d.userId &&
+          o.type === d.type &&
+          o.playStyle === d.playStyle &&
+          o.level === d.level &&
+          o.clearLamp === d.clearLamp
+      ) &&
+      !newRankCounts.find(
+        d =>
+          o.userId === d.userId &&
+          o.type === d.type &&
+          o.playStyle === d.playStyle &&
+          o.level === d.level &&
+          o.rank === d.rank
+      )
+  )
 
   return [
     ...newClearLampCounts.map(
@@ -44,5 +63,6 @@ export default async function (
           ...d,
         } as ScoreStatusSchema)
     ),
+    ...notExists.map(d => ({ ...d, count: 0 })),
   ]
 }

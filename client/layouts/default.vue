@@ -194,7 +194,7 @@
 
 <script lang="ts">
 import { nameIndexMap, seriesSet } from '@ddradar/core/db/songs'
-import type { NuxtVueI18n } from 'nuxt-i18n'
+import type { LocaleObject } from 'nuxt-i18n'
 import { Component, Vue } from 'nuxt-property-decorator'
 
 import { shortenSeriesName } from '~/api/song'
@@ -259,15 +259,15 @@ export default class DefaultLayout extends Vue {
   }
 
   get selectedLocale() {
-    return this.$i18n.locales?.find(
-      (i): i is NuxtVueI18n.Options.LocaleObject =>
+    return (this.$i18n.locales as (string | LocaleObject)[]).find(
+      (i): i is LocaleObject =>
         typeof i === 'object' && i.code === this.$i18n.locale
     )
   }
 
   get availableLocales() {
-    return this.$i18n.locales?.filter(
-      (i): i is NuxtVueI18n.Options.LocaleObject =>
+    return (this.$i18n.locales as (string | LocaleObject)[]).filter(
+      (i): i is LocaleObject =>
         typeof i === 'object' && i.code !== this.$i18n.locale
     )!
   }
