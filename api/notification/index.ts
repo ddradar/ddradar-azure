@@ -1,6 +1,5 @@
 import type { HttpRequest } from '@azure/functions'
-import type { NotificationListData } from '@ddradar/core/api/notification'
-import type { NotificationSchema } from '@ddradar/core/db/notification'
+import type { Api, Database } from '@ddradar/core'
 
 import { SuccessResult } from '../function'
 
@@ -8,8 +7,8 @@ import { SuccessResult } from '../function'
 export default async function (
   _context: unknown,
   req: Pick<HttpRequest, 'query'>,
-  documents: NotificationSchema[]
-): Promise<SuccessResult<NotificationListData[]>> {
+  documents: Database.NotificationSchema[]
+): Promise<SuccessResult<Api.NotificationListData[]>> {
   const scope = req.query.scope === 'top' ? 'top' : 'full'
 
   const body = documents

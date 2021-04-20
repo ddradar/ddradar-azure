@@ -1,4 +1,5 @@
 import type { Context, HttpRequest } from '@azure/functions'
+import type { Database } from '@ddradar/core'
 import {
   areaHiddenUser,
   privateUser,
@@ -6,7 +7,6 @@ import {
   testScores,
   testSongData,
 } from '@ddradar/core/__tests__/data'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
 import { mocked } from 'ts-jest/utils'
 
 import { getLoginUserInfo } from '../auth'
@@ -119,7 +119,7 @@ describe('POST /api/v1/scores', () => {
     maxCombo: 138,
     exScore: 366,
   } as const
-  const scores: ScoreSchema[] = [...testScores]
+  const scores: Database.ScoreSchema[] = [...testScores]
 
   test(`/${song.id}/1/1 inserts World & Area Top`, async () => {
     // Arrange

@@ -71,7 +71,7 @@
 </i18n>
 
 <script lang="ts">
-import type { NotificationListData } from '@ddradar/core/api/notification'
+import type { Api } from '@ddradar/core'
 import marked from 'marked'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
@@ -80,7 +80,7 @@ import { getNotificationList } from '~/api/notification'
 import { unixTimeToString } from '~/utils/date'
 import * as popup from '~/utils/popup'
 
-type NotificationDetail = Omit<NotificationListData, 'timeStamp'> & {
+type NotificationDetail = Omit<Api.NotificationListData, 'timeStamp'> & {
   date: string
 }
 

@@ -1,4 +1,4 @@
-import type { SongInfo } from '@ddradar/core/api/song'
+import type { Api } from '@ddradar/core'
 import type { NuxtConfig } from '@nuxt/types'
 import fetch from 'node-fetch'
 
@@ -84,7 +84,7 @@ const configuration: NuxtConfig = {
     async routes() {
       if (!songsApiUri) return []
       const res = await fetch(songsApiUri)
-      const songs: SongInfo[] = await res.json()
+      const songs: Api.SongInfo[] = await res.json()
       return songs.map(s => ({ route: `/songs/${s.id}`, payload: s }))
     },
   },

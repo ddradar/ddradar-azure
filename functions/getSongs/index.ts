@@ -1,15 +1,15 @@
-import type { SongInfo } from '@ddradar/core/api/song'
+import type { Api } from '@ddradar/core'
 
 type SuccessResult = {
   status: 200
-  body: SongInfo[]
+  body: Api.SongInfo[]
 }
 
 /** Get songs and charts information*/
 export default async function (
   _context: unknown,
   _req: unknown,
-  body: SongInfo[]
+  body: Api.SongInfo[]
 ): Promise<SuccessResult> {
   return { status: 200, body }
 }

@@ -1,5 +1,5 @@
+import type { Database } from '@ddradar/core'
 import { testSongData } from '@ddradar/core/__tests__/data'
-import type { StepChartSchema } from '@ddradar/core/db/songs'
 import type { Context } from '@nuxt/types'
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils'
 import Buefy from 'buefy'
@@ -185,7 +185,7 @@ describe('pages/admin/song/_id.vue', () => {
   describe('addChart()', () => {
     test('pushes new chart to charts', () => {
       // Arrange
-      const charts: StepChartSchema[] = []
+      const charts: Database.StepChartSchema[] = []
       const data = () => ({ charts })
       const wrapper = shallowMount(SongEditorPage, { localVue, data })
 

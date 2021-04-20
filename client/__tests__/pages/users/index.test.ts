@@ -1,4 +1,4 @@
-import type { UserInfo } from '@ddradar/core/api/user'
+import type { Api } from '@ddradar/core'
 import {
   createLocalVue,
   mount,
@@ -25,7 +25,7 @@ describe('pages/users/index.vue', () => {
     id: `user_${i}`,
     name: `User ${i}`,
     area: i,
-  })) as UserInfo[]
+  })) as Api.UserInfo[]
   const stubs = { NuxtLink: RouterLinkStub }
   describe('snapshot test', () => {
     test.each(['ja', 'en'])(

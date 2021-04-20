@@ -1,9 +1,5 @@
 import type { Container } from '@azure/cosmos'
-import type {
-  ClearStatusSchema,
-  GrooveRadarSchema,
-  ScoreStatusSchema,
-} from '@ddradar/core/db/userDetails'
+import type { Database } from '@ddradar/core'
 import { mocked } from 'ts-jest/utils'
 
 import { getContainer } from '..'
@@ -13,8 +9,8 @@ jest.mock('..')
 
 describe('user-details.ts', () => {
   describe('generateGrooveRadar()', () => {
-    let resources: GrooveRadarSchema[] = []
-    const radar: GrooveRadarSchema = {
+    let resources: Database.GrooveRadarSchema[] = []
+    const radar: Database.GrooveRadarSchema = {
       userId: 'public_user',
       type: 'radar',
       playStyle: 1,
@@ -79,7 +75,10 @@ describe('user-details.ts', () => {
   })
 
   describe('fetchClearAndScoreStatus()', () => {
-    let resources: (ClearStatusSchema | ScoreStatusSchema)[] = []
+    let resources: (
+      | Database.ClearStatusSchema
+      | Database.ScoreStatusSchema
+    )[] = []
     const container = {
       items: {
         query: jest.fn(() => ({ fetchAll: async () => ({ resources }) })),

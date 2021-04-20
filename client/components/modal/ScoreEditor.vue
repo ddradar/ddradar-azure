@@ -139,22 +139,17 @@
 </i18n>
 
 <script lang="ts">
-import type { ClearLamp } from '@ddradar/core/db/scores'
-import {
-  CourseChartSchema,
-  Difficulty,
-  difficultyMap,
-  PlayStyle,
-  playStyleMap,
-  StepChartSchema,
-} from '@ddradar/core/db/songs'
-import { getDanceLevel, setValidScoreFromChart } from '@ddradar/core/score'
+import type { Database } from '@ddradar/core'
+import { Score, Song } from '@ddradar/core'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 import { deleteChartScore, getChartScore, postChartScore } from '~/api/score'
 import * as popup from '~/utils/popup'
 
-type ChartSchema = Omit<StepChartSchema | CourseChartSchema, 'level'>
+type ChartSchema = Omit<
+  Database.StepChartSchema | Database.CourseChartSchema,
+  'level'
+>
 type SongOrCourseInfo = { name: string; charts: ChartSchema[] }
 
 @Component({ fetchOnServer: false })
@@ -163,17 +158,17 @@ export default class ScoreEditorComponent extends Vue {
   readonly songId!: string
 
   @Prop({ required: false, type: Number, default: null })
-  readonly playStyle!: PlayStyle | null
+  readonly playStyle!: Song.PlayStyle | null
 
   @Prop({ required: false, type: Number, default: null })
-  readonly difficulty!: Difficulty | null
+  readonly difficulty!: Song.Difficulty | null
 
   @Prop({ required: true, type: Object })
   readonly songData!: SongOrCourseInfo
 
   score = 0
   exScore = 0
-  clearLamp: ClearLamp = 0
+  clearLamp: Score.ClearLamp = 0
   maxCombo = 0
   isFailed = false
 
@@ -182,7 +177,7 @@ export default class ScoreEditorComponent extends Vue {
   isLoading = true
 
   get rank() {
-    return this.isFailed ? 'E' : getDanceLevel(this.score)
+    return this.isFailed ? 'E' : Score.getDanceLevel(this.score)
   }
 
   get exScoreMax() {
@@ -197,8 +192,8 @@ export default class ScoreEditorComponent extends Vue {
 
   get chartName() {
     if (!this.selectedChart) return null
-    const playStyle = playStyleMap.get(this.selectedChart.playStyle)
-    const difficulty = difficultyMap.get(this.selectedChart.difficulty)
+    const playStyle = Song.playStyleMap.get(this.selectedChart.playStyle)
+    const difficulty = Song.difficultyMap.get(this.selectedChart.difficulty)
     return `${playStyle}/${difficulty}`
   }
 
@@ -211,7 +206,7 @@ export default class ScoreEditorComponent extends Vue {
     return this.songData.charts.map(c => ({
       playStyle: c.playStyle,
       difficulty: c.difficulty,
-      label: `${playStyleMap.get(c.playStyle)}/${difficultyMap.get(
+      label: `${Song.playStyleMap.get(c.playStyle)}/${Song.difficultyMap.get(
         c.difficulty
       )}`,
     }))
@@ -243,7 +238,7 @@ export default class ScoreEditorComponent extends Vue {
     /* istanbul ignore if */
     if (!this.selectedChart) return
     try {
-      const score = setValidScoreFromChart(this.selectedChart, {
+      const score = Score.setValidScoreFromChart(this.selectedChart, {
         score: this.score,
         exScore: this.exScore,
         maxCombo: this.maxCombo,

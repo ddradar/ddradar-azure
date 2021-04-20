@@ -52,7 +52,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
           <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -70,7 +72,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
           <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -88,7 +92,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
           <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -106,7 +112,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
           <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -124,7 +132,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
           <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -142,7 +152,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
           <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <!---->
       </tbody>
@@ -368,7 +380,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
           <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -386,7 +400,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
           <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -404,7 +420,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
           <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -422,7 +440,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
           <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -440,7 +460,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
           <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -458,7 +480,9 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
           <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <!---->
       </tbody>

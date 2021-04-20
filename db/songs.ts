@@ -1,8 +1,11 @@
-import type { ClearStatusSchema } from '@ddradar/core/db/userDetails'
+import type { Database } from '@ddradar/core'
 
 import { getContainer } from '.'
 
-type TotalCount = Pick<ClearStatusSchema, 'level' | 'playStyle' | 'count'>
+type TotalCount = Pick<
+  Database.ClearStatusSchema,
+  'level' | 'playStyle' | 'count'
+>
 
 export async function fetchTotalChartCount(): Promise<TotalCount[]> {
   const container = getContainer('Songs')

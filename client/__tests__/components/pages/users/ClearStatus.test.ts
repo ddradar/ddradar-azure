@@ -1,5 +1,5 @@
-import type { ClearStatus } from '@ddradar/core/api/user'
-import { ClearLamp } from '@ddradar/core/db/scores'
+import type { Api } from '@ddradar/core'
+import { Score } from '@ddradar/core'
 import { mount } from '@vue/test-utils'
 
 import Component from '~/components/pages/users/ClearStatus.vue'
@@ -9,10 +9,10 @@ describe('/components/pages/users/ClearStatus.vue', () => {
     test('renders correctly', async () => {
       // Arrange
       const title = 'LEVEL 10'
-      const statuses: Pick<ClearStatus, 'clearLamp' | 'count'>[] = [
+      const statuses: Pick<Api.ClearStatus, 'clearLamp' | 'count'>[] = [
         ...Array(9).keys(),
       ].map(i => ({
-        clearLamp: (i - 1) as ClearLamp | -1,
+        clearLamp: (i - 1) as Score.ClearLamp | -1,
         count: 100 - i * 10,
       }))
 

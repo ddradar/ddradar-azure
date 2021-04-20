@@ -34,8 +34,8 @@
 </i18n>
 
 <script lang="ts">
-import type { CourseListData } from '@ddradar/core/api/course'
-import { seriesSet } from '@ddradar/core/db/songs'
+import type { Api } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import type { Context } from '@nuxt/types'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
@@ -47,16 +47,16 @@ import CourseList from '~/components/pages/courses/CourseList.vue'
 @Component({ components: { CourseList }, fetchOnServer: false })
 export default class NonstopListPage extends Vue {
   /** Course List from API */
-  courses: CourseListData[] = []
+  courses: Api.CourseListData[] = []
 
   get title() {
-    const seriesList = [...seriesSet]
+    const seriesList = [...Song.seriesSet]
     const series = parseInt(this.$route.params.series, 10)
     return this.$t('title', { series: seriesList[series] })
   }
 
   get pageLinks() {
-    const seriesList = [...seriesSet]
+    const seriesList = [...Song.seriesSet]
     return [16, 17]
       .flatMap(i => ['nonstop', 'grade'].map(type => [i, type] as const))
       .map(d => ({

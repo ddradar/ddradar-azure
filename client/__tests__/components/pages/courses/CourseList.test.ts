@@ -1,4 +1,4 @@
-import type { CourseListData } from '@ddradar/core/api/course'
+import type { Api } from '@ddradar/core'
 import { createLocalVue, mount, RouterLinkStub } from '@vue/test-utils'
 import Buefy from 'buefy'
 import VueI18n from 'vue-i18n'
@@ -24,7 +24,7 @@ describe('/components/pages/courses/CourseList.vue', () => {
     })
     test('{ loading: false, courses: [...] } renders course list', async () => {
       // Arrange - Act
-      const courses: CourseListData[] = [
+      const courses: Api.CourseListData[] = [
         {
           id: '19id1DO6q9Pb1681db61D8D8oQi9dlb6',
           name: '初段',

@@ -1,6 +1,6 @@
 import type { Context } from '@azure/functions'
+import type { Api } from '@ddradar/core'
 import { privateUser, publicUser } from '@ddradar/core/__tests__/data'
-import type { GrooveRadarInfo } from '@ddradar/core/api/user'
 import { mocked } from 'ts-jest/utils'
 
 import { getLoginUserInfo } from '../auth'
@@ -10,7 +10,7 @@ jest.mock('../auth')
 
 describe('GET /api/v1/users/{id}/radar', () => {
   const radar = { stream: 100, voltage: 100, air: 100, freeze: 100, chaos: 100 }
-  const radars: GrooveRadarInfo[] = [
+  const radars: Api.GrooveRadarInfo[] = [
     { ...radar, playStyle: 2 },
     { ...radar, playStyle: 1 },
   ]

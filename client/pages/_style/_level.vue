@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import type { ChartInfo } from '@ddradar/core/api/song'
+import type { Api } from '@ddradar/core'
 import type { Context } from '@nuxt/types'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
@@ -30,7 +30,7 @@ import ChartList from '~/components/pages/charts/ChartList.vue'
 @Component({ fetchOnServer: false, components: { ChartList } })
 export default class ChartLevelPage extends Vue {
   /** Chart list */
-  charts: ChartInfo[] = []
+  charts: Api.ChartInfo[] = []
 
   get selected() {
     return parseInt(this.$route.params.level, 10)

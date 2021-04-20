@@ -1,9 +1,9 @@
+import type { Api } from '@ddradar/core'
 import {
   privateUser,
   publicUser,
   testSongData,
 } from '@ddradar/core/__tests__/data'
-import type { ScoreInfo } from '@ddradar/core/api/score'
 import {
   createLocalVue,
   mount,
@@ -136,7 +136,7 @@ describe('/components/shared/ScoreBoard.vue', () => {
 
   // Lifecycle
   describe('fetch()', () => {
-    mocked(getChartScore).mockResolvedValue(scores as ScoreInfo[])
+    mocked(getChartScore).mockResolvedValue(scores as Api.ScoreInfo[])
     beforeEach(() => mocked(getChartScore).mockClear())
 
     test('{ fetchAllData: false } calls getChartScore(medium)', async () => {
@@ -224,7 +224,7 @@ describe('/components/shared/ScoreBoard.vue', () => {
     })
   })
   describe('fetchAllScores()', () => {
-    mocked(getChartScore).mockResolvedValue(scores as ScoreInfo[])
+    mocked(getChartScore).mockResolvedValue(scores as Api.ScoreInfo[])
     beforeEach(() => mocks.$fetch.mockClear())
 
     test('sets { fetchAllData = true } and calls $fetch()', () => {

@@ -1,8 +1,4 @@
-import type {
-  ScoreBody,
-  ScoreInfo,
-  ScoreListBody,
-} from '@ddradar/core/api/score'
+import type { Api } from '@ddradar/core'
 import type { NuxtHTTPInstance } from '@nuxt/http'
 
 import { apiPrefix } from '~/api'
@@ -19,7 +15,7 @@ export function getChartScore(
   scope?: 'private' | 'medium' | 'full'
 ) {
   const query = scope ? `?scope=${scope}` : ''
-  return $http.$get<ScoreInfo[]>(
+  return $http.$get<Api.ScoreInfo[]>(
     `${apiPrefix}/scores/${songId}/${playStyle}/${difficulty}${query}`
   )
 }
@@ -33,7 +29,7 @@ export function postChartScore(
   songId: string,
   playStyle: 1 | 2,
   difficulty: 0 | 1 | 2 | 3 | 4,
-  score: ScoreBody
+  score: Api.ScoreBody
 ) {
   return $http.$post(
     `${apiPrefix}/scores/${songId}/${playStyle}/${difficulty}`,
@@ -61,7 +57,7 @@ export function deleteChartScore(
 export function postSongScores(
   $http: Pick<NuxtHTTPInstance, '$post'>,
   songId: string,
-  scores: ScoreListBody[]
+  scores: Api.ScoreListBody[]
 ) {
-  return $http.$post<ScoreInfo[]>(`${apiPrefix}/scores/${songId}`, scores)
+  return $http.$post<Api.ScoreInfo[]>(`${apiPrefix}/scores/${songId}`, scores)
 }

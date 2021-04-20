@@ -149,7 +149,7 @@
 </i18n>
 
 <script lang="ts">
-import { readTextAsync, scoreTexttoScoreList } from '@ddradar/core/skill-attack'
+import { readTextAsync, scoreTexttoScoreList } from '@ddradar/core'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
 

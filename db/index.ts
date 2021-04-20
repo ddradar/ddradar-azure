@@ -1,14 +1,6 @@
 import type { ItemDefinition, JSONValue, SqlParameter } from '@azure/cosmos'
 import { Container, CosmosClient } from '@azure/cosmos'
-import type { NotificationSchema } from '@ddradar/core/db/notification'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
-import type { CourseSchema, SongSchema } from '@ddradar/core/db/songs'
-import type {
-  ClearStatusSchema,
-  GrooveRadarSchema,
-  ScoreStatusSchema,
-} from '@ddradar/core/db/userDetails'
-import type { UserSchema } from '@ddradar/core/db/users'
+import type { Database } from '@ddradar/core'
 
 // eslint-disable-next-line node/no-process-env
 const connectionString = process.env.COSMOS_DB_CONN
@@ -26,15 +18,18 @@ type ContainerName =
   | 'UserDetails'
 
 type ContainerValue<T> = T extends 'Scores'
-  ? ScoreSchema
+  ? Database.ScoreSchema
   : T extends 'Songs'
-  ? SongSchema | CourseSchema
+  ? Database.SongSchema | Database.CourseSchema
   : T extends 'Users'
-  ? UserSchema
+  ? Database.UserSchema
   : T extends 'Notification'
-  ? NotificationSchema
+  ? Database.NotificationSchema
   : T extends 'UserDetails'
-  ? ClearStatusSchema | GrooveRadarSchema | ScoreStatusSchema
+  ?
+      | Database.ClearStatusSchema
+      | Database.GrooveRadarSchema
+      | Database.ScoreStatusSchema
   : never
 
 type DbItem<T> = Partial<ContainerValue<T> & ItemDefinition & { _ts: number }>

@@ -1,19 +1,19 @@
 import type { HttpRequest } from '@azure/functions'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
+import type { Database } from '@ddradar/core'
 
 import { getClientPrincipal, getLoginUserInfo } from '../auth'
 import { ErrorResult, NoContentResult } from '../function'
 
 type DeleteResult = {
   httpResponse: ErrorResult<404> | NoContentResult
-  documents?: ScoreSchema[]
+  documents?: Database.ScoreSchema[]
 }
 
 /** Get course and orders information that match the specified ID. */
 export default async function (
   _context: unknown,
   req: Pick<HttpRequest, 'headers'>,
-  scores: ScoreSchema[]
+  scores: Database.ScoreSchema[]
 ): Promise<DeleteResult> {
   const user = await getLoginUserInfo(getClientPrincipal(req))
   if (!user) {

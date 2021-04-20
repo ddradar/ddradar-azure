@@ -1,4 +1,4 @@
-import { musicDetailToScore } from '@ddradar/core/eagate-parser'
+import { Gate } from '@ddradar/core'
 import { createLocalVue, mount, shallowMount, Wrapper } from '@vue/test-utils'
 import Buefy from 'buefy'
 import { mocked } from 'ts-jest/utils'
@@ -8,8 +8,8 @@ import { postSongScores } from '~/api/score'
 import ScoreImporter from '~/components/modal/ScoreImporter.vue'
 import * as popup from '~/utils/popup'
 
+jest.mock('@ddradar/core')
 jest.mock('~/api/score')
-jest.mock('@ddradar/core/eagate-parser')
 jest.mock('~/utils/popup')
 const localVue = createLocalVue()
 localVue.use(Buefy)
@@ -96,7 +96,7 @@ describe('/components/modal/ScoreImporter.vue', () => {
 
   // Method
   describe('importScore()', () => {
-    const score: ReturnType<typeof musicDetailToScore> = {
+    const score: ReturnType<typeof Gate.musicDetailToScore> = {
       songId: 'ld6P1lbb0bPO9doqbbPOoPb8qoDo8id0',
       playStyle: 1,
       difficulty: 0,
@@ -126,14 +126,14 @@ describe('/components/modal/ScoreImporter.vue', () => {
       await wrapper.vm.importScore()
 
       // Assert
-      expect(mocked(musicDetailToScore)).not.toBeCalled()
+      expect(mocked(Gate.musicDetailToScore)).not.toBeCalled()
       expect(postMock).not.toBeCalled()
     })
     test('calls "Post Song Scores" API', async () => {
       // Arrange
       wrapper.setData({ sourceCode: '<html></html>', loading: false })
       await wrapper.vm.$nextTick()
-      const convertMock = mocked(musicDetailToScore)
+      const convertMock = mocked(Gate.musicDetailToScore)
       convertMock.mockReturnValue(score)
       // @ts-ignore
       wrapper.vm.$parent.close = jest.fn()
@@ -150,7 +150,7 @@ describe('/components/modal/ScoreImporter.vue', () => {
       wrapper.setData({ sourceCode: '<html></html>', loading: false })
       await wrapper.vm.$nextTick()
       const warningMock = mocked(popup.warning)
-      const convertMock = mocked(musicDetailToScore)
+      const convertMock = mocked(Gate.musicDetailToScore)
       convertMock.mockImplementation(() => {
         throw new Error('invalid')
       })
@@ -169,7 +169,7 @@ describe('/components/modal/ScoreImporter.vue', () => {
       wrapper.setData({ sourceCode: '<html></html>', loading: false })
       await wrapper.vm.$nextTick()
       const dangerMock = mocked(popup.danger)
-      const convertMock = mocked(musicDetailToScore)
+      const convertMock = mocked(Gate.musicDetailToScore)
       convertMock.mockReturnValue(score)
       postMock.mockRejectedValue(new Error(errorMessage))
 

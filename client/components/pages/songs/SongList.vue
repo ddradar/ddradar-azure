@@ -61,7 +61,7 @@
 </i18n>
 
 <script lang="ts">
-import type { SongListData } from '@ddradar/core/api/song'
+import type { Api } from '@ddradar/core'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 import { getDisplayedBPM, shortenSeriesName } from '~/api/song'
@@ -69,7 +69,7 @@ import { getDisplayedBPM, shortenSeriesName } from '~/api/song'
 @Component
 export default class SongListComponent extends Vue {
   @Prop({ type: Array, required: false, default: () => [] })
-  readonly songs!: Omit<SongListData, 'nameKana' | 'nameIndex'>[]
+  readonly songs!: Omit<Api.SongListData, 'nameKana' | 'nameIndex'>[]
 
   @Prop({ type: Boolean, required: false, default: false })
   readonly loading!: boolean

@@ -1,5 +1,5 @@
 import type { HttpRequest } from '@azure/functions'
-import type { CurrentUserInfo } from '@ddradar/core/api/user'
+import type { Api } from '@ddradar/core'
 
 import { getClientPrincipal, getLoginUserInfo } from '../auth'
 import { ErrorResult, SuccessResult } from '../function'
@@ -8,7 +8,7 @@ import { ErrorResult, SuccessResult } from '../function'
 export default async function (
   _context: unknown,
   req: Pick<HttpRequest, 'headers'>
-): Promise<ErrorResult<404> | SuccessResult<CurrentUserInfo>> {
+): Promise<ErrorResult<404> | SuccessResult<Api.CurrentUserInfo>> {
   const user = await getLoginUserInfo(getClientPrincipal(req))
 
   if (!user) {

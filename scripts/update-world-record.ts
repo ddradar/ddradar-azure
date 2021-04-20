@@ -3,18 +3,17 @@ import { config } from 'dotenv'
 // load .env file
 config()
 
-import type { ScoreListBody } from '@ddradar/core/api/score'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
-import {
-  difficultyMap as diff,
-  playStyleMap as style,
-} from '@ddradar/core/db/songs'
+import type { Api, Database } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import { getContainer } from '@ddradar/db'
-import consola from 'consola'
+import { Consola } from 'consola'
 import fetch from 'node-fetch'
 import * as puppetter from 'puppeteer-core'
 
 import { fetchScoreDetail, isLoggedIn } from './modules/eagate'
+import { isDeleted } from './modules/song'
+
+const consola = new Consola({})
 
 /* eslint-disable node/no-process-env */
 const {
@@ -27,9 +26,12 @@ const {
 const sleep = (msec: number) =>
   new Promise(resolve => setTimeout(resolve, msec))
 
+const style = Song.playStyleMap
+const diff = Song.difficultyMap
+
 /** Update World Record from e-AMUSEMENT GATE */
 async function main(userId: string, password: string) {
-  const browserOptions = { headless: false, executablePath, userDataDir }
+  const browserOptions = { executablePath, userDataDir }
   const browser = await puppetter.launch(browserOptions)
 
   const page = (await browser.pages())[0] || (await browser.newPage())
@@ -45,9 +47,12 @@ async function main(userId: string, password: string) {
   const container = getContainer('Scores')
   const { resources } = await container.items
     .query<
-      Pick<ScoreSchema, 'songId' | 'songName' | 'playStyle' | 'difficulty'>
+      Pick<
+        Database.ScoreSchema,
+        'songId' | 'songName' | 'playStyle' | 'difficulty' | 'score'
+      >
     >(
-      'SELECT s.songId, s.songName, s.playStyle, s.difficulty ' +
+      'SELECT s.songId, s.songName, s.playStyle, s.difficulty, s.score ' +
         'FROM s ' +
         'WHERE s.userId = "0" AND s.clearLamp != 7 AND NOT IS_DEFINED(s.ttl) ' +
         'ORDER BY s.songName'
@@ -56,19 +61,24 @@ async function main(userId: string, password: string) {
 
   // Grouped by song
   const scores = resources.reduce((prev, score) => {
+    if (isDeleted(score.songId)) return prev
     if (prev[score.songId]) {
       prev[score.songId].push(score)
     } else {
       prev[score.songId] = [score]
     }
     return prev
-  }, {} as Record<string, Pick<ScoreSchema, 'songId' | 'songName' | 'playStyle' | 'difficulty'>[]>)
+  }, {} as Record<string, typeof resources>)
 
+  const totalSongCount = Object.keys(scores).length
+  let currentCount = 1
   for (const grp of Object.entries(scores)) {
     const songScope = consola.withScope('Song')
-    const songName = `${grp[1][0].songName} (${grp[0]})`
+    const songName = `(${currentCount++}/${totalSongCount}) ${
+      grp[1][0].songName
+    } (${grp[0]})`
     songScope.start(songName)
-    const scores: ScoreListBody[] = []
+    const scores: Api.ScoreListBody[] = []
 
     for (const s of grp[1]) {
       const chartScope = songScope.withScope('Charts')
@@ -82,10 +92,16 @@ async function main(userId: string, password: string) {
           s.difficulty
         )
         if (score) {
-          scores.push(score)
-          chartScope.success(
-            `${chart} (${score.topScore}) Loaded. wait 3 seconds...`
-          )
+          if (score.topScore > s.score) {
+            scores.push(score)
+            chartScope.success(
+              `${chart} (${score.topScore}) Loaded. wait 3 seconds...`
+            )
+          } else {
+            chartScope.info(
+              `${chart} WR(${score.topScore}) is not updated. Skip.`
+            )
+          }
         }
       } catch (e) {
         const message: string = e?.message ?? e

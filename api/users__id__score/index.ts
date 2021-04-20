@@ -1,21 +1,20 @@
 import type { HttpRequest } from '@azure/functions'
-import type { ScoreStatus } from '@ddradar/core/api/user'
-import { danceLevelSet } from '@ddradar/core/db/scores'
-import type { UserSchema } from '@ddradar/core/db/users'
+import type { Api, Database } from '@ddradar/core'
+import { Score } from '@ddradar/core'
 
 import { getClientPrincipal, getLoginUserInfo } from '../auth'
 import { ErrorResult, SuccessResult } from '../function'
 
-type TotalCount = Omit<ScoreStatus, 'rank'>
+type TotalCount = Omit<Api.ScoreStatus, 'rank'>
 
 /** Get Score statuses that match the specified user ID, play style and level. */
 export default async function (
   _context: unknown,
   req: Pick<HttpRequest, 'headers' | 'query'>,
-  [user]: Pick<UserSchema, 'id' | 'isPublic'>[],
-  scoreStatuses: ScoreStatus[],
+  [user]: Pick<Database.UserSchema, 'id' | 'isPublic'>[],
+  scoreStatuses: Api.ScoreStatus[],
   totalCounts: TotalCount[]
-): Promise<ErrorResult<404> | SuccessResult<ScoreStatus[]>> {
+): Promise<ErrorResult<404> | SuccessResult<Api.ScoreStatus[]>> {
   const loginUser = await getLoginUserInfo(getClientPrincipal(req))
 
   // User is not found or private
@@ -28,7 +27,7 @@ export default async function (
   const level = parseInt(req.query.level ?? '', 10)
   const isValidLevel = Number.isInteger(level) && level >= 1 && level <= 19
 
-  const danceLevels = [...danceLevelSet]
+  const danceLevels = [...Score.danceLevelSet]
   return new SuccessResult(
     totalCounts
       .filter(

@@ -1,5 +1,5 @@
 import type { HttpRequest } from '@azure/functions'
-import type { SongListData } from '@ddradar/core/api/song'
+import type { Api } from '@ddradar/core'
 
 import { ErrorResult, SuccessResult } from '../function'
 
@@ -7,8 +7,8 @@ import { ErrorResult, SuccessResult } from '../function'
 export default async function (
   _context: unknown,
   req: Pick<HttpRequest, 'query'>,
-  songs: SongListData[]
-): Promise<ErrorResult<404> | SuccessResult<SongListData[]>> {
+  songs: Api.SongListData[]
+): Promise<ErrorResult<404> | SuccessResult<Api.SongListData[]>> {
   const name = parseFloat(req.query.name ?? '')
   const isValidName = Number.isInteger(name) && name >= 0 && name <= 36
 

@@ -1,7 +1,7 @@
 {
   "name": "@ddradar/db",
   "description": "Database accessor for DDRadar",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "author": "Nogic <24802730+nogic1008@users.noreply.github.com>",
   "repository": "https://github.com/ddradar/ddradar",
   "engines": {
@@ -21,15 +21,15 @@
   },
   "peerDependencies": {
     "@azure/cosmos": "^3.10.5",
-    "@ddradar/core": "^1.0.0-rc.2"
+    "@ddradar/core": "^1.0.0-rc.3"
   },
   "devDependencies": {
     "@azure/cosmos": "^3.10.5",
-    "@ddradar/core": "^1.0.0-rc.2",
+    "@ddradar/core": "^1.0.0-rc.3",
     "@types/jest": "^26.0.22",
     "can-npm-publish": "^1.3.3",
     "jest": "^26.6.3",
-    "ts-jest": "^26.5.4",
+    "ts-jest": "^26.5.5",
     "typescript": "^4.2.3"
   }
 }

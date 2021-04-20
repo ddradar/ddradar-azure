@@ -193,7 +193,7 @@
 </i18n>
 
 <script lang="ts">
-import { nameIndexMap, seriesSet } from '@ddradar/core/db/songs'
+import { Song } from '@ddradar/core'
 import type { LocaleObject } from 'nuxt-i18n'
 import { Component, Vue } from 'nuxt-property-decorator'
 
@@ -207,7 +207,7 @@ export default class DefaultLayout extends Vue {
   }
 
   get menuList() {
-    const seriesList = [...seriesSet]
+    const seriesList = [...Song.seriesSet]
     return [
       {
         label: this.$t('menu.single'),
@@ -255,7 +255,7 @@ export default class DefaultLayout extends Vue {
   }
 
   get nameIndexList() {
-    return [...nameIndexMap.values()]
+    return [...Song.nameIndexMap.values()]
   }
 
   get selectedLocale() {

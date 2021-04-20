@@ -1,5 +1,5 @@
 import type { Container } from '@azure/cosmos'
-import type { ClearStatusSchema } from '@ddradar/core/db/userDetails'
+import type { Database } from '@ddradar/core'
 import { mocked } from 'ts-jest/utils'
 
 import { getContainer } from '..'
@@ -10,7 +10,7 @@ jest.mock('..')
 describe('songs.ts', () => {
   describe('fetchTotalChartCount()', () => {
     let resources: Pick<
-      ClearStatusSchema,
+      Database.ClearStatusSchema,
       'level' | 'playStyle' | 'count'
     >[] = []
     const container = {

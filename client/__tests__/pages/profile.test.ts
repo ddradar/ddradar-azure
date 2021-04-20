@@ -1,4 +1,4 @@
-import type { CurrentUserInfo } from '@ddradar/core/api/user'
+import type { Api } from '@ddradar/core'
 import { createLocalVue, mount, shallowMount } from '@vue/test-utils'
 import Buefy from 'buefy'
 import { mocked } from 'ts-jest/utils'
@@ -17,7 +17,7 @@ localVue.use(VueI18n)
 
 describe('pages/profile.vue', () => {
   const $accessor = { user: null }
-  const user: CurrentUserInfo = {
+  const user: Api.CurrentUserInfo = {
     id: 'test_user',
     name: 'Test User',
     area: 13,

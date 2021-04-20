@@ -14,8 +14,14 @@ jobs:
         run: |
           echo "@ddradar:registry=https://npm.pkg.github.com/" > api/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> api/.npmrc
+          echo "@ddradar:registry=https://npm.pkg.github.com/" > client/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> client/.npmrc
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Copy Yarn lock file
+        run: |
+          cp yarn.lock api
+          cp yarn.lock client
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
@@ -24,10 +30,10 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: 'upload'
           # see: https://aka.ms/swaworkflowconfig
-          app_location: '/'
-          app_build_command: yarn run:client build
-          app_artifact_location: 'client/dist'
-          api_location: 'api'
+          app_location: /
+          app_build_command: yarn run-s "run:core build" "run:client build"
+          app_artifact_location: client/dist
+          api_location: api
           api_build_command: yarn build
         env:
           API_URL: '/'

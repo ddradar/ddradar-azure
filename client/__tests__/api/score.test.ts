@@ -1,8 +1,4 @@
-import type {
-  ScoreBody,
-  ScoreInfo,
-  ScoreListBody,
-} from '@ddradar/core/api/score'
+import type { Api } from '@ddradar/core'
 
 import {
   deleteChartScore,
@@ -16,7 +12,7 @@ describe('./api/score.ts', () => {
 
   describe('getChartScore', () => {
     const $http = { $get: jest.fn<Promise<any>, [string]>() }
-    const scores: ScoreInfo[] = []
+    const scores: Api.ScoreInfo[] = []
     $http.$get.mockResolvedValue(scores)
     test.each([
       [1, 0, undefined, `/api/v1/scores/${songId}/1/0`] as const,
@@ -49,7 +45,7 @@ describe('./api/score.ts', () => {
     test(`($http, "${songId}", 1, 0, score) calls POST "/api/v1/scores/${songId}/1/0"`, async () => {
       // Arrange
       const $http = { $post: jest.fn<Promise<any>, [string, any]>() }
-      const score: ScoreBody = { clearLamp: 6, rank: 'AAA', score: 999800 }
+      const score: Api.ScoreBody = { clearLamp: 6, rank: 'AAA', score: 999800 }
 
       // Act
       await postChartScore($http, songId, 1, 0, score)
@@ -76,7 +72,7 @@ describe('./api/score.ts', () => {
     test(`($http, "${songId}", scores) calls POST "/api/v1/scores/${songId}"`, async () => {
       // Arrange
       const $http = { $post: jest.fn<Promise<any>, [string, any]>() }
-      const scores: ScoreListBody[] = [
+      const scores: Api.ScoreListBody[] = [
         {
           playStyle: 1,
           difficulty: 0,

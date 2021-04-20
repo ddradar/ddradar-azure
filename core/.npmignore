@@ -1,13 +1,9 @@
 # TypeScript Files
-dist
 tsconfig.json
 **.ts
-!/*.d.ts
-!api/*.d.ts
-!db/*.d.ts
+!dist/**.d.ts
 
 # Test & Lint Files
 .eslintrc.json
 jest.config.**
 /__tests__/**
-!/__tests__/data.*

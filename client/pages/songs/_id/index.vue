@@ -37,8 +37,8 @@
 </template>
 
 <script lang="ts">
-import type { SongInfo } from '@ddradar/core/api/song'
-import { isValidId } from '@ddradar/core/db/songs'
+import type { Api } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import type { Context } from '@nuxt/types'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
@@ -48,7 +48,7 @@ import ChartDetail from '~/components/pages/songs/ChartDetail.vue'
 
 @Component({ components: { ChartDetail } })
 export default class SongDetailPage extends Vue {
-  song: SongInfo | null = null
+  song: Api.SongInfo | null = null
   playStyle = 0
   difficulty = -1
 
@@ -68,7 +68,7 @@ export default class SongDetailPage extends Vue {
 
   /** `id` should be songId pattern */
   validate({ params }: Pick<Context, 'params'>) {
-    return isValidId(params.id)
+    return Song.isValidId(params.id)
   }
 
   /* istanbul ignore next */
@@ -83,7 +83,8 @@ export default class SongDetailPage extends Vue {
     payload,
   }: Pick<Context, 'params' | '$http' | 'route' | 'payload'>) {
     // Get song info from API
-    const song = (payload as SongInfo) || (await getSongInfo($http, params.id))
+    const song =
+      (payload as Api.SongInfo) || (await getSongInfo($http, params.id))
 
     // Set chartIndex
     const chart = route?.hash

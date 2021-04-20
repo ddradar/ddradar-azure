@@ -1,6 +1,6 @@
 import { readTextAsync, scoreTexttoScoreList } from '../skill-attack'
 
-describe('/utils/skill-attack.ts', () => {
+describe('./skill-attack.ts', () => {
   describe('readTextAsync', () => {
     test('(null) throws error', async () => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- error test

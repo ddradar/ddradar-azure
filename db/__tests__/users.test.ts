@@ -1,24 +1,26 @@
-import type { AreaCode, UserSchema } from '@ddradar/core/db/users'
+import type { Database } from '@ddradar/core'
 
 import { canConnectDB, getContainer } from '..'
 import { fetchLoginUser, fetchUser, fetchUserList } from '../users'
 import { describeIf } from './util'
 
 describeIf(canConnectDB)('users.ts', () => {
-  const users: Required<UserSchema>[] = [...Array(100).keys()].map(i => ({
-    id: `user_${i}`,
-    loginId: `login_${i}`,
-    name: `User ${i}`,
-    area: (i % 50) as AreaCode,
-    isPublic: i !== 0,
-    code: 10000000 + i,
-    password: `pass_${i}`,
-  }))
+  const users: Required<Database.UserSchema>[] = [...Array(100).keys()].map(
+    i => ({
+      id: `user_${i}`,
+      loginId: `login_${i}`,
+      name: `User ${i}`,
+      area: (i % 50) as Database.AreaCode,
+      isPublic: i !== 0,
+      code: 10000000 + i,
+      password: `pass_${i}`,
+    })
+  )
   /** System users */
-  const areas: UserSchema[] = [...Array(50).keys()].map(i => ({
+  const areas: Database.UserSchema[] = [...Array(50).keys()].map(i => ({
     id: `${i}`,
     name: `User ${i}`,
-    area: (i % 50) as AreaCode,
+    area: (i % 50) as Database.AreaCode,
     isPublic: true,
   }))
   beforeAll(async () => {
@@ -51,7 +53,7 @@ describeIf(canConnectDB)('users.ts', () => {
       [users[1].id, users[1]],
     ])('("%s") returns %p', async (id, user) => {
       // Arrange - Act
-      const expected: UserSchema = { ...user }
+      const expected: Database.UserSchema = { ...user }
       delete expected.password
       const result = await fetchUser(id)
 

@@ -70,8 +70,8 @@
 </i18n>
 
 <script lang="ts">
-import type { ChartInfo } from '@ddradar/core/api/song'
-import { difficultyMap } from '@ddradar/core/db/songs'
+import type { Api } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 import { getSongInfo, shortenSeriesName } from '~/api/song'
@@ -80,7 +80,7 @@ import ScoreEditor from '~/components/modal/ScoreEditor.vue'
 @Component
 export default class ChartListComponent extends Vue {
   @Prop({ required: false, type: Array, default: () => [] })
-  charts!: ChartInfo[]
+  charts!: Api.ChartInfo[]
 
   @Prop({ required: false, type: Boolean, default: false })
   loading!: boolean
@@ -90,8 +90,8 @@ export default class ChartListComponent extends Vue {
       series: shortenSeriesName(c.series),
       name: c.name,
       link: `/songs/${c.id}#${c.playStyle}${c.difficulty}`,
-      difficultyName: difficultyMap.get(c.difficulty),
-      class: `is-${difficultyMap.get(c.difficulty)!.toLowerCase()}`,
+      difficultyName: Song.difficultyMap.get(c.difficulty),
+      class: `is-${Song.difficultyMap.get(c.difficulty)!.toLowerCase()}`,
       level: c.level,
       id: c.id,
       playStyle: c.playStyle,

@@ -1,6 +1,5 @@
-import type { UserInfo } from '@ddradar/core/api/user'
-import { ClearLamp, clearLampMap, danceLevelSet } from '@ddradar/core/db/scores'
-import { GrooveRadar } from '@ddradar/core/db/songs'
+import type { Api } from '@ddradar/core'
+import { Database, Score } from '@ddradar/core'
 import type { Context } from '@nuxt/types'
 import {
   createLocalVue,
@@ -27,13 +26,13 @@ localVue.use(Buefy)
 localVue.use(VueI18n)
 
 describe('/users/_id.vue', () => {
-  const user: UserInfo = {
+  const user: Api.UserInfo = {
     id: 'user_1',
     name: 'User 1',
     area: 13,
     code: 12345678,
   }
-  const radar: GrooveRadar = {
+  const radar: Database.GrooveRadar = {
     stream: 120,
     voltage: 102,
     air: 160,
@@ -43,7 +42,7 @@ describe('/users/_id.vue', () => {
   const clears = [...Array(19).keys()].map(i => ({
     level: i + 1,
     title: `${i + 1}`,
-    statuses: [...clearLampMap.keys(), -1 as const].map(clearLamp => ({
+    statuses: [...Score.clearLampMap.keys(), -1 as const].map(clearLamp => ({
       clearLamp,
       count: (clearLamp + 2) * 10,
     })),
@@ -51,7 +50,7 @@ describe('/users/_id.vue', () => {
   const scores = [...Array(19).keys()].map(i => ({
     level: i + 1,
     title: `${i + 1}`,
-    statuses: [...danceLevelSet].map((rank, j) => ({
+    statuses: [...Score.danceLevelSet].map((rank, j) => ({
       rank,
       count: (j + 1) * 10,
     })),
@@ -266,19 +265,22 @@ describe('/users/_id.vue', () => {
       mocked(getUserInfo).mockResolvedValue(user)
       mocked(getGrooveRadar).mockResolvedValue([{ ...radar, playStyle: 1 }])
       mocked(getClearStatus).mockResolvedValue(
-        [...Array(19 * (clearLampMap.size + 1)).keys()].map(i => ({
+        [...Array(19 * (Score.clearLampMap.size + 1)).keys()].map(i => ({
           playStyle: 1,
           level: (i % 19) + 1,
-          clearLamp: ((i % (clearLampMap.size + 1)) - 1) as ClearLamp | -1,
-          count: ((i % (clearLampMap.size + 1)) + 1) * 10,
+          clearLamp: ((i % (Score.clearLampMap.size + 1)) - 1) as
+            | Score.ClearLamp
+            | -1,
+          count: ((i % (Score.clearLampMap.size + 1)) + 1) * 10,
         }))
       )
       mocked(getScoreStatus).mockResolvedValue(
-        [...Array(19 * (danceLevelSet.size + 1)).keys()].map(i => ({
+        [...Array(19 * (Score.danceLevelSet.size + 1)).keys()].map(i => ({
           playStyle: 1,
           level: (i % 19) + 1,
-          rank: [...danceLevelSet][i % (danceLevelSet.size + 1)] ?? '-',
-          count: ((i % (danceLevelSet.size + 1)) + 1) * 10,
+          rank:
+            [...Score.danceLevelSet][i % (Score.danceLevelSet.size + 1)] ?? '-',
+          count: ((i % (Score.danceLevelSet.size + 1)) + 1) * 10,
         }))
       )
       const mocks = { ...templateMocks, $http, $route }

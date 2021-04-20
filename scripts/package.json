@@ -1,6 +1,6 @@
 {
   "name": "@ddradar/scripts",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0-rc.3",
   "description": "Scripts for DDRadar",
   "license": "MIT",
   "private": true,
@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@azure/cosmos": "^3.10.5",
-    "@ddradar/core": "^1.0.0-rc.2",
-    "@ddradar/db": "^1.0.0-rc.2",
+    "@ddradar/core": "^1.0.0-rc.3",
+    "@ddradar/db": "^1.0.0-rc.3",
     "consola": "^2.15.3",
     "dotenv": "^8.2.0",
-    "jsdom": "^16.5.2",
+    "jsdom": "^16.5.3",
     "node-fetch": "^2.6.1",
     "puppeteer-core": "^8.0.0"
   },

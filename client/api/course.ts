@@ -1,4 +1,4 @@
-import type { CourseInfo, CourseListData } from '@ddradar/core/api/course'
+import type { Api } from '@ddradar/core'
 import type { NuxtHTTPInstance } from '@nuxt/http'
 
 import { apiPrefix } from '~/api'
@@ -19,7 +19,9 @@ export function getCourseList(
   const searchParams = new URLSearchParams()
   if (series) searchParams.append('series', `${series}`)
   if (type) searchParams.append('type', `${type}`)
-  return $http.$get<CourseListData[]>(`${apiPrefix}/courses`, { searchParams })
+  return $http.$get<Api.CourseListData[]>(`${apiPrefix}/courses`, {
+    searchParams,
+  })
 }
 
 /**
@@ -30,5 +32,5 @@ export function getCourseInfo(
   $http: Pick<NuxtHTTPInstance, '$get'>,
   id: string
 ) {
-  return $http.$get<CourseInfo>(`${apiPrefix}/courses/${id}`)
+  return $http.$get<Api.CourseInfo>(`${apiPrefix}/courses/${id}`)
 }

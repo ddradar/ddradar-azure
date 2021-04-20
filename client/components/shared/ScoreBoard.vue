@@ -110,11 +110,8 @@
 </i18n>
 
 <script lang="ts">
-import type { CourseInfo } from '@ddradar/core/api/course'
-import type { ScoreInfo } from '@ddradar/core/api/score'
-import type { SongInfo } from '@ddradar/core/api/song'
-import { difficultyMap, StepChartSchema } from '@ddradar/core/db/songs'
-import { areaCodeSet } from '@ddradar/core/db/users'
+import type { Api } from '@ddradar/core'
+import { Database, Song } from '@ddradar/core'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 import { getChartScore } from '~/api/score'
@@ -125,17 +122,20 @@ import Card from '~/components/shared/Card.vue'
 import ScoreBadge from '~/components/shared/ScoreBadge.vue'
 
 type RankingScore = Pick<
-  ScoreInfo,
+  Api.ScoreInfo,
   'userId' | 'userName' | 'score' | 'exScore' | 'clearLamp'
 > & { isArea?: true }
 
 @Component({ components: { Card, ScoreBadge }, fetchOnServer: false })
 export default class OrderDetailComponent extends Vue {
   @Prop({ required: true, type: Object })
-  readonly info!: CourseInfo | SongInfo
+  readonly info!: Api.CourseInfo | Api.SongInfo
 
   @Prop({ required: true, type: Object })
-  readonly chart!: Pick<StepChartSchema, 'playStyle' | 'difficulty' | 'level'>
+  readonly chart!: Pick<
+    Database.StepChartSchema,
+    'playStyle' | 'difficulty' | 'level'
+  >
 
   @Prop({ required: false, type: Boolean, default: false })
   readonly open!: boolean
@@ -152,7 +152,7 @@ export default class OrderDetailComponent extends Vue {
   }
 
   get cardType() {
-    return `is-${difficultyMap.get(this.chart.difficulty)!.toLowerCase()}`
+    return `is-${Song.difficultyMap.get(this.chart.difficulty)!.toLowerCase()}`
   }
 
   async fetch() {
@@ -165,7 +165,7 @@ export default class OrderDetailComponent extends Vue {
         this.fetchAllData ? 'full' : 'medium'
       )
       this.scores = scores.map(s => {
-        const areaCodes = [...areaCodeSet].map(i => `${i}`)
+        const areaCodes = [...Database.areaCodeSet].map(i => `${i}`)
         if (areaCodes.includes(s.userId)) {
           return {
             ...s,

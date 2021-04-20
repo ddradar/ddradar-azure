@@ -1,5 +1,5 @@
 import type { HttpRequest } from '@azure/functions'
-import { isUserSchema, UserSchema } from '@ddradar/core/db/users'
+import { Database } from '@ddradar/core'
 import { fetchLoginUser, fetchUser } from '@ddradar/db'
 import { mocked } from 'ts-jest/utils'
 
@@ -7,7 +7,7 @@ import { getClientPrincipal } from '../auth'
 import postUserInfo from '.'
 
 jest.mock('../auth')
-jest.mock('@ddradar/core/db/users')
+jest.mock('@ddradar/core')
 jest.mock('@ddradar/db')
 
 describe('POST /api/v1/user', () => {
@@ -20,7 +20,7 @@ describe('POST /api/v1/user', () => {
     isPublic: false,
   } as const
   beforeAll(() => {
-    mocked(isUserSchema).mockReturnValue(true)
+    mocked(Database.isUserSchema).mockReturnValue(true)
     mocked(fetchUser).mockResolvedValue(null)
     mocked(fetchLoginUser).mockResolvedValue(null)
   })
@@ -46,7 +46,7 @@ describe('POST /api/v1/user', () => {
       userId: '1',
       userRoles: ['anonymous', 'authenticated'],
     })
-    mocked(isUserSchema).mockReturnValueOnce(false)
+    mocked(Database.isUserSchema).mockReturnValueOnce(false)
 
     // Act
     const result = await postUserInfo(null, req)
@@ -58,7 +58,7 @@ describe('POST /api/v1/user', () => {
 
   test('returns "200 OK" with JSON body (Create)', async () => {
     // Arrange
-    const body: UserSchema = {
+    const body: Database.UserSchema = {
       id: 'new_user',
       name: 'New User',
       area: 13,
@@ -89,9 +89,9 @@ describe('POST /api/v1/user', () => {
     { password: 'password' },
   ])(
     'returns "200 OK" with JSON body (Update) if changed %p',
-    async (diff: Partial<UserSchema>) => {
+    async (diff: Partial<Database.UserSchema>) => {
       // Arrange
-      const body: UserSchema = {
+      const body: Database.UserSchema = {
         id: userToBeUpdated.id,
         name: userToBeUpdated.name,
         area: userToBeUpdated.area,
@@ -168,7 +168,7 @@ describe('POST /api/v1/user', () => {
 
   test('returns "200 OK" but does not update if changed area', async () => {
     // Arrange
-    const expected: UserSchema = {
+    const expected: Database.UserSchema = {
       id: userToBeUpdated.id,
       name: userToBeUpdated.name,
       area: userToBeUpdated.area,

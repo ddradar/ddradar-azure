@@ -1,4 +1,5 @@
 import type { HttpRequest } from '@azure/functions'
+import type { Api } from '@ddradar/core'
 import {
   areaHiddenUser,
   noPasswordUser,
@@ -7,7 +8,6 @@ import {
   testScores,
   testSongData,
 } from '@ddradar/core/__tests__/data'
-import type { ScoreBody } from '@ddradar/core/api/score'
 import { fetchScore } from '@ddradar/db'
 import { mocked } from 'ts-jest/utils'
 
@@ -22,7 +22,7 @@ describe('POST /api/v1/scores', () => {
 
   const scores = new Map(testScores.map(d => [d.userId, d]))
 
-  const score: ScoreBody = {
+  const score: Api.ScoreBody = {
     score: 1000000,
     clearLamp: 7,
     maxCombo: testSongData.charts[0].notes,

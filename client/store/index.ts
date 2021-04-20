@@ -1,13 +1,12 @@
-import type { ClientPrincipal } from '@ddradar/core/api/auth'
-import type { CurrentUserInfo } from '@ddradar/core/api/user'
+import type { Api } from '@ddradar/core'
 import { actionTree, getAccessorType, mutationTree } from 'typed-vuex'
 
 import { getClientPrincipal } from '~/api/auth'
 import { getCurrentUser, postUserInfo } from '~/api/user'
 
 export type RootState = {
-  auth: ClientPrincipal | null
-  user: CurrentUserInfo | null
+  auth: Api.ClientPrincipal | null
+  user: Api.CurrentUserInfo | null
 }
 
 export const state = (): RootState => ({
@@ -23,10 +22,10 @@ export const getters = {
 }
 
 export const mutations = mutationTree(state, {
-  setAuth(state, auth: ClientPrincipal | null) {
+  setAuth(state, auth: Api.ClientPrincipal | null) {
     state.auth = auth
   },
-  setUser(state, user: CurrentUserInfo | null) {
+  setUser(state, user: Api.CurrentUserInfo | null) {
     state.user = user
   },
 })
@@ -55,7 +54,7 @@ export const actions = actionTree(
       commit('setAuth', null)
       commit('setUser', null)
     },
-    async saveUser({ commit }, user: CurrentUserInfo) {
+    async saveUser({ commit }, user: Api.CurrentUserInfo) {
       const response = await postUserInfo(this.$http, user)
       commit('setUser', response)
     },

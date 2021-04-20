@@ -1,34 +1,22 @@
 import type { ItemDefinition } from '@azure/cosmos'
 import type { HttpRequest } from '@azure/functions'
-import type { ScoreBody, ScoreListBody } from '@ddradar/core/api/score'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
-import type {
-  CourseChartSchema,
-  SongSchema,
-  StepChartSchema,
-} from '@ddradar/core/db/songs'
-import type { UserSchema } from '@ddradar/core/db/users'
-import {
-  calcMyGrooveRadar,
-  getDanceLevel,
-  isScore,
-  isValidScore,
-  mergeScore,
-} from '@ddradar/core/score'
-import { hasIntegerProperty, hasProperty } from '@ddradar/core/typeUtils'
+import type { Api, Database } from '@ddradar/core'
+import { hasIntegerProperty, hasProperty, Score } from '@ddradar/core'
 import { fetchScore } from '@ddradar/db'
 
 import { getClientPrincipal, getLoginUserInfo } from '../auth'
 import { ErrorResult, SuccessResult } from '../function'
 
-type SongInput = Pick<SongSchema, 'id' | 'name'> & {
+type SongInput = Pick<Database.SongSchema, 'id' | 'name'> & {
   isCourse: boolean
-  charts: ReadonlyArray<StepChartSchema | CourseChartSchema>
+  charts: ReadonlyArray<Database.StepChartSchema | Database.CourseChartSchema>
 }
 
 type PostSongScoresResponse = {
-  httpResponse: ErrorResult<400 | 401 | 404> | SuccessResult<ScoreSchema[]>
-  documents?: (ScoreSchema & ItemDefinition)[]
+  httpResponse:
+    | ErrorResult<400 | 401 | 404>
+    | SuccessResult<Database.ScoreSchema[]>
+  documents?: (Database.ScoreSchema & ItemDefinition)[]
 }
 
 const topUser = { id: '0', name: '0', isPublic: false } as const
@@ -55,15 +43,15 @@ export default async function (
   // Get chart info
   if (!song) return { httpResponse: new ErrorResult(404) }
 
-  const documents: (ScoreSchema & ItemDefinition)[] = []
-  const body: ScoreSchema[] = []
+  const documents: (Database.ScoreSchema & ItemDefinition)[] = []
+  const body: Database.ScoreSchema[] = []
   for (let i = 0; i < req.body.length; i++) {
     const score = req.body[i]
     const chart = song.charts.find(
       c => c.playStyle === score.playStyle && c.difficulty === score.difficulty
     )
     if (!chart) return { httpResponse: new ErrorResult(404) }
-    if (!isValidScore(chart, score)) {
+    if (!Score.isValidScore(chart, score)) {
       return {
         httpResponse: new ErrorResult(400, `body[${i}] is invalid Score`),
       }
@@ -73,16 +61,21 @@ export default async function (
       ...createSchema(chart, user, score),
       ...(song.isCourse
         ? {}
-        : { radar: calcMyGrooveRadar(chart as StepChartSchema, score) }),
+        : {
+            radar: Score.calcMyGrooveRadar(
+              chart as Database.StepChartSchema,
+              score
+            ),
+          }),
     })
     await fetchMergedScore(chart, user, score, false)
 
     // World Record
     if (score.topScore) {
-      const topScore: ScoreBody = {
+      const topScore: Api.ScoreBody = {
         score: score.topScore,
         clearLamp: 2,
-        rank: getDanceLevel(score.topScore),
+        rank: Score.getDanceLevel(score.topScore),
       }
       await fetchMergedScore(chart, topUser, topScore)
     } else if (user.isPublic) {
@@ -100,14 +93,14 @@ export default async function (
   return { httpResponse: new SuccessResult(body), documents }
 
   /** Assert request body is valid schema. */
-  function isValidBody(body: unknown): body is ScoreListBody[] {
+  function isValidBody(body: unknown): body is Api.ScoreListBody[] {
     return (
       Array.isArray(body) && body.length > 0 && body.every(d => isScoreBody(d))
     )
 
-    function isScoreBody(obj: unknown): obj is ScoreListBody {
+    function isScoreBody(obj: unknown): obj is Api.ScoreListBody {
       return (
-        isScore(obj) &&
+        Score.isScore(obj) &&
         hasIntegerProperty(obj, 'playStyle', 'difficulty') &&
         [1, 2].includes(obj.playStyle) &&
         [0, 1, 2, 3, 4].includes(obj.difficulty) &&
@@ -121,11 +114,11 @@ export default async function (
    * Also complement exScore and maxCombo.
    */
   function createSchema(
-    chart: Readonly<StepChartSchema | CourseChartSchema>,
-    user: Readonly<Pick<UserSchema, 'id' | 'name' | 'isPublic'>>,
-    score: Readonly<ScoreBody>
+    chart: Readonly<Database.StepChartSchema | Database.CourseChartSchema>,
+    user: Readonly<Pick<Database.UserSchema, 'id' | 'name' | 'isPublic'>>,
+    score: Readonly<Api.ScoreBody>
   ) {
-    const scoreSchema: ScoreSchema = {
+    const scoreSchema: Database.ScoreSchema = {
       userId: user.id,
       userName: user.name,
       isPublic: user.isPublic,
@@ -160,9 +153,9 @@ export default async function (
 
   /** Merge score is merged old one. */
   async function fetchMergedScore(
-    chart: Readonly<StepChartSchema | CourseChartSchema>,
-    user: Readonly<Pick<UserSchema, 'id' | 'name' | 'isPublic'>>,
-    score: Readonly<ScoreBody>,
+    chart: Readonly<Database.StepChartSchema | Database.CourseChartSchema>,
+    user: Readonly<Pick<Database.UserSchema, 'id' | 'name' | 'isPublic'>>,
+    score: Readonly<Api.ScoreBody>,
     isAreaUser = true
   ): Promise<void> {
     const scoreSchema = createSchema(chart, user, score)
@@ -174,8 +167,8 @@ export default async function (
       scoreSchema.difficulty
     )
 
-    const mergedScore: ScoreSchema = {
-      ...mergeScore(
+    const mergedScore: Database.ScoreSchema = {
+      ...Score.mergeScore(
         oldScore ?? { score: 0, rank: 'E', clearLamp: 0 },
         scoreSchema
       ),
@@ -199,8 +192,8 @@ export default async function (
     }
 
     if (!isAreaUser && !song.isCourse) {
-      mergedScore.radar = calcMyGrooveRadar(
-        chart as StepChartSchema,
+      mergedScore.radar = Score.calcMyGrooveRadar(
+        chart as Database.StepChartSchema,
         mergedScore
       )
     }

@@ -26,8 +26,8 @@
 </template>
 
 <script lang="ts">
-import type { CourseInfo } from '@ddradar/core/api/course'
-import { isValidId } from '@ddradar/core/db/songs'
+import type { Api } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import type { Context } from '@nuxt/types'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
@@ -38,7 +38,7 @@ import OrderDetail from '~/components/pages/courses/OrderDetail.vue'
 
 @Component({ components: { OrderDetail } })
 export default class CourseDetailPage extends Vue {
-  course: CourseInfo | null = null
+  course: Api.CourseInfo | null = null
 
   get singleCharts() {
     return this.course?.charts.filter(c => c.playStyle === 1) ?? []
@@ -55,7 +55,7 @@ export default class CourseDetailPage extends Vue {
   }
 
   validate({ params }: Pick<Context, 'params'>) {
-    return isValidId(params.id)
+    return Song.isValidId(params.id)
   }
 
   /* istanbul ignore next */

@@ -1,7 +1,4 @@
-import type {
-  NotificationInfo,
-  NotificationListData,
-} from '@ddradar/core/api/notification'
+import type { Api } from '@ddradar/core'
 
 import {
   getNotificationInfo,
@@ -22,7 +19,7 @@ describe('/api/notification.ts', () => {
   })
 
   describe('getNotificationList', () => {
-    const notificationList: NotificationListData[] = []
+    const notificationList: Api.NotificationListData[] = []
     beforeEach(() => $http.$get.mockResolvedValue(notificationList))
     test.each([
       [true, '/api/v1/notification?scope=top'],
@@ -41,7 +38,7 @@ describe('/api/notification.ts', () => {
 
   describe('getNotificationInfo', () => {
     const id = 'notification-id'
-    const notification: NotificationInfo = {
+    const notification: Api.NotificationInfo = {
       id,
       sender: 'SYSTEM',
       pinned: true,

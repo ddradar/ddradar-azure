@@ -1,19 +1,14 @@
 import type { ItemDefinition } from '@azure/cosmos'
-import type { PlayStyle } from '@ddradar/core/db/songs'
-import type {
-  ClearStatusSchema,
-  GrooveRadarSchema,
-  ScoreStatusSchema,
-} from '@ddradar/core/db/userDetails'
+import type { Database, Song } from '@ddradar/core'
 
 import { getContainer } from '.'
 
 export async function generateGrooveRadar(
   userId: string,
-  playStyle: PlayStyle
-): Promise<GrooveRadarSchema> {
+  playStyle: Song.PlayStyle
+): Promise<Database.GrooveRadarSchema> {
   const container = getContainer('Scores')
-  const columns: (keyof GrooveRadarSchema)[] = [
+  const columns: (keyof Database.GrooveRadarSchema)[] = [
     'stream',
     'voltage',
     'air',
@@ -22,7 +17,7 @@ export async function generateGrooveRadar(
   ]
   const column = columns.map(c => `MAX(c.radar.${c}) AS ${c}`).join(', ')
   const { resources } = await container.items
-    .query<GrooveRadarSchema>({
+    .query<Database.GrooveRadarSchema>({
       query:
         `SELECT c.userId, "radar" AS type, c.playStyle, ${column} ` +
         'FROM c ' +
@@ -37,7 +32,7 @@ export async function generateGrooveRadar(
       ],
     })
     .fetchAll()
-  const result: GrooveRadarSchema & ItemDefinition = resources[0] ?? {
+  const result: Database.GrooveRadarSchema & ItemDefinition = resources[0] ?? {
     userId,
     type: 'radar',
     playStyle,
@@ -53,10 +48,10 @@ export async function generateGrooveRadar(
 
 export async function fetchClearAndScoreStatus(
   userId: string
-): Promise<(ClearStatusSchema | ScoreStatusSchema)[]> {
+): Promise<(Database.ClearStatusSchema | Database.ScoreStatusSchema)[]> {
   const container = getContainer('UserDetails')
   const { resources } = await container.items
-    .query<ClearStatusSchema | ScoreStatusSchema>({
+    .query<Database.ClearStatusSchema | Database.ScoreStatusSchema>({
       query:
         'SELECT * FROM c ' +
         'WHERE c.userId = @id ' +

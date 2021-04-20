@@ -1,19 +1,19 @@
 import type { HttpRequest } from '@azure/functions'
-import type { NotificationBody } from '@ddradar/core/api/notification'
+import type { Api } from '@ddradar/core'
 import {
   hasIntegerProperty,
   hasProperty,
   hasStringProperty,
-} from '@ddradar/core/typeUtils'
+} from '@ddradar/core'
 
 import { ErrorResult, SuccessResult } from '../function'
 
 type PostNotificationResult = {
-  httpResponse: ErrorResult<400> | SuccessResult<NotificationBody>
-  document?: NotificationBody
+  httpResponse: ErrorResult<400> | SuccessResult<Api.NotificationBody>
+  document?: Api.NotificationBody
 }
 
-function isNotificationBody(obj: unknown): obj is NotificationBody {
+function isNotificationBody(obj: unknown): obj is Api.NotificationBody {
   return (
     hasStringProperty(obj, 'sender', 'type', 'icon', 'title', 'body') &&
     obj.sender === 'SYSTEM' &&
@@ -34,7 +34,7 @@ export default async function (
     return { httpResponse: new ErrorResult(400) }
   }
 
-  const document: NotificationBody = {
+  const document: Api.NotificationBody = {
     sender: req.body.sender,
     pinned: req.body.pinned,
     type: req.body.type,

@@ -22,8 +22,8 @@
 </template>
 
 <script lang="ts">
-import type { CourseInfo } from '@ddradar/core/api/course'
-import { CourseChartSchema, difficultyMap } from '@ddradar/core/db/songs'
+import type { Api, Database } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 import { getChartTitle } from '~/api/song'
@@ -33,13 +33,13 @@ import ScoreBoard from '~/components/shared/ScoreBoard.vue'
 @Component({ components: { Card, ScoreBoard } })
 export default class OrderDetailComponent extends Vue {
   @Prop({ required: true, type: Object })
-  readonly course!: CourseInfo
+  readonly course!: Api.CourseInfo
 
   @Prop({ required: true, type: Object })
-  readonly chart!: CourseChartSchema
+  readonly chart!: Database.CourseChartSchema
 
   get cardType() {
-    return `is-${difficultyMap.get(this.chart.difficulty)!.toLowerCase()}`
+    return `is-${Song.difficultyMap.get(this.chart.difficulty)!.toLowerCase()}`
   }
 
   get orders() {

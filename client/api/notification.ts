@@ -1,8 +1,4 @@
-import type {
-  NotificationBody,
-  NotificationInfo,
-  NotificationListData,
-} from '@ddradar/core/api/notification'
+import type { Api } from '@ddradar/core'
 import type { NuxtHTTPInstance } from '@nuxt/http'
 
 import { apiPrefix } from '~/api'
@@ -16,7 +12,9 @@ export function getNotificationList(
   topOnly?: boolean
 ) {
   const query = topOnly ? '?scope=top' : ''
-  return $http.$get<NotificationListData[]>(`${apiPrefix}/notification${query}`)
+  return $http.$get<Api.NotificationListData[]>(
+    `${apiPrefix}/notification${query}`
+  )
 }
 
 /**
@@ -27,7 +25,7 @@ export function getNotificationInfo(
   $http: Pick<NuxtHTTPInstance, '$get'>,
   id: string
 ) {
-  return $http.$get<NotificationInfo>(`${apiPrefix}/notification/${id}`)
+  return $http.$get<Api.NotificationInfo>(`${apiPrefix}/notification/${id}`)
 }
 
 /**
@@ -36,9 +34,9 @@ export function getNotificationInfo(
  */
 export function postNotification(
   $http: Pick<NuxtHTTPInstance, '$post'>,
-  body: Omit<NotificationBody, 'sender'>
+  body: Omit<Api.NotificationBody, 'sender'>
 ) {
-  return $http.$post<NotificationBody>(`${apiPrefix}/notification`, {
+  return $http.$post<Api.NotificationBody>(`${apiPrefix}/notification`, {
     ...body,
     sender: 'SYSTEM',
   })

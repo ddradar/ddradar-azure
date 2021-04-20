@@ -1,4 +1,4 @@
-import type { SongInfo } from '@ddradar/core/api/song'
+import type { Api } from '@ddradar/core'
 import type { Context } from '@nuxt/types'
 import { createLocalVue, RouterLinkStub, shallowMount } from '@vue/test-utils'
 import Buefy from 'buefy'
@@ -14,7 +14,7 @@ jest.mock('~/api/song', () => ({
 const localVue = createLocalVue()
 localVue.use(Buefy)
 
-const song: SongInfo = {
+const song: Api.SongInfo = {
   id: '8Il6980di8P89lil1PDIqqIbiq1QO8lQ',
   name: 'MAKE IT BETTER',
   nameKana: 'MAKE IT BETTER',

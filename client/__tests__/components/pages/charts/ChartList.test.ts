@@ -1,5 +1,5 @@
+import type { Api } from '@ddradar/core'
 import { testSongData } from '@ddradar/core/__tests__/data'
-import type { ChartInfo } from '@ddradar/core/api/song'
 import {
   createLocalVue,
   mount,
@@ -36,7 +36,7 @@ describe('/components/pages/charts/ChartList.vue', () => {
     })
     test('{ loading: false, charts: [...] } renders chart list', async () => {
       // Arrange
-      const charts: ChartInfo[] = [
+      const charts: Api.ChartInfo[] = [
         {
           id: '9i0q91lPPiO61b9P891O1i86iOP1I08O',
           name: 'EGOISM 440',

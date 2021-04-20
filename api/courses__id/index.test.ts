@@ -1,11 +1,11 @@
 import type { Context } from '@azure/functions'
-import type { CourseSchema } from '@ddradar/core/db/songs'
+import type { Database } from '@ddradar/core'
 
 import getCourseInfo from '.'
 
 describe('GET /api/v1/courses/{id}', () => {
   let context: Pick<Context, 'bindingData'>
-  const course: CourseSchema = {
+  const course: Database.CourseSchema = {
     id: 'o1Q8Ol8Dol9b0dllD6P0iPQbIoP666Db',
     name: '皆伝',
     nameIndex: -2,

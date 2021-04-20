@@ -215,12 +215,7 @@
 </i18n>
 
 <script lang="ts">
-import type {
-  ClearStatus as ClearInfo,
-  ScoreStatus as ScoreInfo,
-  UserInfo,
-} from '@ddradar/core/api/user'
-import type { GrooveRadar as GrooveRadarInfo } from '@ddradar/core/db/songs'
+import type { Api, Song } from '@ddradar/core'
 import type { Context } from '@nuxt/types'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
@@ -239,12 +234,12 @@ import Card from '~/components/shared/Card.vue'
 type ScoreDoughnutProp = {
   level: number
   title: string
-  statuses: Pick<ScoreInfo, 'rank' | 'count'>[]
+  statuses: Pick<Api.ScoreStatus, 'rank' | 'count'>[]
 }
 type ClearDoughnutProp = {
   level: number
   title: string
-  statuses: Pick<ClearInfo, 'clearLamp' | 'count'>[]
+  statuses: Pick<Api.ClearStatus, 'clearLamp' | 'count'>[]
 }
 
 @Component({
@@ -252,8 +247,8 @@ type ClearDoughnutProp = {
   fetchOnServer: false,
 })
 export default class UserPage extends Vue {
-  user: UserInfo | null = null
-  radars: [GrooveRadarInfo | null, GrooveRadarInfo | null] = [null, null]
+  user: Api.UserInfo | null = null
+  radars: [Song.GrooveRadar | null, Song.GrooveRadar | null] = [null, null]
   clears: [ClearDoughnutProp[], ClearDoughnutProp[]] = [[], []]
   scores: [ScoreDoughnutProp[], ScoreDoughnutProp[]] = [[], []]
 
@@ -284,8 +279,8 @@ export default class UserPage extends Vue {
             p.push({ clearLamp: c.clearLamp, count: c.count })
           }
           return p
-        }, [] as Pick<ClearInfo, 'clearLamp' | 'count'>[])
-    ) as [ClearInfo[], ClearInfo[]]
+        }, [] as Pick<Api.ClearStatus, 'clearLamp' | 'count'>[])
+    ) as [Api.ClearStatus[], Api.ClearStatus[]]
   }
 
   get totalScores() {
@@ -300,8 +295,8 @@ export default class UserPage extends Vue {
             p.push({ ...c })
           }
           return p
-        }, [] as Pick<ScoreInfo, 'rank' | 'count'>[])
-    ) as [ScoreInfo[], ScoreInfo[]]
+        }, [] as Pick<Api.ScoreStatus, 'rank' | 'count'>[])
+    ) as [Api.ScoreStatus[], Api.ScoreStatus[]]
   }
 
   /* istanbul ignore next */

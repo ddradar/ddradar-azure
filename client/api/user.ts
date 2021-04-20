@@ -1,11 +1,4 @@
-import type {
-  ClearStatus,
-  CurrentUserInfo,
-  ExistsUser,
-  GrooveRadarInfo,
-  ScoreStatus,
-  UserInfo,
-} from '@ddradar/core/api/user'
+import type { Api } from '@ddradar/core'
 import type { NuxtHTTPInstance } from '@nuxt/http'
 
 import { apiPrefix } from '~/api'
@@ -18,7 +11,7 @@ export async function existsUser(
   $http: Pick<NuxtHTTPInstance, '$get'>,
   id: string
 ) {
-  const { exists } = await $http.$get<ExistsUser>(
+  const { exists } = await $http.$get<Api.ExistsUser>(
     `${apiPrefix}/user/exists/${id}`
   )
   return exists
@@ -29,7 +22,7 @@ export async function existsUser(
  * @see https://github.com/ddradar/ddradar/tree/master/api/user--get/
  */
 export function getCurrentUser($http: Pick<NuxtHTTPInstance, '$get'>) {
-  return $http.$get<CurrentUserInfo>(`${apiPrefix}/user`)
+  return $http.$get<Api.CurrentUserInfo>(`${apiPrefix}/user`)
 }
 
 /**
@@ -46,7 +39,7 @@ export function getUserList(
   if (name) searchParams.append('name', name)
   if (area) searchParams.append('area', `${area}`)
   if (code) searchParams.append('code', `${code}`)
-  return $http.$get<UserInfo[]>(`${apiPrefix}/users`, { searchParams })
+  return $http.$get<Api.UserInfo[]>(`${apiPrefix}/users`, { searchParams })
 }
 
 /**
@@ -54,7 +47,7 @@ export function getUserList(
  * @see https://github.com/ddradar/ddradar/tree/master/api/users__id/
  */
 export function getUserInfo($http: Pick<NuxtHTTPInstance, '$get'>, id: string) {
-  return $http.$get<UserInfo>(`${apiPrefix}/users/${id}`)
+  return $http.$get<Api.UserInfo>(`${apiPrefix}/users/${id}`)
 }
 
 /**
@@ -66,7 +59,7 @@ export function getClearStatus(
   userId: string,
   playStyle: 1 | 2
 ) {
-  return $http.$get<ClearStatus[]>(
+  return $http.$get<Api.ClearStatus[]>(
     `${apiPrefix}/users/${userId}/clear?playStyle=${playStyle}`
   )
 }
@@ -80,7 +73,7 @@ export function getScoreStatus(
   userId: string,
   playStyle: 1 | 2
 ) {
-  return $http.$get<ScoreStatus[]>(
+  return $http.$get<Api.ScoreStatus[]>(
     `${apiPrefix}/users/${userId}/score?playStyle=${playStyle}`
   )
 }
@@ -94,7 +87,7 @@ export function getGrooveRadar(
   userId: string,
   playStyle: 1 | 2
 ) {
-  return $http.$get<GrooveRadarInfo[]>(
+  return $http.$get<Api.GrooveRadarInfo[]>(
     `${apiPrefix}/users/${userId}/radar/${playStyle}`
   )
 }
@@ -105,7 +98,7 @@ export function getGrooveRadar(
  */
 export function postUserInfo(
   $http: Pick<NuxtHTTPInstance, '$post'>,
-  user: CurrentUserInfo
+  user: Api.CurrentUserInfo
 ) {
-  return $http.$post<CurrentUserInfo>(`${apiPrefix}/user`, user)
+  return $http.$post<Api.CurrentUserInfo>(`${apiPrefix}/user`, user)
 }

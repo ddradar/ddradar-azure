@@ -1,13 +1,13 @@
 import type { HttpRequest } from '@azure/functions'
-import { isUserSchema, UserSchema } from '@ddradar/core/db/users'
+import { Database } from '@ddradar/core'
 import { fetchLoginUser, fetchUser } from '@ddradar/db'
 
 import { getClientPrincipal } from '../auth'
 import { ErrorResult, SuccessResult } from '../function'
 
 type PostUserResult = {
-  httpResponse: ErrorResult<400 | 401> | SuccessResult<UserSchema>
-  document?: UserSchema
+  httpResponse: ErrorResult<400 | 401> | SuccessResult<Database.UserSchema>
+  document?: Database.UserSchema
 }
 
 /** Add or Update information about the currently logged in user. */
@@ -19,7 +19,7 @@ export default async function (
   if (!clientPrincipal) return { httpResponse: new ErrorResult(401) }
   const loginId = clientPrincipal.userId
 
-  if (!isUserSchema(req.body)) {
+  if (!Database.isUserSchema(req.body)) {
     return { httpResponse: new ErrorResult(400, 'Body is not UserSchema') }
   }
 
@@ -32,7 +32,7 @@ export default async function (
   }
 
   // Merge existing data with new data
-  const body: UserSchema = {
+  const body: Database.UserSchema = {
     id: oldData?.id ?? req.body.id,
     name: req.body.name,
     area: oldData?.area ?? req.body.area,

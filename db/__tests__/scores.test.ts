@@ -1,9 +1,5 @@
 import type { Container, ItemDefinition } from '@azure/cosmos'
-import type { ClearLamp, ScoreSchema } from '@ddradar/core/db/scores'
-import type {
-  ClearStatusSchema,
-  ScoreStatusSchema,
-} from '@ddradar/core/db/userDetails'
+import type { Database, Score } from '@ddradar/core'
 import { mocked } from 'ts-jest/utils'
 
 import { fetchOne, getContainer } from '..'
@@ -21,7 +17,7 @@ describe('scores.ts', () => {
 
     test('returns fetchOne() value', async () => {
       // Arrange
-      const resource: ScoreSchema & ItemDefinition = {
+      const resource: Database.ScoreSchema & ItemDefinition = {
         id: 'foo',
         songId: '06loOQ0DQb0DqbOibl6qO81qlIdoP9DI',
         songName: 'PARANOiA',
@@ -46,7 +42,7 @@ describe('scores.ts', () => {
     })
   })
   describe('fetchSummeryClearLampCount', () => {
-    let resources: ClearStatusSchema[] = []
+    let resources: Database.ClearStatusSchema[] = []
     const container = {
       items: {
         query: jest.fn(() => ({ fetchAll: async () => ({ resources }) })),
@@ -68,7 +64,7 @@ describe('scores.ts', () => {
           type: 'clear' as const,
           playStyle: ((i % 2) + 1) as 1 | 2,
           level: (i % 19) + 1,
-          clearLamp: (i % 8) as ClearLamp,
+          clearLamp: (i % 8) as Score.ClearLamp,
           count: 10,
         }))
       )
@@ -81,7 +77,7 @@ describe('scores.ts', () => {
     })
   })
   describe('fetchSummeryRankCount', () => {
-    let resources: ScoreStatusSchema[] = []
+    let resources: Database.ScoreStatusSchema[] = []
     const container = {
       items: {
         query: jest.fn(() => ({ fetchAll: async () => ({ resources }) })),

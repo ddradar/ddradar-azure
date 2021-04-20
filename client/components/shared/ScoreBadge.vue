@@ -18,19 +18,19 @@
 </template>
 
 <script lang="ts">
-import { ClearLamp, clearLampMap } from '@ddradar/core/db/scores'
+import { Score } from '@ddradar/core'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 @Component
 export default class ScoreBadgeComponent extends Vue {
   @Prop({ required: true, type: Number })
-  readonly lamp!: ClearLamp
+  readonly lamp!: Score.ClearLamp
 
   @Prop({ required: true, type: Number })
   readonly score!: number
 
   get clearStatus() {
-    return clearLampMap.get(this.lamp)
+    return Score.clearLampMap.get(this.lamp)
   }
 }
 </script>

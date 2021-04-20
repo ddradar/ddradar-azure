@@ -1,4 +1,4 @@
-type NotificationType = 'is-info' | 'is-warning'
+export type NotificationType = 'is-info' | 'is-warning'
 
 /** DB schema of "Notification" container */
 export type NotificationSchema = {

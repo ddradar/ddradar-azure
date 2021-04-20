@@ -1,4 +1,4 @@
-import type { ChartInfo } from '@ddradar/core/api/song'
+import type { Api } from '@ddradar/core'
 import type { Context } from '@nuxt/types'
 import {
   createLocalVue,
@@ -93,7 +93,7 @@ describe('/_style/_level.vue', () => {
       async (style, level, styleExpected, levelExpected) => {
         // Arrange
         const apiMock = mocked(searchCharts)
-        const charts: ChartInfo[] = []
+        const charts: Api.ChartInfo[] = []
         apiMock.mockResolvedValue(charts)
         const $route = { params: { style, level } }
         const $http = {}

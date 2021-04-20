@@ -184,9 +184,8 @@
 </template>
 
 <script lang="ts">
-import type { SongInfo } from '@ddradar/core/api/song'
-import type { Series, StepChartSchema } from '@ddradar/core/db/songs'
-import { isValidId, seriesSet } from '@ddradar/core/db/songs'
+import type { Api, Database } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import { Context } from '@nuxt/types'
 import { Component, Vue } from 'nuxt-property-decorator'
 
@@ -194,15 +193,15 @@ import { getSongInfo, postSongInfo } from '~/api/song'
 import * as popup from '~/utils/popup'
 
 @Component
-export default class SongEditorPage extends Vue implements SongInfo {
+export default class SongEditorPage extends Vue implements Api.SongInfo {
   id: string = ''
   name: string = ''
   nameKana: string = ''
   artist: string = ''
-  series: Series = 'DanceDanceRevolution A20 PLUS'
+  series: Song.Series = 'DanceDanceRevolution A20 PLUS'
   minBPM: number | null = null
   maxBPM: number | null = null
-  charts: StepChartSchema[] = []
+  charts: Database.StepChartSchema[] = []
 
   get playStyleList() {
     return [
@@ -222,7 +221,7 @@ export default class SongEditorPage extends Vue implements SongInfo {
   }
 
   get seriesList() {
-    return [...seriesSet]
+    return [...Song.seriesSet]
   }
 
   get nameIndex() {
@@ -302,7 +301,7 @@ export default class SongEditorPage extends Vue implements SongInfo {
   }
 
   get isValidSongId() {
-    return isValidId(this.id)
+    return Song.isValidId(this.id)
   }
 
   get hasError() {
@@ -311,7 +310,7 @@ export default class SongEditorPage extends Vue implements SongInfo {
       !this.name ||
       !/^[A-Z0-9 .ぁ-んー]+$/.test(this.nameKana) ||
       !this.artist ||
-      !seriesSet.has(this.series) ||
+      !Song.seriesSet.has(this.series) ||
       !this.minBPM !== !this.maxBPM ||
       this.charts.length === 0 ||
       this.charts.some(c => this.hasDuplicateKey(c))
@@ -332,7 +331,7 @@ export default class SongEditorPage extends Vue implements SongInfo {
         freeze: 0,
         chaos: 0,
       } as const
-      const charts: StepChartSchema[] = [
+      const charts: Database.StepChartSchema[] = [
         { ...chart, playStyle: 1, difficulty: 0 },
         { ...chart, playStyle: 1, difficulty: 1 },
         { ...chart, playStyle: 1, difficulty: 2 },
@@ -377,7 +376,9 @@ export default class SongEditorPage extends Vue implements SongInfo {
     this.charts.splice(index, 1)
   }
 
-  hasDuplicateKey(chart: Pick<StepChartSchema, 'playStyle' | 'difficulty'>) {
+  hasDuplicateKey(
+    chart: Pick<Database.StepChartSchema, 'playStyle' | 'difficulty'>
+  ) {
     return (
       this.charts.filter(
         c =>
@@ -417,7 +418,7 @@ export default class SongEditorPage extends Vue implements SongInfo {
   }
 
   private async callPostAPI() {
-    const postData: SongInfo = {
+    const postData: Api.SongInfo = {
       id: this.id,
       name: this.name,
       nameKana: this.nameKana,

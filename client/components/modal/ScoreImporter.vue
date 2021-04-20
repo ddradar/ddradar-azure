@@ -61,7 +61,7 @@
 </i18n>
 
 <script lang="ts">
-import { musicDetailToScore } from '@ddradar/core/eagate-parser'
+import { Gate } from '@ddradar/core'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 import { postSongScores } from '~/api/score'
@@ -98,9 +98,9 @@ export default class ScoreImporterComponent extends Vue {
     this.loading = true
 
     // Convert sourceCode to Score
-    let score: ReturnType<typeof musicDetailToScore>
+    let score: ReturnType<typeof Gate.musicDetailToScore>
     try {
-      score = musicDetailToScore(this.sourceCode)
+      score = Gate.musicDetailToScore(this.sourceCode)
     } catch (error) {
       popup.warning(this.$buefy, error.message ?? error)
       this.loading = false

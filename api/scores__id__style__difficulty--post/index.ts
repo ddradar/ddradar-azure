@@ -1,31 +1,19 @@
 import type { ItemDefinition } from '@azure/cosmos'
 import type { Context, HttpRequest } from '@azure/functions'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
-import type {
-  CourseChartSchema,
-  Difficulty,
-  PlayStyle,
-  SongSchema,
-  StepChartSchema,
-} from '@ddradar/core/db/songs'
-import {
-  calcMyGrooveRadar,
-  isScore,
-  isValidScore,
-  mergeScore,
-} from '@ddradar/core/score'
+import type { Database, Song } from '@ddradar/core'
+import { Score } from '@ddradar/core'
 
 import { getClientPrincipal, getLoginUserInfo } from '../auth'
 import { ErrorResult, getBindingNumber, SuccessResult } from '../function'
 
-type SongInput = Pick<SongSchema, 'id' | 'name'> & {
+type SongInput = Pick<Database.SongSchema, 'id' | 'name'> & {
   isCourse: boolean
-  charts: ReadonlyArray<StepChartSchema | CourseChartSchema>
+  charts: ReadonlyArray<Database.StepChartSchema | Database.CourseChartSchema>
 }
 
 type PostScoreResult = {
-  httpResponse: ErrorResult<400 | 404> | SuccessResult<ScoreSchema>
-  documents?: (ScoreSchema & ItemDefinition)[]
+  httpResponse: ErrorResult<400 | 404> | SuccessResult<Database.ScoreSchema>
+  documents?: (Database.ScoreSchema & ItemDefinition)[]
 }
 
 /** Add or update score that match the specified chart. */
@@ -33,7 +21,7 @@ export default async function (
   { bindingData }: Pick<Context, 'bindingData'>,
   req: Pick<HttpRequest, 'headers' | 'body'>,
   songs: SongInput[],
-  scores: (ScoreSchema & ItemDefinition)[]
+  scores: (Database.ScoreSchema & ItemDefinition)[]
 ): Promise<PostScoreResult> {
   const user = await getLoginUserInfo(getClientPrincipal(req))
   if (!user) {
@@ -42,12 +30,15 @@ export default async function (
     }
   }
 
-  if (!isScore(req.body)) {
+  if (!Score.isScore(req.body)) {
     return { httpResponse: new ErrorResult(400, 'body is not Score') }
   }
 
-  const playStyle: PlayStyle = bindingData.playStyle
-  const difficulty = getBindingNumber(bindingData, 'difficulty') as Difficulty
+  const playStyle: Song.PlayStyle = bindingData.playStyle
+  const difficulty = getBindingNumber(
+    bindingData,
+    'difficulty'
+  ) as Song.Difficulty
 
   // Get chart info
   if (songs.length !== 1) return { httpResponse: new ErrorResult(404) }
@@ -57,11 +48,11 @@ export default async function (
   )
   if (!chart) return { httpResponse: new ErrorResult(404) }
 
-  if (!isValidScore(chart, req.body)) {
+  if (!Score.isValidScore(chart, req.body)) {
     return { httpResponse: new ErrorResult(400, 'body is invalid Score') }
   }
 
-  const userScore: ScoreSchema = {
+  const userScore: Database.ScoreSchema = {
     userId: user.id,
     userName: user.name,
     isPublic: user.isPublic,
@@ -82,12 +73,17 @@ export default async function (
   if (req.body.clearLamp >= 4) {
     userScore.maxCombo = chart.notes + chart.shockArrow
   }
-  const documents: (ScoreSchema & ItemDefinition)[] = [
+  const documents: (Database.ScoreSchema & ItemDefinition)[] = [
     {
       ...userScore,
       ...(song.isCourse
         ? {}
-        : { radar: calcMyGrooveRadar(chart as StepChartSchema, userScore) }),
+        : {
+            radar: Score.calcMyGrooveRadar(
+              chart as Database.StepChartSchema,
+              userScore
+            ),
+          }),
     },
     ...scores.filter(s => s.userId === user.id).map(s => ({ ...s, ttl: 3600 })),
   ]
@@ -102,12 +98,15 @@ export default async function (
   return { httpResponse: new SuccessResult(documents[0]), documents }
 
   /** Add new Area Top score into documents if greater than old one. */
-  function updateAreaScore(area: string, score: ScoreSchema) {
+  function updateAreaScore(area: string, score: Database.ScoreSchema) {
     // Get previous score
     const oldScore = scores.find(s => s.userId === area)
 
-    const mergedScore: ScoreSchema = {
-      ...mergeScore(oldScore ?? { score: 0, rank: 'E', clearLamp: 0 }, score),
+    const mergedScore: Database.ScoreSchema = {
+      ...Score.mergeScore(
+        oldScore ?? { score: 0, rank: 'E', clearLamp: 0 },
+        score
+      ),
       userId: area,
       userName: area,
       isPublic: false,

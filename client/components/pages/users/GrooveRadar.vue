@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import type { GrooveRadar } from '@ddradar/core/db/songs'
+import type { Song } from '@ddradar/core'
 import type { ChartData, ChartTooltipItem } from 'chart.js'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
@@ -12,7 +12,7 @@ import ReactiveRadar from '~/components/shared/ReactiveRadar'
 @Component({ components: { ReactiveRadar } })
 export default class GrooveRadarComponent extends Vue {
   @Prop({ type: Object, default: null })
-  readonly chart!: GrooveRadar | null
+  readonly chart!: Song.GrooveRadar | null
 
   get chartOptions() {
     return {

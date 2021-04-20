@@ -51,7 +51,9 @@ exports[`/pages/notification.vue snapshot test renders Edit column if admin 1`] 
               <td data-label="Edit" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <td class="chevron-cell"><a role="button"><span class="icon"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a></td>
@@ -70,7 +72,9 @@ exports[`/pages/notification.vue snapshot test renders Edit column if admin 1`] 
               <td data-label="Edit" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <!---->
           </tbody>
@@ -146,7 +150,9 @@ exports[`/pages/notification.vue snapshot test renders correctly if { locale: en
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <td class="chevron-cell"><a role="button"><span class="icon"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a></td>
@@ -164,7 +170,9 @@ exports[`/pages/notification.vue snapshot test renders correctly if { locale: en
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <!---->
           </tbody>
@@ -240,7 +248,9 @@ exports[`/pages/notification.vue snapshot test renders correctly if { locale: ja
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <td class="chevron-cell"><a role="button"><span class="icon"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a></td>
@@ -258,7 +268,9 @@ exports[`/pages/notification.vue snapshot test renders correctly if { locale: ja
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <!---->
           </tbody>

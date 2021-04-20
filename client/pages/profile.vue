@@ -178,8 +178,8 @@
 </i18n>
 
 <script lang="ts">
-import type { CurrentUserInfo } from '@ddradar/core/api/user'
-import { AreaCode, areaCodeSet } from '@ddradar/core/db/users'
+import type { Api } from '@ddradar/core'
+import { Database } from '@ddradar/core'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
 
@@ -190,7 +190,7 @@ import * as popup from '~/utils/popup'
 export default class ProfilePage extends Vue {
   id: string = ''
   name: string = ''
-  area: AreaCode = 0
+  area: Database.AreaCode = 0
   code: number | null = null
   password: string = ''
   isPublic: boolean = true
@@ -200,7 +200,10 @@ export default class ProfilePage extends Vue {
   message = ''
 
   get areaOptions() {
-    return [...areaCodeSet].map(key => ({ key, value: this.$t(`area.${key}`) }))
+    return [...Database.areaCodeSet].map(key => ({
+      key,
+      value: this.$t(`area.${key}`),
+    }))
   }
 
   get isNewUser() {
@@ -212,7 +215,7 @@ export default class ProfilePage extends Vue {
       this.type === 'is-danger' ||
       !/^[-a-zA-Z0-9_]+$/.test(this.id) ||
       !this.name ||
-      !(areaCodeSet as ReadonlySet<number>).has(this.area) ||
+      !(Database.areaCodeSet as ReadonlySet<number>).has(this.area) ||
       (!!this.code &&
         (!Number.isInteger(this.code) ||
           this.code < 10000000 ||
@@ -273,7 +276,7 @@ export default class ProfilePage extends Vue {
   }
 
   async save() {
-    const user: CurrentUserInfo = {
+    const user: Api.CurrentUserInfo = {
       id: this.id,
       name: this.name,
       area: this.area,

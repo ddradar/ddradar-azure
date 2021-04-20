@@ -699,7 +699,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -712,7 +714,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -725,7 +729,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -738,7 +744,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -751,7 +759,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -764,7 +774,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -777,7 +789,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -790,7 +804,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -803,7 +819,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -816,7 +834,9 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <!---->
           </tbody>
@@ -1544,7 +1564,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1557,7 +1579,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1570,7 +1594,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1583,7 +1609,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1596,7 +1624,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1609,7 +1639,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1622,7 +1654,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1635,7 +1669,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1648,7 +1684,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <tr draggable="false" class="">
               <!---->
@@ -1661,7 +1699,9 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
               </td>
               <!---->
             </tr>
-            <!---->
+            <transition-stub name="">
+              <!---->
+            </transition-stub>
             <!---->
             <!---->
           </tbody>

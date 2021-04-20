@@ -1,6 +1,6 @@
-import type { NotificationListData } from '@ddradar/core/api/notification'
+import type { Api } from '@ddradar/core'
 
-export const notificationList: NotificationListData[] = [
+export const notificationList: Api.NotificationListData[] = [
   {
     id: 'foo',
     icon: 'account',

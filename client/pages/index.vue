@@ -88,8 +88,8 @@
 </i18n>
 
 <script lang="ts">
-import type { NotificationListData } from '@ddradar/core/api/notification'
-import { nameIndexMap, seriesSet } from '@ddradar/core/db/songs'
+import type { Api } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import { Component, Vue } from 'nuxt-property-decorator'
 import type { MetaInfo } from 'vue-meta'
 
@@ -101,18 +101,18 @@ import * as popup from '~/utils/popup'
 
 @Component({ components: { Card, TopMessage }, fetchOnServer: false })
 export default class IndexPage extends Vue {
-  messages: NotificationListData[] = []
+  messages: Api.NotificationListData[] = []
 
   get head(): MetaInfo {
     return { title: 'DDRadar - DDR Score Tracker', titleTemplate: '' }
   }
 
   get menuList() {
-    const seriesList = [...seriesSet]
+    const seriesList = [...Song.seriesSet]
     return [
       {
         label: this.$t('search.name'),
-        items: [...nameIndexMap.entries()].map(([i, s]) => ({
+        items: [...Song.nameIndexMap.entries()].map(([i, s]) => ({
           name: s,
           to: `/name/${i}`,
         })),

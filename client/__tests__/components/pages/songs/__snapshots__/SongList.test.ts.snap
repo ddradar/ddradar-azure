@@ -113,7 +113,9 @@ exports[`/components/pages/songs/SongList.vue { locale: en } snapshot test { loa
           </td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -132,7 +134,9 @@ exports[`/components/pages/songs/SongList.vue { locale: en } snapshot test { loa
           </td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -151,7 +155,9 @@ exports[`/components/pages/songs/SongList.vue { locale: en } snapshot test { loa
           </td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <!---->
       </tbody>
@@ -366,7 +372,9 @@ exports[`/components/pages/songs/SongList.vue { locale: ja } snapshot test { loa
           </td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -385,7 +393,9 @@ exports[`/components/pages/songs/SongList.vue { locale: ja } snapshot test { loa
           </td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <tr draggable="false" class="">
           <!---->
@@ -404,7 +414,9 @@ exports[`/components/pages/songs/SongList.vue { locale: ja } snapshot test { loa
           </td>
           <!---->
         </tr>
-        <!---->
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
         <!---->
         <!---->
       </tbody>

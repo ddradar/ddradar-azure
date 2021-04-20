@@ -48,7 +48,9 @@ exports[`/components/shared/ScoreBoard.vue { locale: en } snapshot test { loadin
                     <td data-label="EX" class="has-text-right"><span class="is-size-7">414</span></td>
                     <!---->
                   </tr>
-                  <!---->
+                  <transition-stub name="">
+                    <!---->
+                  </transition-stub>
                   <!---->
                   <tr draggable="false" class="">
                     <!---->
@@ -60,7 +62,9 @@ exports[`/components/shared/ScoreBoard.vue { locale: en } snapshot test { loadin
                     <td data-label="EX" class="has-text-right"><span class="is-size-7">409</span></td>
                     <!---->
                   </tr>
-                  <!---->
+                  <transition-stub name="">
+                    <!---->
+                  </transition-stub>
                   <!---->
                   <tr draggable="false" class="">
                     <!---->
@@ -74,7 +78,9 @@ exports[`/components/shared/ScoreBoard.vue { locale: en } snapshot test { loadin
                     <td data-label="EX" class="has-text-right"><span class="is-size-7">409</span></td>
                     <!---->
                   </tr>
-                  <!---->
+                  <transition-stub name="">
+                    <!---->
+                  </transition-stub>
                   <!---->
                   <tr draggable="false" class="">
                     <!---->
@@ -88,7 +94,9 @@ exports[`/components/shared/ScoreBoard.vue { locale: en } snapshot test { loadin
                     <td data-label="EX" class="has-text-right"><span class="is-size-7">409</span></td>
                     <!---->
                   </tr>
-                  <!---->
+                  <transition-stub name="">
+                    <!---->
+                  </transition-stub>
                   <!---->
                   <!---->
                 </tbody>
@@ -366,7 +374,9 @@ exports[`/components/shared/ScoreBoard.vue { locale: ja } snapshot test { loadin
                     <td data-label="EX" class="has-text-right"><span class="is-size-7">414</span></td>
                     <!---->
                   </tr>
-                  <!---->
+                  <transition-stub name="">
+                    <!---->
+                  </transition-stub>
                   <!---->
                   <tr draggable="false" class="">
                     <!---->
@@ -378,7 +388,9 @@ exports[`/components/shared/ScoreBoard.vue { locale: ja } snapshot test { loadin
                     <td data-label="EX" class="has-text-right"><span class="is-size-7">409</span></td>
                     <!---->
                   </tr>
-                  <!---->
+                  <transition-stub name="">
+                    <!---->
+                  </transition-stub>
                   <!---->
                   <tr draggable="false" class="">
                     <!---->
@@ -392,7 +404,9 @@ exports[`/components/shared/ScoreBoard.vue { locale: ja } snapshot test { loadin
                     <td data-label="EX" class="has-text-right"><span class="is-size-7">409</span></td>
                     <!---->
                   </tr>
-                  <!---->
+                  <transition-stub name="">
+                    <!---->
+                  </transition-stub>
                   <!---->
                   <tr draggable="false" class="">
                     <!---->
@@ -406,7 +420,9 @@ exports[`/components/shared/ScoreBoard.vue { locale: ja } snapshot test { loadin
                     <td data-label="EX" class="has-text-right"><span class="is-size-7">409</span></td>
                     <!---->
                   </tr>
-                  <!---->
+                  <transition-stub name="">
+                    <!---->
+                  </transition-stub>
                   <!---->
                   <!---->
                 </tbody>

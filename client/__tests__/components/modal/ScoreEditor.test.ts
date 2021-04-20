@@ -1,5 +1,5 @@
+import { Score } from '@ddradar/core'
 import { testSongData } from '@ddradar/core/__tests__/data'
-import { getDanceLevel, setValidScoreFromChart } from '@ddradar/core/score'
 import { createLocalVue, mount, shallowMount, Wrapper } from '@vue/test-utils'
 import Buefy from 'buefy'
 import { mocked } from 'ts-jest/utils'
@@ -9,7 +9,7 @@ import { getChartScore, postChartScore } from '~/api/score'
 import ScoreEditor from '~/components/modal/ScoreEditor.vue'
 import * as popup from '~/utils/popup'
 
-jest.mock('@ddradar/core/score')
+jest.mock('@ddradar/core')
 jest.mock('~/api/score')
 jest.mock('~/utils/popup')
 const localVue = createLocalVue()
@@ -49,7 +49,7 @@ describe('/components/modal/ScoreEditor.vue', () => {
 
   // Computed
   describe('get rank()', () => {
-    beforeEach(() => mocked(getDanceLevel).mockClear())
+    beforeEach(() => mocked(Score.getDanceLevel).mockClear())
     test('{ isFailed: true } returns "E"', () => {
       // Arrange - Act
       wrapper.setData({ isFailed: true })
@@ -58,13 +58,13 @@ describe('/components/modal/ScoreEditor.vue', () => {
 
       // Assert
       expect(rank).toBe('E')
-      expect(mocked(getDanceLevel)).not.toBeCalled()
+      expect(mocked(Score.getDanceLevel)).not.toBeCalled()
     })
     test('{ isFailed: false } returns getDanceLevel()', () => {
       // Arrange
       const score = 800000
-      mocked(getDanceLevel).mockClear()
-      mocked(getDanceLevel).mockReturnValue('A')
+      mocked(Score.getDanceLevel).mockClear()
+      mocked(Score.getDanceLevel).mockReturnValue('A')
 
       // Act
       wrapper.setData({ isFailed: false, score })
@@ -73,7 +73,7 @@ describe('/components/modal/ScoreEditor.vue', () => {
 
       // Assert
       expect(rank).toBe('A')
-      expect(mocked(getDanceLevel)).toBeCalledWith(score)
+      expect(mocked(Score.getDanceLevel)).toBeCalledWith(score)
     })
   })
 
@@ -96,13 +96,13 @@ describe('/components/modal/ScoreEditor.vue', () => {
   })
   describe('calcScore', () => {
     beforeEach(() => {
-      mocked(setValidScoreFromChart).mockReset()
+      mocked(Score.setValidScoreFromChart).mockReset()
       mocked(popup.warning).mockClear()
     })
 
     test('calls setValidScoreFromChart()', () => {
       // Arrange
-      mocked(setValidScoreFromChart).mockReturnValue({
+      mocked(Score.setValidScoreFromChart).mockReturnValue({
         score: 0,
         exScore: 0,
         clearLamp: 0,
@@ -115,11 +115,11 @@ describe('/components/modal/ScoreEditor.vue', () => {
       wrapper.vm.calcScore()
 
       // Assert
-      expect(mocked(setValidScoreFromChart)).toBeCalled()
+      expect(mocked(Score.setValidScoreFromChart)).toBeCalled()
     })
     test('calls popup.warning() if setValidScoreFromChart() throws error', () => {
       // Arrange
-      mocked(setValidScoreFromChart).mockImplementation(() => {
+      mocked(Score.setValidScoreFromChart).mockImplementation(() => {
         throw new Error('Invalid Score')
       })
 
@@ -128,7 +128,7 @@ describe('/components/modal/ScoreEditor.vue', () => {
       wrapper.vm.calcScore()
 
       // Assert
-      expect(mocked(setValidScoreFromChart)).toBeCalled()
+      expect(mocked(Score.setValidScoreFromChart)).toBeCalled()
       expect(mocked(popup.warning)).toBeCalled()
     })
   })

@@ -1,5 +1,5 @@
 import type { HttpRequest } from '@azure/functions'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
+import type { Database } from '@ddradar/core'
 import { mocked } from 'ts-jest/utils'
 
 import { getLoginUserInfo } from '../auth'
@@ -27,7 +27,7 @@ describe('GET /api/v1/scores', () => {
     rank: 'AAA',
     isPublic: false,
   } as const
-  const scores: ScoreSchema[] = [
+  const scores: Database.ScoreSchema[] = [
     { userId: '0', userName: '0', ...score, exScore: 138 * 3, maxCombo: 138 },
     { userId: '13', userName: '13', ...score },
     { userId: 'public_user', userName: 'AFRO', ...score, isPublic: true },

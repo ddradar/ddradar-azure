@@ -1,5 +1,5 @@
 import type { Context } from '@azure/functions'
-import type { SongInfo } from '@ddradar/core/api/song'
+import type { Api } from '@ddradar/core'
 
 import { ErrorResult, SuccessResult } from '../function'
 
@@ -7,8 +7,8 @@ import { ErrorResult, SuccessResult } from '../function'
 export default async function (
   { bindingData }: Pick<Context, 'bindingData'>,
   _req: unknown,
-  [song]: SongInfo[]
-): Promise<ErrorResult<404> | SuccessResult<SongInfo>> {
+  [song]: Api.SongInfo[]
+): Promise<ErrorResult<404> | SuccessResult<Api.SongInfo>> {
   if (!song) {
     return new ErrorResult(404, `Not found song that id: "${bindingData.id}"`)
   }

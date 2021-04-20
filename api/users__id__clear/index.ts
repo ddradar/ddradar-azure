@@ -1,20 +1,19 @@
 import type { HttpRequest } from '@azure/functions'
-import type { ClearStatus } from '@ddradar/core/api/user'
-import type { UserSchema } from '@ddradar/core/db/users'
+import type { Api, Database } from '@ddradar/core'
 
 import { getClientPrincipal, getLoginUserInfo } from '../auth'
 import { ErrorResult, SuccessResult } from '../function'
 
-type TotalCount = Omit<ClearStatus, 'clearLamp'>
+type TotalCount = Omit<Api.ClearStatus, 'clearLamp'>
 
 /** Get Clear status that match the specified user ID and play style. */
 export default async function (
   _context: unknown,
   req: Pick<HttpRequest, 'headers' | 'query'>,
-  [user]: Pick<UserSchema, 'id' | 'isPublic'>[],
-  clearStatuses: ClearStatus[],
+  [user]: Pick<Database.UserSchema, 'id' | 'isPublic'>[],
+  clearStatuses: Api.ClearStatus[],
   totalCounts: TotalCount[]
-): Promise<ErrorResult<404> | SuccessResult<ClearStatus[]>> {
+): Promise<ErrorResult<404> | SuccessResult<Api.ClearStatus[]>> {
   const loginUser = await getLoginUserInfo(getClientPrincipal(req))
 
   // User is not found or private

@@ -1,19 +1,14 @@
 import type { ItemDefinition } from '@azure/cosmos'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
-import type { Difficulty, PlayStyle } from '@ddradar/core/db/songs'
-import type {
-  ClearStatusSchema,
-  ScoreStatusSchema,
-} from '@ddradar/core/db/userDetails'
+import type { Database, Song } from '@ddradar/core'
 
 import { fetchOne, getContainer } from '.'
 
 export function fetchScore(
   userId: string,
   songId: string,
-  playStyle: PlayStyle,
-  difficulty: Difficulty
-): Promise<(ScoreSchema & ItemDefinition) | null> {
+  playStyle: Song.PlayStyle,
+  difficulty: Song.Difficulty
+): Promise<(Database.ScoreSchema & ItemDefinition) | null> {
   return fetchOne(
     'Scores',
     [
@@ -44,12 +39,12 @@ export function fetchScore(
 }
 
 export async function fetchSummeryClearLampCount(): Promise<
-  ClearStatusSchema[]
+  Database.ClearStatusSchema[]
 > {
   const container = getContainer('Scores')
 
   const { resources } = await container.items
-    .query<ClearStatusSchema>(
+    .query<Database.ClearStatusSchema>(
       'SELECT c.userId, "clear" AS type, c.playStyle, c.level, c.clearLamp, COUNT(1) AS count FROM c ' +
         'WHERE IS_DEFINED(c.radar) AND NOT IS_DEFINED(c.ttl) ' +
         'GROUP BY c.userId, c.playStyle, c.level, c.clearLamp'
@@ -59,11 +54,13 @@ export async function fetchSummeryClearLampCount(): Promise<
   return resources
 }
 
-export async function fetchSummeryRankCount(): Promise<ScoreStatusSchema[]> {
+export async function fetchSummeryRankCount(): Promise<
+  Database.ScoreStatusSchema[]
+> {
   const container = getContainer('Scores')
 
   const { resources } = await container.items
-    .query<ScoreStatusSchema>(
+    .query<Database.ScoreStatusSchema>(
       'SELECT c.userId, "score" AS type, c.playStyle, c.level, c.rank, COUNT(1) AS count FROM c ' +
         'WHERE IS_DEFINED(c.radar) AND NOT IS_DEFINED(c.ttl) ' +
         'GROUP BY c.userId, c.playStyle, c.level, c.rank'

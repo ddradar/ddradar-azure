@@ -1,11 +1,10 @@
 import type { HttpRequest } from '@azure/functions'
-import type { ClientPrincipal } from '@ddradar/core/api/auth'
-import type { UserSchema } from '@ddradar/core/db/users'
+import type { Api, Database } from '@ddradar/core'
 import { fetchLoginUser } from '@ddradar/db'
 
 export function getClientPrincipal(
   req: Pick<HttpRequest, 'headers'>
-): ClientPrincipal | null {
+): Api.ClientPrincipal | null {
   const header = req.headers['x-ms-client-principal']
   if (!header) return null
 
@@ -19,8 +18,8 @@ export function getClientPrincipal(
 }
 
 export async function getLoginUserInfo(
-  clientPrincipal: Pick<ClientPrincipal, 'userId'> | null
-): Promise<UserSchema | null> {
+  clientPrincipal: Pick<Api.ClientPrincipal, 'userId'> | null
+): Promise<Database.UserSchema | null> {
   if (!clientPrincipal) return null
   return fetchLoginUser(clientPrincipal.userId)
 }

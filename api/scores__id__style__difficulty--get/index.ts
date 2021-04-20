@@ -1,6 +1,5 @@
 import type { HttpRequest } from '@azure/functions'
-import type { ScoreInfo } from '@ddradar/core/api/score'
-import type { ScoreSchema } from '@ddradar/core/db/scores'
+import type { Api, Database } from '@ddradar/core'
 
 import { getClientPrincipal, getLoginUserInfo } from '../auth'
 import { ErrorResult, SuccessResult } from '../function'
@@ -9,8 +8,8 @@ import { ErrorResult, SuccessResult } from '../function'
 export default async function (
   _context: unknown,
   req: Pick<HttpRequest, 'headers' | 'query'>,
-  scores: ScoreSchema[]
-): Promise<ErrorResult<404> | SuccessResult<ScoreInfo[]>> {
+  scores: Database.ScoreSchema[]
+): Promise<ErrorResult<404> | SuccessResult<Api.ScoreInfo[]>> {
   const scope = ['private', 'medium', 'full'].includes(req.query.scope ?? '')
     ? (req.query.scope as 'private' | 'medium' | 'full')
     : 'medium'
@@ -30,7 +29,7 @@ export default async function (
 
   const body = scores
     .filter(s => userIds.includes(s.userId) || (scope === 'full' && s.isPublic))
-    .map<ScoreInfo>(s => ({
+    .map<Api.ScoreInfo>(s => ({
       userId: s.userId,
       userName: s.userName,
       songId: s.songId,

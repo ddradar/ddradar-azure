@@ -1,11 +1,11 @@
-import { NotificationBody } from '@ddradar/core/api/notification'
+import { Api } from '@ddradar/core'
 
 import postNotification from '.'
 
 Date.now = jest.fn(() => 1597114800000)
 
 describe('POST /api/v1/notification', () => {
-  const validBody: NotificationBody = {
+  const validBody: Api.NotificationBody = {
     sender: 'SYSTEM',
     pinned: true,
     type: 'is-info',

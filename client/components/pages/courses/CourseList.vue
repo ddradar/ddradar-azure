@@ -56,8 +56,8 @@
 </i18n>
 
 <script lang="ts">
-import type { CourseListData } from '@ddradar/core/api/course'
-import { playStyleMap } from '@ddradar/core/db/songs'
+import type { Api } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 import { shortenSeriesName } from '~/api/song'
@@ -65,7 +65,7 @@ import { shortenSeriesName } from '~/api/song'
 @Component
 export default class CourseListComponent extends Vue {
   @Prop({ type: Array, required: false, default: () => [] })
-  readonly courses!: CourseListData[]
+  readonly courses!: Api.CourseListData[]
 
   @Prop({ type: Boolean, required: false, default: false })
   readonly loading!: boolean
@@ -76,7 +76,7 @@ export default class CourseListComponent extends Vue {
       name:
         c.charts.length > 1
           ? c.name
-          : `${c.name}(${playStyleMap.get(c.charts[0].playStyle)})`,
+          : `${c.name}(${Song.playStyleMap.get(c.charts[0].playStyle)})`,
       series: shortenSeriesName(c.series),
       type: c.charts.length > 1 ? this.$t('nonstop') : this.$t('grade'),
     }))

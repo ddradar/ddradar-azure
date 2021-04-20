@@ -1,5 +1,4 @@
-import type { ClientPrincipal } from '@ddradar/core/api/auth'
-import type { CurrentUserInfo } from '@ddradar/core/api/user'
+import type { Api } from '@ddradar/core'
 import { mocked } from 'ts-jest/utils'
 import { Store } from 'vuex'
 
@@ -10,13 +9,13 @@ import { actions, getters, mutations, RootState, state } from '~/store'
 jest.mock('~/api/auth')
 jest.mock('~/api/user')
 
-const auth: ClientPrincipal = {
+const auth: Api.ClientPrincipal = {
   identityProvider: 'github',
   userId: 'auto-generated-id',
   userDetails: 'foo',
   userRoles: ['anonymous', 'authenticated'],
 }
-const user: CurrentUserInfo = {
+const user: Api.CurrentUserInfo = {
   id: 'foo',
   name: 'Some User',
   area: 13,

@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import type { ClearStatus } from '@ddradar/core/api/user'
-import { ClearLamp, clearLampMap } from '@ddradar/core/db/scores'
+import type { Api } from '@ddradar/core'
+import { Score } from '@ddradar/core'
 import type { ChartData, ChartOptions } from 'chart.js'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
@@ -16,7 +16,7 @@ export default class ClearStatusComponent extends Vue {
   readonly title!: string | null
 
   @Prop({ type: Array, default: () => [] })
-  readonly statuses!: Pick<ClearStatus, 'clearLamp' | 'count'>[]
+  readonly statuses!: Pick<Api.ClearStatus, 'clearLamp' | 'count'>[]
 
   get sortedStatuses() {
     return this.statuses
@@ -38,7 +38,7 @@ export default class ClearStatusComponent extends Vue {
   get chartData(): ChartData {
     return {
       labels: this.sortedStatuses.map(
-        d => clearLampMap.get(d.clearLamp as ClearLamp) ?? 'NoPlay'
+        d => Score.clearLampMap.get(d.clearLamp as Score.ClearLamp) ?? 'NoPlay'
       ),
       datasets: [
         {
@@ -51,8 +51,8 @@ export default class ClearStatusComponent extends Vue {
     }
   }
 
-  getBackgroundColor(lamp: ClearLamp | -1) {
-    const map = new Map<ClearLamp | -1, string>([
+  getBackgroundColor(lamp: Score.ClearLamp | -1) {
+    const map = new Map<Score.ClearLamp | -1, string>([
       [-1, 'hsl(0, 0%, 71%)'], // grey-light
       [0, 'hsl(0, 0%, 29%)'], // grey-dark
       [1, 'hsl(271, 100%, 71%)'], // purple

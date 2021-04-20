@@ -1,4 +1,4 @@
-import type { ScoreSchema } from '@ddradar/core/db/scores'
+import type { Database } from '@ddradar/core'
 import { mocked } from 'ts-jest/utils'
 
 import { getLoginUserInfo } from '../auth'
@@ -15,7 +15,7 @@ describe('DELETE /api/v1/scores', () => {
     area: 13,
     isPublic: true,
   } as const
-  const score: ScoreSchema = {
+  const score: Database.ScoreSchema = {
     userId: user.id,
     userName: user.name,
     isPublic: user.isPublic,

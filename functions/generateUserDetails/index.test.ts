@@ -1,8 +1,5 @@
 import type { ItemDefinition } from '@azure/cosmos'
-import type {
-  ClearStatusSchema,
-  ScoreStatusSchema,
-} from '@ddradar/core/db/userDetails'
+import type { Database } from '@ddradar/core'
 import { fetchSummeryClearLampCount, fetchSummeryRankCount } from '@ddradar/db'
 import { mocked } from 'ts-jest/utils'
 
@@ -17,19 +14,19 @@ describe('/generateUserDetails/index.ts', () => {
     level: 5,
     count: 20,
   } as const
-  const oldClear: ClearStatusSchema & ItemDefinition = {
+  const oldClear: Database.ClearStatusSchema & ItemDefinition = {
     ...status,
     id: 'old_clear',
     type: 'clear',
     clearLamp: 6,
   }
-  const oldScore: ScoreStatusSchema & ItemDefinition = {
+  const oldScore: Database.ScoreStatusSchema & ItemDefinition = {
     ...status,
     id: 'old_score',
     type: 'score',
     rank: 'AAA',
   }
-  const newClears: ClearStatusSchema[] = [
+  const newClears: Database.ClearStatusSchema[] = [
     {
       ...status,
       type: 'clear',
@@ -43,7 +40,7 @@ describe('/generateUserDetails/index.ts', () => {
       count: 10,
     },
   ]
-  const newScores: ScoreStatusSchema[] = [
+  const newScores: Database.ScoreStatusSchema[] = [
     {
       ...status,
       type: 'score',
@@ -63,13 +60,13 @@ describe('/generateUserDetails/index.ts', () => {
   })
 
   test('merges old.id & new data', async () => {
-    const deletedClear: ClearStatusSchema & ItemDefinition = {
+    const deletedClear: Database.ClearStatusSchema & ItemDefinition = {
       ...oldClear,
       id: 'deleted_clear',
       type: 'clear',
       clearLamp: 4,
     }
-    const deletedScore: ScoreStatusSchema & ItemDefinition = {
+    const deletedScore: Database.ScoreStatusSchema & ItemDefinition = {
       ...oldScore,
       id: 'deleted_score',
       rank: 'AA',
