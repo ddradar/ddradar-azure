@@ -18,7 +18,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "en" 1`] 
   </section>
   <section class="section">
     <div class="columns is-multiline">
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="Choose by Name" class="card-header is-primary">
@@ -219,7 +222,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "en" 1`] 
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="Choose by SINGLE LV" class="card-header is-primary">
@@ -330,7 +336,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "en" 1`] 
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="Choose by DOUBLE LV" class="card-header is-primary">
@@ -441,7 +450,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "en" 1`] 
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="Choose by Version" class="card-header is-primary">
@@ -547,7 +559,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "en" 1`] 
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="Choose by Courses" class="card-header is-primary">
@@ -606,7 +621,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "ja" 1`] 
   </section>
   <section class="section">
     <div class="columns is-multiline">
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="曲名から探す" class="card-header is-primary">
@@ -807,7 +825,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "ja" 1`] 
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="SINGLEのレベルから探す" class="card-header is-primary">
@@ -918,7 +939,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "ja" 1`] 
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="DOUBLEのレベルから探す" class="card-header is-primary">
@@ -1029,7 +1053,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "ja" 1`] 
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="バージョンから探す" class="card-header is-primary">
@@ -1135,7 +1162,10 @@ exports[`/pages/index.vue snapshot test renders correctly if locale is "ja" 1`] 
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="コースデータ" class="card-header is-primary">
@@ -1200,7 +1230,10 @@ exports[`/pages/index.vue snapshot test renders loading skeleton 1`] = `
   </section>
   <section class="section">
     <div class="columns is-multiline">
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="曲名から探す" class="card-header is-primary">
@@ -1401,7 +1434,10 @@ exports[`/pages/index.vue snapshot test renders loading skeleton 1`] = `
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="SINGLEのレベルから探す" class="card-header is-primary">
@@ -1512,7 +1548,10 @@ exports[`/pages/index.vue snapshot test renders loading skeleton 1`] = `
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="DOUBLEのレベルから探す" class="card-header is-primary">
@@ -1623,7 +1662,10 @@ exports[`/pages/index.vue snapshot test renders loading skeleton 1`] = `
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="バージョンから探す" class="card-header is-primary">
@@ -1729,7 +1771,10 @@ exports[`/pages/index.vue snapshot test renders loading skeleton 1`] = `
           </transition-stub>
         </div>
       </section>
-      <section class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen">
+      <section class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        ">
         <div class="collapse card">
           <div class="collapse-trigger">
             <header role="button" aria-controls="コースデータ" class="card-header is-primary">

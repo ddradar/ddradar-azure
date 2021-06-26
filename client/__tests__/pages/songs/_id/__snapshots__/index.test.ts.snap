@@ -11,15 +11,36 @@ exports[`pages/songs/_id/index.vue snapshot test renders "Edit" button if admin 
     </b-button-stub>
   </div>
   <div class="content columns is-multiline">
-    <chart-detail-stub song="[object Object]" chart="[object Object]" open="true" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" open="true" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
   </div>
   <div class="content columns is-multiline">
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
   </div>
 </section>
 `;
@@ -31,15 +52,36 @@ exports[`pages/songs/_id/index.vue snapshot test renders correctly 1`] = `
   <h2 class="subtitle">BPM 119</h2>
   <!---->
   <div class="content columns is-multiline">
-    <chart-detail-stub song="[object Object]" chart="[object Object]" open="true" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" open="true" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
   </div>
   <div class="content columns is-multiline">
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
-    <chart-detail-stub song="[object Object]" chart="[object Object]" class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
+    <chart-detail-stub song="[object Object]" chart="[object Object]" class="
+        column
+        is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+      "></chart-detail-stub>
   </div>
 </section>
 `;

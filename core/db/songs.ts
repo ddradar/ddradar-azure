@@ -38,6 +38,8 @@ export type SongSchema = {
   maxBPM: number | null
   charts: ReadonlyArray<StepChartSchema>
   skillAttackId?: number
+  /** Song is deleted or not */
+  deleted?: boolean
 }
 
 export type GrooveRadar = {
@@ -201,7 +203,10 @@ const nameIndexes = new Map([
 ] as const)
 /** `0`: あ行, `1`: か行, ..., `10`: A, `11`: B, ..., `35`: Z, `36`: 数字・記号 */
 export type NameIndex = Unwrap<typeof nameIndexes>[0]
-export const nameIndexMap: ReadonlyMap<NameIndex, string> = nameIndexes
+export const nameIndexMap: ReadonlyMap<
+  NameIndex,
+  Unwrap<typeof nameIndexes>[1]
+> = nameIndexes
 
 const playStyles = new Map([
   [1, 'SINGLE'],
@@ -209,7 +214,10 @@ const playStyles = new Map([
 ] as const)
 /** `1`: SINGLE, `2`: DOUBLE */
 export type PlayStyle = Unwrap<typeof playStyles>[0]
-export const playStyleMap: ReadonlyMap<PlayStyle, string> = playStyles
+export const playStyleMap: ReadonlyMap<
+  PlayStyle,
+  Unwrap<typeof playStyles>[1]
+> = playStyles
 
 const difficulties = new Map([
   [0, 'BEGINNER'],
@@ -227,7 +235,5 @@ const difficulties = new Map([
  */
 export type Difficulty = Unwrap<typeof difficulties>[0]
 export type DifficultyName = Unwrap<typeof difficulties>[1]
-export const difficultyMap: ReadonlyMap<
-  Difficulty,
-  DifficultyName
-> = difficulties
+export const difficultyMap: ReadonlyMap<Difficulty, DifficultyName> =
+  difficulties

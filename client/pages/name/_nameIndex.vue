@@ -35,11 +35,11 @@ export default class SongByNamePage extends Vue {
 
   /** Name index title (like "あ", "A", "数字・記号") */
   get title() {
-    return (Song.nameIndexMap as Map<number, string>).get(this.selected)
+    return Song.nameIndexMap.get(this.selected)!
   }
 
   get selected() {
-    return parseInt(this.$route.params.nameIndex, 10)
+    return parseInt(this.$route.params.nameIndex, 10) as Song.NameIndex
   }
 
   /** "あ", ..., "A", ..., "数字・記号" */

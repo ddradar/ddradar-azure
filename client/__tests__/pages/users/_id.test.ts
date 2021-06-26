@@ -233,7 +233,7 @@ describe('/users/_id.vue', () => {
 
     test.each(['', '@', 'あああ'])('({ id: "%s" }) returns false', id => {
       // Arrange
-      const ctx = ({ params: { id } } as unknown) as Context
+      const ctx = { params: { id } } as unknown as Context
 
       // Act - Assert
       expect(wrapper.vm.$options.validate!(ctx)).toBe(false)
@@ -242,7 +242,7 @@ describe('/users/_id.vue', () => {
       '({ id: "%s" }) returns true',
       id => {
         // Arrange
-        const ctx = ({ params: { id } } as unknown) as Context
+        const ctx = { params: { id } } as unknown as Context
 
         // Act - Assert
         expect(wrapper.vm.$options.validate!(ctx)).toBe(true)

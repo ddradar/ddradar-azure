@@ -17,7 +17,7 @@ export default class FlagComponent extends Vue {
   readonly title!: string
 
   get flagIconClass() {
-    return `flag-icon-${this.iso.toLowerCase()}`
+    return `flag-icon-${this.iso.toLowerCase()}` as const
   }
 }
 </script>

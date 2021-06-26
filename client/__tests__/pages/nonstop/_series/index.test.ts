@@ -34,7 +34,7 @@ describe('pages/nonstop/_series/index.vue', () => {
       // Arrange
       const mocks = { $fetchState, $route: { params: { series } } }
       const wrapper = shallowMount(NonstopListPage, { localVue, mocks, i18n })
-      const ctx = ({ ...mocks.$route } as unknown) as Context
+      const ctx = { ...mocks.$route } as unknown as Context
 
       // Act - Assert
       expect(wrapper.vm.$options.validate!(ctx)).toBe(false)
@@ -43,7 +43,7 @@ describe('pages/nonstop/_series/index.vue', () => {
       // Arrange
       const mocks = { $fetchState, $route: { params: { series } } }
       const wrapper = shallowMount(NonstopListPage, { localVue, mocks, i18n })
-      const ctx = ({ ...mocks.$route } as unknown) as Context
+      const ctx = { ...mocks.$route } as unknown as Context
 
       // Act - Assert
       expect(wrapper.vm.$options.validate!(ctx)).toBe(true)

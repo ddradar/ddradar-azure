@@ -6,14 +6,12 @@ config()
 import type { Api, Database } from '@ddradar/core'
 import { Song } from '@ddradar/core'
 import { getContainer } from '@ddradar/db'
-import { Consola } from 'consola'
+import consola from 'consola'
 import fetch from 'node-fetch'
-import * as puppetter from 'puppeteer-core'
+import { launch } from 'puppeteer-core'
 
 import { fetchScoreDetail, isLoggedIn } from './modules/eagate'
 import { isDeleted } from './modules/song'
-
-const consola = new Consola({})
 
 /* eslint-disable node/no-process-env */
 const {
@@ -32,7 +30,7 @@ const diff = Song.difficultyMap
 /** Update World Record from e-AMUSEMENT GATE */
 async function main(userId: string, password: string) {
   const browserOptions = { executablePath, userDataDir }
-  const browser = await puppetter.launch(browserOptions)
+  const browser = await launch(browserOptions)
 
   const page = (await browser.pages())[0] || (await browser.newPage())
 

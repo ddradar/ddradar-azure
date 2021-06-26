@@ -53,7 +53,7 @@ describe('/_style/_level.vue', () => {
         },
         stubs: { NuxtLink: RouterLinkStub, ChartList: true },
       })
-      const ctx = ({ params: { style, level } } as unknown) as Context
+      const ctx = { params: { style, level } } as unknown as Context
 
       // Act - Assert
       expect(wrapper.vm.$options.validate!(ctx)).toBe(false)
@@ -75,7 +75,7 @@ describe('/_style/_level.vue', () => {
         mocks: { $route: { params }, $fetchState },
         stubs: { NuxtLink: RouterLinkStub, ChartList: true },
       })
-      const ctx = ({ params } as unknown) as Context
+      const ctx = { params } as unknown as Context
 
       // Act - Assert
       expect(wrapper.vm.$options.validate!(ctx)).toBe(true)

@@ -27,7 +27,7 @@ describe('user-details.ts', () => {
       },
     }
     beforeAll(() =>
-      mocked(getContainer).mockReturnValue((container as unknown) as Container)
+      mocked(getContainer).mockReturnValue(container as unknown as Container)
     )
     beforeEach(() => {
       container.items.query.mockClear()
@@ -75,17 +75,15 @@ describe('user-details.ts', () => {
   })
 
   describe('fetchClearAndScoreStatus()', () => {
-    let resources: (
-      | Database.ClearStatusSchema
-      | Database.ScoreStatusSchema
-    )[] = []
+    let resources: (Database.ClearStatusSchema | Database.ScoreStatusSchema)[] =
+      []
     const container = {
       items: {
         query: jest.fn(() => ({ fetchAll: async () => ({ resources }) })),
       },
     }
     beforeAll(() =>
-      mocked(getContainer).mockReturnValue((container as unknown) as Container)
+      mocked(getContainer).mockReturnValue(container as unknown as Container)
     )
     beforeEach(() => {
       container.items.query.mockClear()

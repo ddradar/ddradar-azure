@@ -19,7 +19,10 @@
         :key="i"
         :song="song"
         :chart="chart"
-        class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"
+        class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        "
         :open="playStyle === chart.playStyle && difficulty === chart.difficulty"
       />
     </div>
@@ -29,7 +32,10 @@
         :key="i"
         :song="song"
         :chart="chart"
-        class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"
+        class="
+          column
+          is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+        "
         :open="playStyle === chart.playStyle && difficulty === chart.difficulty"
       />
     </div>
@@ -49,8 +55,8 @@ import ChartDetail from '~/components/pages/songs/ChartDetail.vue'
 @Component({ components: { ChartDetail } })
 export default class SongDetailPage extends Vue {
   song: Api.SongInfo | null = null
-  playStyle = 0
-  difficulty = -1
+  playStyle: Song.PlayStyle | 0 = 0
+  difficulty: Song.Difficulty | -1 = -1
 
   get singleCharts() {
     return this.song?.charts.filter(c => c.playStyle === 1) ?? []

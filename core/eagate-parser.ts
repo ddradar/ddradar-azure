@@ -51,8 +51,8 @@ export function musicDataToScoreList(
       const difficulty = getDifficulty(chart.id.toLowerCase())
 
       // Get score
-      const scoreText = chart.getElementsByClassName('data_score')[0]
-        .textContent
+      const scoreText =
+        chart.getElementsByClassName('data_score')[0].textContent
       const score = parseInt(scoreText!, 10)
       if (!Number.isInteger(score) || score < 0 || score > 1000000) continue
 

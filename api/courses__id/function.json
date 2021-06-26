@@ -14,7 +14,7 @@
       "direction": "in",
       "databaseName": "DDRadar",
       "collectionName": "Songs",
-      "sqlQuery": "SELECT c.id, c.name, c.nameKana, c.nameIndex, c.series, c.minBPM, c.maxBPM, c.charts FROM c WHERE c.id = {id} AND (c.nameIndex = -1 OR c.nameIndex = -2)",
+      "sqlQuery": "SELECT c.id, c.name, c.nameKana, c.nameIndex, c.series, c.minBPM, c.maxBPM, c.deleted, c.charts FROM c WHERE c.id = {id} AND (c.nameIndex = -1 OR c.nameIndex = -2)",
       "connectionStringSetting": "COSMOS_DB_CONN_READONLY"
     },
     {

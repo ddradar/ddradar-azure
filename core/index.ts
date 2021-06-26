@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 export * from './skill-attack'
 export * from './typeUtils'
 export * as Api from './api'

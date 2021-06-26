@@ -143,7 +143,7 @@ describe('pages/songs/_id/index.vue', () => {
       id => {
         // Arrange
         const wrapper = shallowMount(SongPage, { localVue, mocks })
-        const ctx = ({ params: { id } } as unknown) as Context
+        const ctx = { params: { id } } as unknown as Context
 
         // Act
         const result = wrapper.vm.$options.validate!(ctx)
@@ -155,7 +155,7 @@ describe('pages/songs/_id/index.vue', () => {
     test(`/${song.id} returns true`, () => {
       // Arrange
       const wrapper = shallowMount(SongPage, { localVue, mocks })
-      const ctx = ({ params: { id: song.id } } as unknown) as Context
+      const ctx = { params: { id: song.id } } as unknown as Context
 
       // Act
       const result = wrapper.vm.$options.validate!(ctx)
@@ -171,7 +171,7 @@ describe('pages/songs/_id/index.vue', () => {
     test(`/${song.id} returns { song }`, async () => {
       // Arrange
       const wrapper = shallowMount(SongPage, { localVue, mocks })
-      const ctx = ({ params: { id: song.id } } as unknown) as Context
+      const ctx = { params: { id: song.id } } as unknown as Context
 
       // Act
       const result = await wrapper.vm.$options.asyncData!(ctx)
@@ -190,7 +190,7 @@ describe('pages/songs/_id/index.vue', () => {
       async (hash, playStyle, difficulty) => {
         // Arrange
         const wrapper = shallowMount(SongPage, { localVue, mocks })
-        const ctx = ({ payload: song, route: { hash } } as unknown) as Context
+        const ctx = { payload: song, route: { hash } } as unknown as Context
 
         // Act
         const result = await wrapper.vm.$options.asyncData!(ctx)

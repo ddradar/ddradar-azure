@@ -38,6 +38,9 @@ export function fetchScore(
   )
 }
 
+const sumTarget =
+  'WHERE IS_DEFINED(c.radar) AND (NOT IS_DEFINED(c.ttl)) AND (c.deleted ?? false) != true '
+
 export async function fetchSummeryClearLampCount(): Promise<
   Database.ClearStatusSchema[]
 > {
@@ -46,7 +49,7 @@ export async function fetchSummeryClearLampCount(): Promise<
   const { resources } = await container.items
     .query<Database.ClearStatusSchema>(
       'SELECT c.userId, "clear" AS type, c.playStyle, c.level, c.clearLamp, COUNT(1) AS count FROM c ' +
-        'WHERE IS_DEFINED(c.radar) AND NOT IS_DEFINED(c.ttl) ' +
+        sumTarget +
         'GROUP BY c.userId, c.playStyle, c.level, c.clearLamp'
     )
     .fetchAll()
@@ -62,7 +65,7 @@ export async function fetchSummeryRankCount(): Promise<
   const { resources } = await container.items
     .query<Database.ScoreStatusSchema>(
       'SELECT c.userId, "score" AS type, c.playStyle, c.level, c.rank, COUNT(1) AS count FROM c ' +
-        'WHERE IS_DEFINED(c.radar) AND NOT IS_DEFINED(c.ttl) ' +
+        sumTarget +
         'GROUP BY c.userId, c.playStyle, c.level, c.rank'
     )
     .fetchAll()

@@ -40,33 +40,45 @@ No need Authentication.
 {
   "id": "qbbOOO1QibO1861bqQII9lqlPiIoqb98",
   "name": "FIRST",
-  "orders": [
+  "nameKana": "C-A20-1",
+  "nameIndex": -1,
+  "series": "DanceDanceRevolution A20",
+  "minBPM": 119,
+  "maxBPM": 180,
+  "charts": [
     {
       "playStyle": 1,
       "difficulty": 0,
       "level": 4,
-      "chartOrder": [
+      "notes": 401,
+      "freezeArrow": 8,
+      "shockArrow": 0,
+      "order": [
         {
           "songId": "lIlQ8DbPP6Iil1DOlQ6d8IPQblDQ8IiI",
           "songName": "HAVE YOU NEVER BEEN MELLOW (20th Anniversary Mix)",
+          "playStyle": 1,
           "difficulty": 0,
           "level": 2
         },
         {
           "songId": "b1do8OI6qDDlQO0PI16868ql6bdbI886",
           "songName": "MAKE IT BETTER",
+          "playStyle": 1,
           "difficulty": 0,
           "level": 3
         },
         {
           "songId": "Pb9II0oiI9ODQ8OP8IqIPQP9P68biqIi",
           "songName": "TRIP MACHINE",
+          "playStyle": 1,
           "difficulty": 0,
           "level": 3
         },
         {
           "songId": "06loOQ0DQb0DqbOibl6qO81qlIdoP9DI",
           "songName": "PARANOiA",
+          "playStyle": 1,
           "difficulty": 0,
           "level": 4
         }
@@ -76,28 +88,35 @@ No need Authentication.
       "playStyle": 1,
       "difficulty": 1,
       "level": 8,
-      "chartOrder": [
+      "notes": 730,
+      "freezeArrow": 4,
+      "shockArrow": 0,
+      "order": [
         {
           "songId": "lIlQ8DbPP6Iil1DOlQ6d8IPQblDQ8IiI",
           "songName": "HAVE YOU NEVER BEEN MELLOW (20th Anniversary Mix)",
+          "playStyle": 1,
           "difficulty": 1,
           "level": 4
         },
         {
           "songId": "b1do8OI6qDDlQO0PI16868ql6bdbI886",
           "songName": "MAKE IT BETTER",
+          "playStyle": 1,
           "difficulty": 1,
           "level": 7
         },
         {
           "songId": "Pb9II0oiI9ODQ8OP8IqIPQP9P68biqIi",
           "songName": "TRIP MACHINE",
+          "playStyle": 1,
           "difficulty": 1,
           "level": 8
         },
         {
           "songId": "06loOQ0DQb0DqbOibl6qO81qlIdoP9DI",
           "songName": "PARANOiA",
+          "playStyle": 1,
           "difficulty": 1,
           "level": 8
         }
@@ -107,28 +126,35 @@ No need Authentication.
       "playStyle": 1,
       "difficulty": 2,
       "level": 9,
-      "chartOrder": [
+      "notes": 918,
+      "freezeArrow": 18,
+      "shockArrow": 0,
+      "order": [
         {
           "songId": "lIlQ8DbPP6Iil1DOlQ6d8IPQblDQ8IiI",
           "songName": "HAVE YOU NEVER BEEN MELLOW (20th Anniversary Mix)",
+          "playStyle": 1,
           "difficulty": 2,
-          "level": 6
+          "level": 7
         },
         {
           "songId": "b1do8OI6qDDlQO0PI16868ql6bdbI886",
           "songName": "MAKE IT BETTER",
+          "playStyle": 1,
           "difficulty": 2,
           "level": 9
         },
         {
           "songId": "Pb9II0oiI9ODQ8OP8IqIPQP9P68biqIi",
           "songName": "TRIP MACHINE",
+          "playStyle": 1,
           "difficulty": 2,
           "level": 9
         },
         {
           "songId": "06loOQ0DQb0DqbOibl6qO81qlIdoP9DI",
           "songName": "PARANOiA",
+          "playStyle": 1,
           "difficulty": 2,
           "level": 9
         }
@@ -137,29 +163,36 @@ No need Authentication.
     {
       "playStyle": 1,
       "difficulty": 3,
-      "level": 12,
-      "chartOrder": [
+      "level": 11,
+      "notes": 1091,
+      "freezeArrow": 21,
+      "shockArrow": 0,
+      "order": [
         {
           "songId": "lIlQ8DbPP6Iil1DOlQ6d8IPQblDQ8IiI",
           "songName": "HAVE YOU NEVER BEEN MELLOW (20th Anniversary Mix)",
+          "playStyle": 1,
           "difficulty": 3,
-          "level": 10
+          "level": 11
         },
         {
           "songId": "b1do8OI6qDDlQO0PI16868ql6bdbI886",
           "songName": "MAKE IT BETTER",
+          "playStyle": 1,
           "difficulty": 3,
-          "level": 12
+          "level": 11
         },
         {
           "songId": "Pb9II0oiI9ODQ8OP8IqIPQP9P68biqIi",
           "songName": "TRIP MACHINE",
+          "playStyle": 1,
           "difficulty": 3,
           "level": 10
         },
         {
           "songId": "06loOQ0DQb0DqbOibl6qO81qlIdoP9DI",
           "songName": "PARANOiA",
+          "playStyle": 1,
           "difficulty": 3,
           "level": 11
         }
@@ -169,28 +202,35 @@ No need Authentication.
       "playStyle": 2,
       "difficulty": 1,
       "level": 9,
-      "chartOrder": [
+      "notes": 733,
+      "freezeArrow": 3,
+      "shockArrow": 0,
+      "order": [
         {
           "songId": "lIlQ8DbPP6Iil1DOlQ6d8IPQblDQ8IiI",
           "songName": "HAVE YOU NEVER BEEN MELLOW (20th Anniversary Mix)",
+          "playStyle": 2,
           "difficulty": 1,
           "level": 4
         },
         {
           "songId": "b1do8OI6qDDlQO0PI16868ql6bdbI886",
           "songName": "MAKE IT BETTER",
+          "playStyle": 2,
           "difficulty": 1,
           "level": 7
         },
         {
           "songId": "Pb9II0oiI9ODQ8OP8IqIPQP9P68biqIi",
           "songName": "TRIP MACHINE",
+          "playStyle": 2,
           "difficulty": 1,
           "level": 9
         },
         {
           "songId": "06loOQ0DQb0DqbOibl6qO81qlIdoP9DI",
           "songName": "PARANOiA",
+          "playStyle": 2,
           "difficulty": 1,
           "level": 8
         }
@@ -200,28 +240,35 @@ No need Authentication.
       "playStyle": 2,
       "difficulty": 2,
       "level": 13,
-      "chartOrder": [
+      "notes": 951,
+      "freezeArrow": 8,
+      "shockArrow": 0,
+      "order": [
         {
           "songId": "lIlQ8DbPP6Iil1DOlQ6d8IPQblDQ8IiI",
           "songName": "HAVE YOU NEVER BEEN MELLOW (20th Anniversary Mix)",
+          "playStyle": 2,
           "difficulty": 2,
-          "level": 6
+          "level": 7
         },
         {
           "songId": "b1do8OI6qDDlQO0PI16868ql6bdbI886",
           "songName": "MAKE IT BETTER",
+          "playStyle": 2,
           "difficulty": 2,
           "level": 9
         },
         {
           "songId": "Pb9II0oiI9ODQ8OP8IqIPQP9P68biqIi",
           "songName": "TRIP MACHINE",
+          "playStyle": 2,
           "difficulty": 2,
           "level": 10
         },
         {
           "songId": "06loOQ0DQb0DqbOibl6qO81qlIdoP9DI",
           "songName": "PARANOiA",
+          "playStyle": 2,
           "difficulty": 2,
           "level": 13
         }
@@ -231,28 +278,35 @@ No need Authentication.
       "playStyle": 2,
       "difficulty": 3,
       "level": 11,
-      "chartOrder": [
+      "notes": 1176,
+      "freezeArrow": 15,
+      "shockArrow": 0,
+      "order": [
         {
           "songId": "lIlQ8DbPP6Iil1DOlQ6d8IPQblDQ8IiI",
           "songName": "HAVE YOU NEVER BEEN MELLOW (20th Anniversary Mix)",
+          "playStyle": 2,
           "difficulty": 3,
           "level": 10
         },
         {
           "songId": "b1do8OI6qDDlQO0PI16868ql6bdbI886",
           "songName": "MAKE IT BETTER",
+          "playStyle": 2,
           "difficulty": 3,
           "level": 11
         },
         {
           "songId": "Pb9II0oiI9ODQ8OP8IqIPQP9P68biqIi",
           "songName": "TRIP MACHINE",
+          "playStyle": 2,
           "difficulty": 3,
           "level": 10
         },
         {
           "songId": "06loOQ0DQb0DqbOibl6qO81qlIdoP9DI",
           "songName": "PARANOiA",
+          "playStyle": 2,
           "difficulty": 3,
           "level": 11
         }
@@ -268,7 +322,13 @@ No need Authentication.
 |----|:--:|-----------|
 |`id`|string|Course id that depend on official site. `^[01689bdiloqDIOPQ]{32}$`|
 |`name`|string|Course name|
-|`orders`|Order\[\]|Course order list by play style and difficulty. [see below](#order)|
+|`nameKana`|string|Name for sorting. `^([A-Z0-9 .ぁ-んー]*)$`|
+|`nameIndex`|integer|`-1`: NONSTOP, `-2`: Grade|
+|`series`|string|Series title|
+|`minBPM`|integer|Displayed min BPM (Beet Per Minutes).|
+|`maxBPM`|integer|Displayed max BPM (Beet Per Minutes).|
+|`deleted`|boolean?|Course is deleted or not|
+|`charts`|Order\[\]|Course order list by play style and difficulty. [see below](#order)|
 
 #### Order
 
@@ -277,7 +337,10 @@ No need Authentication.
 |`playStyle`|integer|`1`: SINGLE, `2`: DOUBLE|
 |`difficulty`|integer|`0`: BEGINNER, `1`: BASIC, `2`: DIFFICULT, `3`: EXPERT, `4`: CHALLENGE|
 |`level`|integer|Course level|
-|`chartOrder`|Chart\[\]|Song and chart info in this course. [see below](#chart)|
+|`notes`|integer|Normal arrow count. (Jump = 1 count)|
+|`freezeArrow`|integer|Freeze arrow count|
+|`shockArrow`|integer|Shock arrow count|
+|`order`|Chart\[\]|Song and chart info in this course. [see below](#chart)|
 
 #### Chart
 

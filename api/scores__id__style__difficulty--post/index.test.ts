@@ -247,4 +247,42 @@ describe('POST /api/v1/scores', () => {
     })
     expect(result.documents).toHaveLength(2)
   })
+
+  test(`/${song.id}/1/0 returns "200 OK" with JSON and documents[%i] if deleted song`, async () => {
+    // Arrange
+    mocked(getLoginUserInfo).mockResolvedValueOnce(privateUser)
+    context.bindingData.songId = song.id
+    context.bindingData.playStyle = song.charts[0].playStyle
+    context.bindingData.difficulty = song.charts[0].difficulty
+    req.body = mfcScore
+
+    // Act
+    const result = await postChartScore(
+      context,
+      req,
+      [{ ...song, deleted: true }],
+      scores
+    )
+
+    // Assert
+    expect(result.httpResponse.status).toBe(200)
+    expect(result.httpResponse.body).toStrictEqual({
+      ...score,
+      userId: privateUser.id,
+      userName: privateUser.name,
+      isPublic: privateUser.isPublic,
+      ...mfcScore,
+      maxCombo: 138,
+      exScore: 414,
+      radar: {
+        stream: song.charts[0].stream,
+        voltage: song.charts[0].voltage,
+        air: song.charts[0].air,
+        freeze: song.charts[0].freeze,
+        chaos: song.charts[0].chaos,
+      },
+      deleted: true,
+    })
+    expect(result.documents).toHaveLength(2)
+  })
 })

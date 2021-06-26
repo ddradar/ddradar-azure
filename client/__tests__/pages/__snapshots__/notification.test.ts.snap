@@ -17,16 +17,16 @@ exports[`/pages/notification.vue snapshot test renders Edit column if admin 1`] 
             <tr>
               <th width="40px"></th>
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative">  <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> タイトル <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 投稿日時 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Edit <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -120,13 +120,13 @@ exports[`/pages/notification.vue snapshot test renders correctly if { locale: en
             <tr>
               <th width="40px"></th>
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative">  <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Title <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Date <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -218,13 +218,13 @@ exports[`/pages/notification.vue snapshot test renders correctly if { locale: ja
             <tr>
               <th width="40px"></th>
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative">  <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> タイトル <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 投稿日時 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -316,13 +316,13 @@ exports[`/pages/notification.vue snapshot test renders empty if { locale: en } 1
             <tr>
               <th width="40px"></th>
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative">  <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Title <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Date <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -382,13 +382,13 @@ exports[`/pages/notification.vue snapshot test renders empty if { locale: ja } 1
             <tr>
               <th width="40px"></th>
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative">  <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> タイトル <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 投稿日時 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -448,13 +448,13 @@ exports[`/pages/notification.vue snapshot test renders loading skeleton 1`] = `
             <tr>
               <th width="40px"></th>
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative">  <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> タイトル <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 投稿日時 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->

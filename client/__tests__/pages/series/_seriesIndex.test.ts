@@ -21,7 +21,7 @@ describe('pages/series/_seriesIndex.vue', () => {
           localVue,
           mocks: { $route: { params: { seriesIndex } }, $fetchState },
         })
-        const ctx = ({ params: { seriesIndex } } as unknown) as Context
+        const ctx = { params: { seriesIndex } } as unknown as Context
 
         // Act - Assert
         expect(wrapper.vm.$options.validate!(ctx)).toBe(false)
@@ -35,7 +35,7 @@ describe('pages/series/_seriesIndex.vue', () => {
           localVue,
           mocks: { $route: { params: { seriesIndex } }, $fetchState },
         })
-        const ctx = ({ params: { seriesIndex } } as unknown) as Context
+        const ctx = { params: { seriesIndex } } as unknown as Context
 
         // Act - Assert
         expect(wrapper.vm.$options.validate!(ctx)).toBe(true)

@@ -58,10 +58,12 @@ export default class NonstopListPage extends Vue {
   get pageLinks() {
     const seriesList = [...Song.seriesSet]
     return [16, 17]
-      .flatMap(i => ['nonstop', 'grade'].map(type => [i, type] as const))
+      .flatMap(i =>
+        (['nonstop', 'grade'] as const).map(type => [i, type] as const)
+      )
       .map(d => ({
         name: this.$t(d[1], { series: shortenSeriesName(seriesList[d[0]]) }),
-        to: `/${d[1]}/${d[0]}`,
+        to: `/${d[1]}/${d[0]}` as const,
       }))
   }
 

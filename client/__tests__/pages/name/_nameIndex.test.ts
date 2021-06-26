@@ -21,7 +21,7 @@ describe('pages/name/_nameIndex.vue', () => {
           localVue,
           mocks: { $route: { params: { nameIndex } }, $fetchState },
         })
-        const ctx = ({ params: { nameIndex } } as unknown) as Context
+        const ctx = { params: { nameIndex } } as unknown as Context
 
         // Act - Assert
         expect(wrapper.vm.$options.validate!(ctx)).toBe(false)
@@ -35,7 +35,7 @@ describe('pages/name/_nameIndex.vue', () => {
           localVue,
           mocks: { $route: { params: { nameIndex } }, $fetchState },
         })
-        const ctx = ({ params: { nameIndex } } as unknown) as Context
+        const ctx = { params: { nameIndex } } as unknown as Context
 
         // Act - Assert
         expect(wrapper.vm.$options.validate!(ctx)).toBe(true)

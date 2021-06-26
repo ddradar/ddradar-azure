@@ -30,7 +30,7 @@ describe('pages/courses/_id/index.vue', () => {
       id => {
         // Arrange
         const wrapper = shallowMount(CourseDetailPage, { localVue })
-        const ctx = ({ params: { id } } as unknown) as Context
+        const ctx = { params: { id } } as unknown as Context
 
         // Act - Assert
         expect(wrapper.vm.$options.validate!(ctx)).toBe(false)
@@ -41,7 +41,7 @@ describe('pages/courses/_id/index.vue', () => {
       id => {
         // Arrange
         const wrapper = shallowMount(CourseDetailPage, { localVue })
-        const ctx = ({ params: { id } } as unknown) as Context
+        const ctx = { params: { id } } as unknown as Context
 
         // Act - Assert
         expect(wrapper.vm.$options.validate!(ctx)).toBe(true)
@@ -58,7 +58,7 @@ describe('pages/courses/_id/index.vue', () => {
       // Arrange
       const $http = { $get: jest.fn() }
       const wrapper = shallowMount(CourseDetailPage, { localVue })
-      const ctx = ({ $http, params: { id: course.id } } as unknown) as Context
+      const ctx = { $http, params: { id: course.id } } as unknown as Context
 
       // Act
       const result: any = await wrapper.vm.$options.asyncData!(ctx)

@@ -46,10 +46,10 @@ describe('./typeUtils.ts', () => {
     test.each([...objects])('(%p, "foo") returns false', (obj: unknown) =>
       expect(hasStringProperty(obj, 'foo')).toBe(false)
     )
-    test.each([
-      ...objects.filter(o => typeof o !== 'string'),
-    ])('({ foo: %p }, "foo") returns false', (foo: Exclude<unknown, string>) =>
-      expect(hasStringProperty({ foo }, 'foo')).toBe(false)
+    test.each([...objects.filter(o => typeof o !== 'string')])(
+      '({ foo: %p }, "foo") returns false',
+      (foo: Exclude<unknown, string>) =>
+        expect(hasStringProperty({ foo }, 'foo')).toBe(false)
     )
     test.each(['', 'foo', 'bar'])(
       '({ foo: %p }, "foo") returns true',
@@ -60,9 +60,7 @@ describe('./typeUtils.ts', () => {
       (foo: string) =>
         expect(hasStringProperty({ foo }, 'foo', 'bar')).toBe(false)
     )
-    test.each([
-      ...objects.filter(o => typeof o !== 'string'),
-    ])(
+    test.each([...objects.filter(o => typeof o !== 'string')])(
       '({ foo: "foo", bar: %p }, "foo", "bar") returns false',
       (bar: Exclude<unknown, string>) =>
         expect(hasStringProperty({ foo: 'foo', bar }, 'foo', 'bar')).toBe(false)
@@ -75,9 +73,7 @@ describe('./typeUtils.ts', () => {
       (foo: string, bar: string) =>
         expect(hasStringProperty({ foo, bar }, 'foo', 'bar')).toBe(true)
     )
-    test.each([
-      ...objects.filter(o => typeof o !== 'string'),
-    ])(
+    test.each([...objects.filter(o => typeof o !== 'string')])(
       '({ foo: "foo", bar: %p }, "foo") returns true',
       (bar: Exclude<unknown, string>) =>
         expect(hasStringProperty({ foo: 'foo', bar }, 'foo')).toBe(true)
@@ -88,13 +84,9 @@ describe('./typeUtils.ts', () => {
     test.each([...objects])('(%p, "foo") returns false', (obj: unknown) =>
       expect(hasIntegerProperty(obj, 'foo')).toBe(false)
     )
-    test.each([
-      ...objects,
-      NaN,
-      Infinity,
-      -Infinity,
-    ])('({ foo: %p }, "foo") returns false', (foo: unknown) =>
-      expect(hasIntegerProperty({ foo }, 'foo')).toBe(false)
+    test.each([...objects, NaN, Infinity, -Infinity])(
+      '({ foo: %p }, "foo") returns false',
+      (foo: unknown) => expect(hasIntegerProperty({ foo }, 'foo')).toBe(false)
     )
     test.each([0, -0, 1, -1])(
       '({ foo: %p }, "foo") returns true',
@@ -105,13 +97,10 @@ describe('./typeUtils.ts', () => {
       (foo: number) =>
         expect(hasIntegerProperty({ foo }, 'foo', 'bar')).toBe(false)
     )
-    test.each([
-      ...objects,
-      NaN,
-      Infinity,
-      -Infinity,
-    ])('({ foo: 1, bar: %p }, "foo", "bar") returns false', (bar: unknown) =>
-      expect(hasIntegerProperty({ foo: 1, bar }, 'foo', 'bar')).toBe(false)
+    test.each([...objects, NaN, Infinity, -Infinity])(
+      '({ foo: 1, bar: %p }, "foo", "bar") returns false',
+      (bar: unknown) =>
+        expect(hasIntegerProperty({ foo: 1, bar }, 'foo', 'bar')).toBe(false)
     )
     test.each([
       [0, -0],

@@ -4,11 +4,11 @@ import { testSongData } from '@ddradar/core/__tests__/data'
 import { fetchTotalChartCount, getContainer } from '@ddradar/db'
 import { mocked } from 'ts-jest/utils'
 
-import updateScores from '.'
+import updateSongInfo from '.'
 
 jest.mock('@ddradar/db')
 
-describe('/updateScoresSongInfo/index.ts', () => {
+describe('/updateSongInfo/index.ts', () => {
   const song = { ...testSongData, skillAttackId: 1 }
   const oldCounts = [...Array(19 * 2).keys()].map(i => ({
     id: `id-${i}`, // id-0, id-1, ..., id-37
@@ -37,7 +37,7 @@ describe('/updateScoresSongInfo/index.ts', () => {
     },
   }
   beforeAll(() => {
-    mocked(getContainer).mockReturnValue((container as unknown) as Container)
+    mocked(getContainer).mockReturnValue(container as unknown as Container)
     mocked(fetchTotalChartCount).mockResolvedValue(newCounts)
   })
   beforeEach(() => {
@@ -83,7 +83,7 @@ describe('/updateScoresSongInfo/index.ts', () => {
 
   test('returns { scores: [] } if songs is empty', async () => {
     // Arrange - Act
-    const result = await updateScores(context, [], oldCounts)
+    const result = await updateSongInfo(context, [], oldCounts)
 
     // Assert
     expect(result).toStrictEqual({ scores: [], details: newCounts })
@@ -91,7 +91,7 @@ describe('/updateScoresSongInfo/index.ts', () => {
 
   test('returns { scores: [emptyScore] } with log.info if scores is empty', async () => {
     // Arrange - Act
-    const result = await updateScores(context, [song], [])
+    const result = await updateSongInfo(context, [song], [])
 
     // Assert
     expect(result).toStrictEqual({
@@ -115,7 +115,7 @@ describe('/updateScoresSongInfo/index.ts', () => {
     resources = [validScore, worldScore]
 
     // Act
-    const result = await updateScores(context, [song], oldCounts)
+    const result = await updateSongInfo(context, [song], oldCounts)
 
     // Assert
     expect(result).toStrictEqual({ scores: [emptyScore], details: newCounts })
@@ -129,7 +129,7 @@ describe('/updateScoresSongInfo/index.ts', () => {
     resources = [{ ...validScore, maxCombo: 3 }, worldScore]
 
     // Act
-    const result = await updateScores(context, [song], oldCounts)
+    const result = await updateSongInfo(context, [song], oldCounts)
 
     // Assert
     expect(result).toStrictEqual({ scores: [emptyScore], details: newCounts })
@@ -144,7 +144,7 @@ describe('/updateScoresSongInfo/index.ts', () => {
     resources = [score, worldScore]
 
     // Act
-    const result = await updateScores(context, [song], oldCounts)
+    const result = await updateSongInfo(context, [song], oldCounts)
 
     // Assert
     expect(result).toStrictEqual({ scores: [emptyScore], details: newCounts })
@@ -156,12 +156,13 @@ describe('/updateScoresSongInfo/index.ts', () => {
   test.each([
     { ...validScore, songName: 'foo' },
     { ...validScore, level: 10 },
+    { ...validScore, deleted: true },
   ])('returns [score] if Scores info has diff', async score => {
     // Arrange
     resources = [score, worldScore]
 
     // Act
-    const result = await updateScores(context, [song], oldCounts)
+    const result = await updateSongInfo(context, [song], oldCounts)
 
     // Assert
     expect(result).toStrictEqual({
@@ -172,4 +173,32 @@ describe('/updateScoresSongInfo/index.ts', () => {
     expect(context.log.warn).not.toBeCalled()
     expect(context.log.info).toBeCalled()
   })
+
+  test.each([{ ...validScore, deleted: false }, { ...validScore }])(
+    'returns [score] if Scores info has diff',
+    async score => {
+      // Arrange
+      resources = [score, worldScore]
+
+      // Act
+      const result = await updateSongInfo(
+        context,
+        [{ ...song, deleted: true }],
+        oldCounts
+      )
+
+      // Assert
+      expect(result).toStrictEqual({
+        scores: [
+          { ...validScore, deleted: true },
+          { ...worldScore, deleted: true },
+          { ...emptyScore, deleted: true },
+        ],
+        details: newCounts,
+      })
+      expect(context.log.error).not.toBeCalled()
+      expect(context.log.warn).not.toBeCalled()
+      expect(context.log.info).toBeCalled()
+    }
+  )
 })

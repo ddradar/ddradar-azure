@@ -183,7 +183,7 @@ export default class ImportPage extends Vue {
   get skillAttackUri() {
     const code = this.$accessor.user?.code
     return code
-      ? `http://skillattack.com/sa4/data/dancer/${code}/score_${code}.txt`
+      ? (`http://skillattack.com/sa4/data/dancer/${code}/score_${code}.txt` as const)
       : ''
   }
 

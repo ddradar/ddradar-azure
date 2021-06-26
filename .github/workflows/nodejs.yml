@@ -13,11 +13,9 @@ on:
       - '**.md'
 
 jobs:
-  test:
-    strategy:
-      matrix:
-        os: [ubuntu-20.04, windows-latest]
-    runs-on: ${{ matrix.os }}
+  lint:
+    name: Lint & Format Check
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout
@@ -31,7 +29,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - name: Cache Dependencies
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -42,15 +40,35 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Lint
-        if: matrix.os == 'ubuntu-20.04'
         run: yarn lint
-      - name: Build
-        if: matrix.os == 'ubuntu-20.04'
-        run: yarn build
-        env:
-          APPINSIGHTS_INSTRUMENTATIONKEY: ${{ secrets.APPINSIGHTS_INSTRUMENTATIONKEY_STAGING }}
-      - name: Launch Cosmos DB Emulator (windows only)
-        if: matrix.os == 'windows-latest'
+
+  test:
+    name: Unit Test
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Use Node.js 12
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 12
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache Dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Project Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Launch Cosmos DB Emulator
         shell: pwsh
         run: |
           Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
@@ -58,15 +76,17 @@ jobs:
           Get-CosmosDbEmulatorStatus
           echo "COSMOS_DB_CONN=AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
           echo "NODE_TLS_REJECT_UNAUTHORIZED=0" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
       - name: Test
         run: yarn test
-      - name: Report Code Coverage to codecov
-        if: matrix.os == 'windows-latest'
-        uses: codecov/codecov-action@v1.3.2
 
-  deploy:
+      - name: Report Code Coverage to codecov
+        uses: codecov/codecov-action@v1.5.2
+
+  deploy-gpr:
+    name: Deploy to GitHub Packages
     if: github.event_name == 'push'
-    needs: [test]
+    needs: [lint, test]
     runs-on: ubuntu-20.04
 
     steps:
@@ -82,7 +102,7 @@ jobs:
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - name: Cache Dependencies
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}

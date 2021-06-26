@@ -15,19 +15,19 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Series <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Difficulty <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap is-numeric"><span class="is-relative"> Lv <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Edit Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -196,19 +196,19 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Series <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Difficulty <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap is-numeric"><span class="is-relative"> Lv <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Edit Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -264,19 +264,19 @@ exports[`/components/pages/charts/ChartList.vue { locale: en } snapshot test { l
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Series <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Difficulty <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap is-numeric"><span class="is-relative"> Lv <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Edit Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -343,19 +343,19 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 難易度 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap is-numeric"><span class="is-relative"> レベル <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> スコア編集 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -524,19 +524,19 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 難易度 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap is-numeric"><span class="is-relative"> レベル <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> スコア編集 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -592,19 +592,19 @@ exports[`/components/pages/charts/ChartList.vue { locale: ja } snapshot test { l
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 難易度 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap is-numeric"><span class="is-relative"> レベル <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> スコア編集 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->

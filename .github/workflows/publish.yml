@@ -1,0 +1,85 @@
+name: production
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    environment: Production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Use Node.js 12
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 12
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache Dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Project Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build @ddradar/client
+        run: yarn workspace @ddradar/client build
+        env:
+          API_URL: /
+          APPINSIGHTS_INSTRUMENTATIONKEY: ${{ secrets.APPINSIGHTS_INSTRUMENTATIONKEY }}
+          SONGS_API_URL: https://api.ddradar.app/api/v1/songs
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: client
+          path: client/dist
+
+  deploy:
+    name: Deploy to Azure Static Web Apps
+    runs-on: ubuntu-20.04
+    environment:
+      name: Production
+      url: https://ddradar.app/
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Setup GitHub Packages
+        run: |
+          echo "@ddradar:registry=https://npm.pkg.github.com/" > api/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> api/.npmrc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: client
+          path: client/dist
+      - name: Copy Yarn lock file
+        run: cp yarn.lock api
+
+      - name: Build @ddradar/api And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          # see: https://aka.ms/swaworkflowconfig
+          app_location: client/dist
+          skip_app_build: true
+          api_location: api
+          api_build_command: yarn build

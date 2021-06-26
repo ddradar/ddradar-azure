@@ -27,7 +27,7 @@ exports[`/components/modal/ScoreEditor.vue { locale: en } snapshot test { select
               <!---->
             </div>
             <!---->
-          </div> <label class="b-checkbox checkbox"><input type="checkbox" true-value="true" value="false"><span class="check"></span><span class="control-label">Rank E</span></label>
+          </div> <label class="b-checkbox checkbox"><input type="checkbox" autocomplete="on" true-value="true" value="false"><span class="check"></span><span class="control-label">Rank E</span></label>
           <!---->
         </div>
       </div>
@@ -130,7 +130,7 @@ exports[`/components/modal/ScoreEditor.vue { locale: ja } snapshot test { select
               <!---->
             </div>
             <!---->
-          </div> <label class="b-checkbox checkbox"><input type="checkbox" true-value="true" value="false"><span class="check"></span><span class="control-label">E判定</span></label>
+          </div> <label class="b-checkbox checkbox"><input type="checkbox" autocomplete="on" true-value="true" value="false"><span class="check"></span><span class="control-label">E判定</span></label>
           <!---->
         </div>
       </div>

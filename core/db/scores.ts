@@ -28,6 +28,11 @@ export type ScoreSchema = Pick<
     StepChartSchema,
     'stream' | 'voltage' | 'air' | 'freeze' | 'chaos'
   >
+  /**
+   * Song is deleted or not.
+   * If true, this score is not counted.
+   */
+  deleted?: boolean
 }
 
 const clearLamps = new Map([
@@ -51,7 +56,10 @@ const clearLamps = new Map([
  * `7`: MFC
  */
 export type ClearLamp = Unwrap<typeof clearLamps>[0]
-export const clearLampMap: ReadonlyMap<ClearLamp, string> = clearLamps
+export const clearLampMap: ReadonlyMap<
+  ClearLamp,
+  Unwrap<typeof clearLamps>[1]
+> = clearLamps
 
 const danceLevels = [
   'E',

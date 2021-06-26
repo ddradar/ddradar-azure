@@ -144,6 +144,7 @@ Need [Authentication](../../docs/api/authentication.md#login) with `administrato
 |`series`|string|Series title|
 |`minBPM`|integer \| null|Displayed min BPM (Beet Per Minutes). Set to `null` if not revealed, such as "???".|
 |`maxBPM`|integer \| null|Displayed max BPM (Beet Per Minutes). Set to `null` if not revealed, such as "???".|
+|`deleted`|boolean?|Song is deleted or not|
 |`charts`|StepChart\[\]|Song's step charts. [See below](#stepchart)|
 
 #### StepChart

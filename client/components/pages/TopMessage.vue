@@ -25,19 +25,19 @@ import { unixTimeToString } from '~/utils/date'
 @Component
 export default class TopMessageComponent extends Vue {
   @Prop({ required: true, type: String })
-  type!: string
+  readonly type!: string
 
   @Prop({ required: false, type: String, default: null })
-  icon!: string | null
+  readonly icon!: string | null
 
   @Prop({ required: true, type: String })
-  title!: string
+  readonly title!: string
 
   @Prop({ required: true, type: String })
-  body!: string
+  readonly body!: string
 
   @Prop({ required: true, type: Number })
-  time!: number
+  readonly time!: number
 
   get date() {
     return unixTimeToString(this.time)

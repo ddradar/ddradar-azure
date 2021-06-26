@@ -19,6 +19,8 @@ The collection that stores song & course information.
 |minBPM|integer \| null|Displayed min BPM (Beet Per Minutes). Set to `null` if not revealed, such as "???".|
 |maxBPM|integer \| null|Displayed max BPM (Beet Per Minutes). Set to `null` if not revealed, such as "???".|
 |charts|[StepChart](#stepchart)\[] \| [CourseInfo](#courseinfo)\[]|Song's step charts or Course info.|
+|skillAttackId|number?|ID used by [Skill Attack](http://skillattack.com/sa4/)|
+|deleted|boolean?|Song is deleted or not|
 
 ### StepChart
 

@@ -57,7 +57,11 @@ export default class ChartDetailComponent extends Vue {
   readonly open!: boolean
 
   get cardType() {
-    return `is-${Song.difficultyMap.get(this.chart.difficulty)!.toLowerCase()}`
+    return `is-${
+      Song.difficultyMap
+        .get(this.chart.difficulty)!
+        .toLowerCase() as Lowercase<Song.DifficultyName>
+    }` as const
   }
 }
 </script>

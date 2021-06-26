@@ -5,7 +5,7 @@ import { Song } from '@ddradar/core'
 import { getContainer } from '@ddradar/db'
 import { config } from 'dotenv'
 import fetch from 'node-fetch'
-import * as puppetter from 'puppeteer-core'
+import { launch } from 'puppeteer-core'
 
 import { fetchScoreDetail, isLoggedIn } from './modules/eagate'
 
@@ -21,11 +21,7 @@ const sleep = (msec: number) =>
   new Promise(resolve => setTimeout(resolve, msec))
 
 async function main(userId: string, password: string) {
-  const browser = await puppetter.launch({
-    headless: false,
-    executablePath,
-    userDataDir,
-  })
+  const browser = await launch({ executablePath, userDataDir })
 
   const page = (await browser.pages())[0] || (await browser.newPage())
 

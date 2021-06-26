@@ -86,7 +86,7 @@ describe('pages/admin/notification/_id.vue', () => {
     test(`/${notification.id} calls getNotificationInfo()`, async () => {
       // Arrange
       const wrapper = shallowMount(EditorPage, { localVue })
-      const ctx = ({ params: { id: notification.id } } as unknown) as Context
+      const ctx = { params: { id: notification.id } } as unknown as Context
 
       // Act
       const result = await wrapper.vm.$options.asyncData!(ctx)

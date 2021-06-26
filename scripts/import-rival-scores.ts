@@ -7,7 +7,7 @@ import type { Database } from '@ddradar/core'
 import { fetchOne } from '@ddradar/db'
 import consola from 'consola'
 import fetch from 'node-fetch'
-import * as puppetter from 'puppeteer-core'
+import { launch } from 'puppeteer-core'
 
 import { fetchRivalScoreList, isLoggedIn } from './modules/eagate'
 
@@ -28,8 +28,7 @@ async function main(ddrCode: string) {
     return
   }
 
-  const browserOptions = { headless: false, executablePath, userDataDir }
-  const browser = await puppetter.launch(browserOptions)
+  const browser = await launch({ executablePath, userDataDir })
 
   const page = (await browser.pages())[0] || (await browser.newPage())
 

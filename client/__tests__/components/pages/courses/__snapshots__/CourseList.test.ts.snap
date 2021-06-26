@@ -13,13 +13,13 @@ exports[`/components/pages/courses/CourseList.vue { locale: en } snapshot test {
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Series <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Type <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -174,13 +174,13 @@ exports[`/components/pages/courses/CourseList.vue { locale: en } snapshot test {
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Series <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Type <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -234,13 +234,13 @@ exports[`/components/pages/courses/CourseList.vue { locale: en } snapshot test {
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Series <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Type <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -305,13 +305,13 @@ exports[`/components/pages/courses/CourseList.vue { locale: ja } snapshot test {
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 名称 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> タイプ <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -466,13 +466,13 @@ exports[`/components/pages/courses/CourseList.vue { locale: ja } snapshot test {
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 名称 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> タイプ <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -526,13 +526,13 @@ exports[`/components/pages/courses/CourseList.vue { locale: ja } snapshot test {
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 名称 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> タイプ <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->

@@ -191,10 +191,10 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders correctly 
             <tr>
               <!---->
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Area <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -428,10 +428,10 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders loading 1`
             <tr>
               <!---->
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Area <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -676,10 +676,10 @@ exports[`pages/users/index.vue snapshot test { locale: "en" } renders user list 
             <tr>
               <!---->
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> Area <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -1056,10 +1056,10 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders correctly 
             <tr>
               <!---->
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 登録名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 所属地域 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -1293,10 +1293,10 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders loading 1`
             <tr>
               <!---->
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 登録名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 所属地域 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->
@@ -1541,10 +1541,10 @@ exports[`pages/users/index.vue snapshot test { locale: "ja" } renders user list 
             <tr>
               <!---->
               <!---->
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 登録名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
-              <th class="">
+              <th draggable="false" class="">
                 <div class="th-wrap"><span class="is-relative"> 所属地域 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
               </th>
               <!---->

@@ -39,7 +39,11 @@ export default class OrderDetailComponent extends Vue {
   readonly chart!: Database.CourseChartSchema
 
   get cardType() {
-    return `is-${Song.difficultyMap.get(this.chart.difficulty)!.toLowerCase()}`
+    return `is-${
+      Song.difficultyMap
+        .get(this.chart.difficulty)!
+        .toLowerCase() as Lowercase<Song.DifficultyName>
+    }` as const
   }
 
   get orders() {
@@ -47,7 +51,7 @@ export default class OrderDetailComponent extends Vue {
       id: s.songId,
       name: s.songName,
       chartName: getChartTitle(s),
-      to: `/songs/${s.songId}/${s.playStyle}${s.difficulty}`,
+      to: `/songs/${s.songId}/${s.playStyle}${s.difficulty}` as const,
     }))
   }
 }

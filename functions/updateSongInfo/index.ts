@@ -40,10 +40,9 @@ export default async function (
     // Update exists scores
     for (const score of resources) {
       const scoreText = `{ id: ${score.id}, userId: ${score.userId}, playStyle: ${score.playStyle}, difficulty: ${score.difficulty} }`
-      const chart = (song.charts as (
-        | Database.StepChartSchema
-        | Database.CourseChartSchema
-      )[]).find(
+      const chart = (
+        song.charts as (Database.StepChartSchema | Database.CourseChartSchema)[]
+      ).find(
         c =>
           c.playStyle === score.playStyle && c.difficulty === score.difficulty
       )
@@ -68,12 +67,19 @@ export default async function (
         )
         context.log.warn('Make sure the chart info is correct.')
       }
-      if (song.name !== score.songName || chart.level !== score.level) {
+      if (
+        song.name !== score.songName ||
+        chart.level !== score.level ||
+        song.deleted !== score.deleted
+      ) {
         context.log.info(`Updated: ${scoreText}`)
+        const oldScore = { ...score }
+        delete oldScore.deleted
         scores.push({
-          ...score,
+          ...oldScore,
           songName: song.name,
           level: chart.level,
+          ...(song.deleted ? { deleted: true } : {}),
         })
       }
     }
@@ -104,6 +110,7 @@ export default async function (
           playStyle: chart.playStyle,
           difficulty: chart.difficulty,
           level: chart.level,
+          ...(song.deleted ? { deleted: true } : {}),
         })
       }
     }

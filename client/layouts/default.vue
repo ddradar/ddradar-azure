@@ -212,15 +212,15 @@ export default class DefaultLayout extends Vue {
       {
         label: this.$t('menu.single'),
         items: [...Array(19).keys()].map(i => ({
-          name: `LEVEL ${i + 1}`,
-          to: `/single/${i + 1}`,
+          name: `LEVEL ${i + 1}` as const,
+          to: `/single/${i + 1}` as const,
         })),
       },
       {
         label: this.$t('menu.double'),
         items: [...Array(19).keys()].map(i => ({
-          name: `LEVEL ${i + 1}`,
-          to: `/double/${i + 1}`,
+          name: `LEVEL ${i + 1}` as const,
+          to: `/double/${i + 1}` as const,
         })),
       },
       {
@@ -228,7 +228,7 @@ export default class DefaultLayout extends Vue {
         items: seriesList
           .map((name, i) => ({
             name,
-            to: `/series/${i}`,
+            to: `/series/${i}` as const,
           }))
           .reverse(),
       },
@@ -240,13 +240,13 @@ export default class DefaultLayout extends Vue {
               name: this.$t('menu.nonstop', {
                 series: shortenSeriesName(seriesList[i]),
               }),
-              to: `/nonstop/${i}`,
+              to: `/nonstop/${i}` as const,
             },
             {
               name: this.$t('menu.grade', {
                 series: shortenSeriesName(seriesList[i]),
               }),
-              to: `/grade/${i}`,
+              to: `/grade/${i}` as const,
             },
           ])
           .flat(),

@@ -5,5 +5,11 @@
   "azureFunctions.projectRuntime": "~3",
   "debug.internalConsoleOptions": "neverOpen",
   "azureFunctions.preDeployTask": "Functions: Install Dependencies (Production)",
-  "azureFunctions.projectSubpath": "functions"
+  "azureFunctions.projectSubpath": "functions",
+  "json.schemas": [
+    {
+      "fileMatch": ["/staticwebapp.config.json"],
+      "url": "https://json.schemastore.org/staticwebapp.config.json"
+    }
+  ]
 }

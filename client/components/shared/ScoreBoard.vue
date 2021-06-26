@@ -56,7 +56,7 @@
         {{ $t('button.edit') }}
       </a>
       <a
-        v-if="$accessor.isLoggedIn"
+        v-if="$accessor.isLoggedIn && !isDeleted"
         class="card-footer-item"
         @click="launchScoreImporter"
       >
@@ -153,6 +153,10 @@ export default class OrderDetailComponent extends Vue {
 
   get cardType() {
     return `is-${Song.difficultyMap.get(this.chart.difficulty)!.toLowerCase()}`
+  }
+
+  get isDeleted() {
+    return Song.isDeletedOnGate(this.info.id)
   }
 
   async fetch() {

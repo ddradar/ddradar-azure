@@ -78,6 +78,7 @@ const configuration: NuxtConfig = {
       if (isClient) config.devtool = 'source-map'
       config.externals = ['moment']
     },
+    loaders: { scss: { sassOptions: { quietDeps: true } } },
   },
   generate: {
     exclude: [/^\/.auth\//],

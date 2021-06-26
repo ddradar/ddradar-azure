@@ -14,7 +14,7 @@
       "direction": "in",
       "databaseName": "DDRadar",
       "collectionName": "Songs",
-      "sqlQuery": "SELECT c.id, c.name, (c.nameIndex = -1 OR c.nameIndex = -2) AS isCourse, c.charts FROM c WHERE c.id = {songId}",
+      "sqlQuery": "SELECT c.id, c.name, (c.nameIndex = -1 OR c.nameIndex = -2) AS isCourse, c.deleted, c.charts FROM c WHERE c.id = {songId}",
       "connectionStringSetting": "COSMOS_DB_CONN_READONLY"
     },
     {

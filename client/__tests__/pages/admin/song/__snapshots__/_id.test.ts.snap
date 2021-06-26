@@ -120,6 +120,10 @@ exports[`pages/admin/song/_id.vue renders correctly 1`] = `
     </div>
     <!---->
   </div>
+  <div class="field">
+    <!----><label class="b-checkbox checkbox"><input type="checkbox" autocomplete="on" true-value="true" value="false"><span class="check"></span><span class="control-label">Deleted</span></label>
+    <!---->
+  </div>
   <div class="field"><label class="label">Chart 1</label>
     <div class="field">
       <!---->

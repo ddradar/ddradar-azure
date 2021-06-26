@@ -305,6 +305,29 @@ describe('POST /api/v1/scores', () => {
     ])
   })
 
+  test(`/${song.id} returns "200 OK" with JSON and documents[%i] if deleted song`, async () => {
+    // Arrange
+    mocked(getLoginUserInfo).mockResolvedValueOnce(privateUser)
+    const expected = {
+      playStyle: 1,
+      difficulty: 0,
+      level: 4,
+      ...score,
+      deleted: true,
+      radar,
+    }
+    req.body = [{ ...expected }]
+
+    // Act
+    const result = await postSongScores(null, req, [{ ...song, deleted: true }])
+
+    // Assert
+    expect(result.httpResponse.status).toBe(200)
+    expect(result.httpResponse.body).toStrictEqual([
+      { ...scores.get(privateUser.id), ...expected },
+    ])
+  })
+
   test(`/${song.id} updates World Top if topScore is defined`, async () => {
     // Arrange
     mocked(getLoginUserInfo).mockResolvedValueOnce(privateUser)

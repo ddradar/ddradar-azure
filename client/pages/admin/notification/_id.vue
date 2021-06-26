@@ -66,7 +66,7 @@ export default class NotificationEditorPage extends Vue {
   timeStamp: number | null = null
 
   get pageTitle() {
-    return `${this.id ? 'Update' : 'Add'} Notification`
+    return `${this.id ? 'Update' : 'Add'} Notification` as const
   }
 
   get hasError() {

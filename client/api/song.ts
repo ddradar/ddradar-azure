@@ -17,7 +17,7 @@ export function getChartTitle({
     | 'SP'
     | 'DP'
   const difficultyName = Song.difficultyMap.get(difficulty)!
-  return `${shortPlayStyle}-${difficultyName} (${level})`
+  return `${shortPlayStyle}-${difficultyName} (${level})` as const
 }
 
 export function getDisplayedBPM({
@@ -25,8 +25,8 @@ export function getDisplayedBPM({
   maxBPM,
 }: Pick<Api.SongInfo, 'minBPM' | 'maxBPM'>) {
   if (!minBPM || !maxBPM) return '???'
-  if (minBPM === maxBPM) return `${minBPM}`
-  return `${minBPM}-${maxBPM}`
+  if (minBPM === maxBPM) return `${minBPM}` as const
+  return `${minBPM}-${maxBPM}` as const
 }
 
 /**

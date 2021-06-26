@@ -33,7 +33,10 @@
         <section
           v-for="m in menuList"
           :key="m.label"
-          class="column is-half-tablet is-one-third-desktop is-one-quarter-widescreen"
+          class="
+            column
+            is-half-tablet is-one-third-desktop is-one-quarter-widescreen
+          "
         >
           <card :title="m.label" type="is-primary" collapsible>
             <div class="card-content">
@@ -114,21 +117,21 @@ export default class IndexPage extends Vue {
         label: this.$t('search.name'),
         items: [...Song.nameIndexMap.entries()].map(([i, s]) => ({
           name: s,
-          to: `/name/${i}`,
+          to: `/name/${i}` as const,
         })),
       },
       {
         label: this.$t('search.single'),
         items: [...Array(19).keys()].map(i => ({
-          name: `${i + 1}`,
-          to: `/single/${i + 1}`,
+          name: `${i + 1}` as const,
+          to: `/single/${i + 1}` as const,
         })),
       },
       {
         label: this.$t('search.double'),
         items: [...Array(19).keys()].map(i => ({
-          name: `${i + 1}`,
-          to: `/double/${i + 1}`,
+          name: `${i + 1}` as const,
+          to: `/double/${i + 1}` as const,
         })),
       },
       {
@@ -136,25 +139,25 @@ export default class IndexPage extends Vue {
         items: seriesList
           .map((name, i) => ({
             name: shortenSeriesName(name),
-            to: `/series/${i}`,
+            to: `/series/${i}` as const,
           }))
           .reverse(),
       },
       {
         label: this.$t('search.course'),
-        items: [16, 17]
+        items: ([16, 17] as const)
           .map(i => [
             {
               name: this.$t('nonstop', {
                 series: shortenSeriesName(seriesList[i]),
               }),
-              to: `/nonstop/${i}`,
+              to: `/nonstop/${i}` as const,
             },
             {
               name: this.$t('grade', {
                 series: shortenSeriesName(seriesList[i]),
               }),
-              to: `/grade/${i}`,
+              to: `/grade/${i}` as const,
             },
           ])
           .flat(),

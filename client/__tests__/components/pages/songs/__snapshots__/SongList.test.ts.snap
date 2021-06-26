@@ -14,16 +14,16 @@ exports[`/components/pages/songs/SongList.vue { locale: en } snapshot test { loa
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Version <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Artist <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> BPM <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -78,16 +78,16 @@ exports[`/components/pages/songs/SongList.vue { locale: en } snapshot test { loa
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Version <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Artist <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> BPM <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -198,16 +198,16 @@ exports[`/components/pages/songs/SongList.vue { locale: en } snapshot test { loa
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Version <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> Artist <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> BPM <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -273,16 +273,16 @@ exports[`/components/pages/songs/SongList.vue { locale: ja } snapshot test { loa
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> アーティスト <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> BPM <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -337,16 +337,16 @@ exports[`/components/pages/songs/SongList.vue { locale: ja } snapshot test { loa
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> アーティスト <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> BPM <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->
@@ -457,16 +457,16 @@ exports[`/components/pages/songs/SongList.vue { locale: ja } snapshot test { loa
         <tr>
           <!---->
           <!---->
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> バージョン <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> アーティスト <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
-          <th class="">
+          <th draggable="false" class="">
             <div class="th-wrap"><span class="is-relative"> BPM <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
           </th>
           <!---->

@@ -6,7 +6,7 @@ import { Score } from '@ddradar/core'
 import { getClientPrincipal, getLoginUserInfo } from '../auth'
 import { ErrorResult, getBindingNumber, SuccessResult } from '../function'
 
-type SongInput = Pick<Database.SongSchema, 'id' | 'name'> & {
+type SongInput = Pick<Database.SongSchema, 'id' | 'name' | 'deleted'> & {
   isCourse: boolean
   charts: ReadonlyArray<Database.StepChartSchema | Database.CourseChartSchema>
 }
@@ -84,6 +84,7 @@ export default async function (
               userScore
             ),
           }),
+      ...(song.deleted ? { deleted: true } : {}),
     },
     ...scores.filter(s => s.userId === user.id).map(s => ({ ...s, ttl: 3600 })),
   ]

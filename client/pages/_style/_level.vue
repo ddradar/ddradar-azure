@@ -42,8 +42,8 @@ export default class ChartLevelPage extends Vue {
 
   /** Page title */
   get title() {
-    const style = this.$route.params.style.toUpperCase()
-    return `${style} ${this.selected}`
+    const style = this.$route.params.style.toUpperCase() as 'SINGLE' | 'DOUBLE'
+    return `${style} ${this.selected}` as const
   }
 
   /** 1-19 */

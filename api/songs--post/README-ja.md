@@ -143,6 +143,7 @@
 |`series`|string|シリーズタイトル|
 |`minBPM`|integer \| null|表記された最小のBPM。「???」のように明らかにされていない場合は `null`。|
 |`maxBPM`|integer \| null|表記された最大のBPM。「???」のように明らかにされていない場合は `null`。|
+|`deleted`|boolean?|曲が削除済みか否か|
 |`charts`|StepChart\[\]|曲の譜面一覧。 [下記参照](#stepchart)|
 
 #### StepChart

@@ -19,6 +19,8 @@ English version is [here](./songs.md).
 |minBPM|integer \| null |表記された最小BPM (Beet Per Minutes)。「???」のように明らかでない場合は`null`をセットします|
 |maxBPM|integer \| null |表記された最大BPM (Beet Per Minutes)。「???」のように明らかでない場合は`null`をセットします|
 |charts|[StepChart](#stepchart)\[] \| [CourseInfo](#courseinfo)\[]|譜面/コース情報の配列。|
+|skillAttackId|number?|[Skill Attack](http://skillattack.com/sa4/)で使われるID|
+|deleted|boolean?|曲が削除済みか否か|
 
 ### StepChart
 

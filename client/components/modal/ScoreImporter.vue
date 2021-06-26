@@ -61,7 +61,7 @@
 </i18n>
 
 <script lang="ts">
-import { Gate } from '@ddradar/core'
+import { Gate, Song } from '@ddradar/core'
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 import { postSongScores } from '~/api/score'
@@ -73,10 +73,10 @@ export default class ScoreImporterComponent extends Vue {
   readonly songId!: string
 
   @Prop({ required: true, type: Number })
-  readonly playStyle!: 1 | 2
+  readonly playStyle!: Song.PlayStyle
 
   @Prop({ required: true, type: Number })
-  readonly difficulty!: 0 | 1 | 2 | 3 | 4
+  readonly difficulty!: Song.Difficulty
 
   @Prop({ required: false, type: Boolean, default: false })
   readonly isCourse!: boolean
@@ -89,7 +89,7 @@ export default class ScoreImporterComponent extends Vue {
     const diff = (this.playStyle - 1) * 4 + this.difficulty
     return `https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/${
       this.isCourse ? 'course' : 'music'
-    }_detail.html?index=${this.songId}&diff=${diff}`
+    }_detail.html?index=${this.songId}&diff=${diff}` as const
   }
 
   async importScore() {

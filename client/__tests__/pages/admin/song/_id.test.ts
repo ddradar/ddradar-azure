@@ -46,7 +46,7 @@ describe('pages/admin/song/_id.vue', () => {
     })
     test(`/${songInfo.id} returns songInfo`, async () => {
       // Arrange
-      const ctx = ({ params: { id: songInfo.id } } as unknown) as Context
+      const ctx = { params: { id: songInfo.id } } as unknown as Context
 
       // Act
       const result: any = await wrapper.vm.$options.asyncData!(ctx)
@@ -61,6 +61,7 @@ describe('pages/admin/song/_id.vue', () => {
         series: songInfo.series,
         minBPM: songInfo.minBPM,
         maxBPM: songInfo.maxBPM,
+        deleted: undefined,
         charts: songInfo.charts,
       })
     })

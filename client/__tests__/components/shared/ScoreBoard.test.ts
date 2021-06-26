@@ -1,4 +1,5 @@
 import type { Api } from '@ddradar/core'
+import { Song } from '@ddradar/core'
 import {
   privateUser,
   publicUser,
@@ -18,6 +19,7 @@ import { getChartScore } from '~/api/score'
 import ScoreBoard from '~/components/shared/ScoreBoard.vue'
 
 jest.mock('~/api/score')
+jest.mock('@ddradar/core')
 const localVue = createLocalVue()
 localVue.use(Buefy)
 localVue.use(VueI18n)
@@ -70,6 +72,7 @@ describe('/components/shared/ScoreBoard.vue', () => {
   let wrapper: ReturnType<typeof shallowMount>
   beforeEach(() => {
     wrapper = shallowMount(ScoreBoard, options)
+    mocked(Song.isDeletedOnGate).mockReturnValue(false)
   })
 
   describe.each(['ja', 'en'])('{ locale: %s } snapshot test', locale => {
@@ -122,6 +125,19 @@ describe('/components/shared/ScoreBoard.vue', () => {
     })
     test('renders edit button if loggedIn', async () => {
       // Arrange
+      const mocks = { $accessor, $fetchState: { pending: false } }
+      const options = { localVue, propsData, mocks, stubs, i18n }
+
+      // Act
+      const wrapper = mount(ScoreBoard, options)
+      await wrapper.vm.$nextTick()
+
+      // Assert
+      expect(wrapper).toMatchSnapshot()
+    })
+    test('not renders import button if deleted song', async () => {
+      // Arrange
+      mocked(Song.isDeletedOnGate).mockReturnValueOnce(true)
       const mocks = { $accessor, $fetchState: { pending: false } }
       const options = { localVue, propsData, mocks, stubs, i18n }
 

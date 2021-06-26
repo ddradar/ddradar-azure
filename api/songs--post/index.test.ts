@@ -23,6 +23,7 @@ describe('POST /api/v1/songs', () => {
       charts: [...validSong.charts].sort((l, r) => l.difficulty - r.difficulty),
     },
     { ...validSong, foo: 'bar' },
+    { ...validSong },
   ])('returns "200 OK" with JSON body if body is %p', async body => {
     // Arrange - Act
     const result = await postSongInfo(null, { body })
@@ -31,5 +32,24 @@ describe('POST /api/v1/songs', () => {
     expect(result.httpResponse.status).toBe(200)
     expect(result.httpResponse.body).toStrictEqual(validSong)
     expect(result.document).toStrictEqual(validSong)
+  })
+
+  test.each([
+    {
+      ...validSong,
+      charts: [...validSong.charts].sort((l, r) => l.difficulty - r.difficulty),
+      deleted: true,
+    },
+    { ...validSong, foo: 'bar', deleted: true },
+    { ...validSong, deleted: true },
+  ])('returns "200 OK" with JSON body if body is %p', async body => {
+    // Arrange - Act
+    const expected = { ...validSong, deleted: true }
+    const result = await postSongInfo(null, { body })
+
+    // Assert
+    expect(result.httpResponse.status).toBe(200)
+    expect(result.httpResponse.body).toStrictEqual(expected)
+    expect(result.document).toStrictEqual(expected)
   })
 })

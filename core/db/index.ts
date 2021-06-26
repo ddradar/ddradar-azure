@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 export * from './notification'
 export * from './scores'
 export * from './songs'

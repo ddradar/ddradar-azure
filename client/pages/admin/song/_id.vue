@@ -63,6 +63,10 @@
       </b-field>
     </b-field>
 
+    <b-field>
+      <b-checkbox v-model="deleted">Deleted</b-checkbox>
+    </b-field>
+
     <b-field v-for="(chart, i) in charts" :key="i" :label="`Chart ${i + 1}`">
       <b-field grouped group-multiline>
         <b-field
@@ -192,6 +196,18 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import { getSongInfo, postSongInfo } from '~/api/song'
 import * as popup from '~/utils/popup'
 
+const chart = {
+  level: 1,
+  notes: 1,
+  freezeArrow: 0,
+  shockArrow: 0,
+  stream: 0,
+  voltage: 0,
+  air: 0,
+  freeze: 0,
+  chaos: 0,
+} as const
+
 @Component
 export default class SongEditorPage extends Vue implements Api.SongInfo {
   id: string = ''
@@ -201,23 +217,17 @@ export default class SongEditorPage extends Vue implements Api.SongInfo {
   series: Song.Series = 'DanceDanceRevolution A20 PLUS'
   minBPM: number | null = null
   maxBPM: number | null = null
+  deleted: boolean = false
   charts: Database.StepChartSchema[] = []
 
   get playStyleList() {
-    return [
-      { label: 'SINGLE', value: 1 },
-      { label: 'DOUBLE', value: 2 },
-    ]
+    const options = [...Song.playStyleMap.entries()]
+    return options.map(([value, label]) => ({ label, value }))
   }
 
   get difficultyList() {
-    return [
-      { label: 'BEGINNER', value: 0 },
-      { label: 'BASIC', value: 1 },
-      { label: 'DIFFICULT', value: 2 },
-      { label: 'EXPERT', value: 3 },
-      { label: 'CHALLENGE', value: 4 },
-    ]
+    const options = [...Song.difficultyMap.entries()]
+    return options.map(([value, label]) => ({ label, value }))
   }
 
   get seriesList() {
@@ -318,58 +328,37 @@ export default class SongEditorPage extends Vue implements Api.SongInfo {
   }
 
   async asyncData({ $http, params }: Pick<Context, '$http' | 'params'>) {
-    const id = params.id
+    const { id } = params
     if (!id) {
-      const chart = {
-        level: 1,
-        notes: 1,
-        freezeArrow: 0,
-        shockArrow: 0,
-        stream: 0,
-        voltage: 0,
-        air: 0,
-        freeze: 0,
-        chaos: 0,
-      } as const
       const charts: Database.StepChartSchema[] = [
-        { ...chart, playStyle: 1, difficulty: 0 },
-        { ...chart, playStyle: 1, difficulty: 1 },
-        { ...chart, playStyle: 1, difficulty: 2 },
-        { ...chart, playStyle: 1, difficulty: 3 },
-        { ...chart, playStyle: 2, difficulty: 1 },
-        { ...chart, playStyle: 2, difficulty: 2 },
-        { ...chart, playStyle: 2, difficulty: 3 },
+        { playStyle: 1, difficulty: 0, ...chart },
+        { playStyle: 1, difficulty: 1, ...chart },
+        { playStyle: 1, difficulty: 2, ...chart },
+        { playStyle: 1, difficulty: 3, ...chart },
+        { playStyle: 2, difficulty: 1, ...chart },
+        { playStyle: 2, difficulty: 2, ...chart },
+        { playStyle: 2, difficulty: 3, ...chart },
       ]
       return { charts }
     }
 
-    const songInfo = await getSongInfo($http, id)
+    const { name, nameKana, artist, series, minBPM, maxBPM, deleted, charts } =
+      await getSongInfo($http, id)
     return {
       id,
-      name: songInfo.name,
-      nameKana: songInfo.nameKana,
-      artist: songInfo.artist,
-      series: songInfo.series,
-      minBPM: songInfo.minBPM,
-      maxBPM: songInfo.maxBPM,
-      charts: songInfo.charts,
+      name,
+      nameKana,
+      artist,
+      series,
+      minBPM,
+      maxBPM,
+      deleted,
+      charts,
     }
   }
 
   addChart() {
-    this.charts.push({
-      playStyle: 1,
-      difficulty: 0,
-      level: 1,
-      notes: 0,
-      freezeArrow: 0,
-      shockArrow: 0,
-      stream: 0,
-      voltage: 0,
-      air: 0,
-      freeze: 0,
-      chaos: 0,
-    })
+    this.charts.push({ playStyle: 1, difficulty: 0, ...chart })
   }
 
   removeChart(index: number) {
@@ -390,14 +379,24 @@ export default class SongEditorPage extends Vue implements Api.SongInfo {
   async loadSongInfo() {
     if (!this.isValidSongId) return
     try {
-      const songInfo = await getSongInfo(this.$http, this.id)
-      this.name = songInfo.name
-      this.nameKana = songInfo.nameKana
-      this.artist = songInfo.artist
-      this.series = songInfo.series
-      this.minBPM = songInfo.minBPM
-      this.maxBPM = songInfo.maxBPM
-      this.charts = [...songInfo.charts]
+      const {
+        name,
+        nameKana,
+        artist,
+        series,
+        minBPM,
+        maxBPM,
+        deleted,
+        charts,
+      } = await getSongInfo(this.$http, this.id)
+      this.name = name
+      this.nameKana = nameKana
+      this.artist = artist
+      this.series = series
+      this.minBPM = minBPM
+      this.maxBPM = maxBPM
+      this.deleted = deleted ?? false
+      this.charts = [...charts]
     } catch (error) /* istanbul ignore next */ {
       popup.danger(this.$buefy, error.message ?? error)
     }
@@ -427,20 +426,23 @@ export default class SongEditorPage extends Vue implements Api.SongInfo {
       series: this.series,
       minBPM: this.minBPM ? this.minBPM : null,
       maxBPM: this.maxBPM ? this.maxBPM : null,
+      deleted: this.deleted,
       charts: this.charts.sort((l, r) =>
         l.playStyle === r.playStyle
           ? l.difficulty - r.difficulty
           : l.playStyle - r.playStyle
       ),
     }
-    const songInfo = await postSongInfo(this.$http, postData)
-    this.name = songInfo.name
-    this.nameKana = songInfo.nameKana
-    this.artist = songInfo.artist
-    this.series = songInfo.series
-    this.minBPM = songInfo.minBPM
-    this.maxBPM = songInfo.maxBPM
-    this.charts = [...songInfo.charts]
+    const { name, nameKana, artist, series, minBPM, maxBPM, deleted, charts } =
+      await postSongInfo(this.$http, postData)
+    this.name = name
+    this.nameKana = nameKana
+    this.artist = artist
+    this.series = series
+    this.minBPM = minBPM
+    this.maxBPM = maxBPM
+    this.deleted = deleted ?? false
+    this.charts = [...charts]
   }
 }
 </script>

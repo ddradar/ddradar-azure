@@ -1,0 +1,113 @@
+name: staging
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - docs/**
+      - functions/**
+      - scripts/**
+      - '**.md'
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - master
+    paths-ignore:
+      - docs/**
+      - functions/**
+      - scripts/**
+      - '**.md'
+
+jobs:
+  build:
+    name: Build
+    if: github.event_name == 'push' || github.event.action != 'closed'
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Use Node.js 12
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 12
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache Dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Project Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+        env:
+          API_URL: /
+          APPINSIGHTS_INSTRUMENTATIONKEY: ${{ secrets.APPINSIGHTS_INSTRUMENTATIONKEY }}
+          SONGS_API_URL: https://api.ddradar.app/api/v1/songs
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: client
+          path: client/dist
+
+  deploy-swa:
+    name: Deploy to Azure Static Web Apps
+    needs: [build]
+    if: (!contains(github.actor, '[bot]'))
+    runs-on: ubuntu-20.04
+    environment:
+      name: Staging
+      url: ${{ steps.swa-deploy.outputs.static_web_app_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Setup GitHub Packages
+        run: |
+          echo "@ddradar:registry=https://npm.pkg.github.com/" > api/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> api/.npmrc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: client
+          path: client/dist
+      - name: Copy Yarn lock file
+        run: cp yarn.lock api
+
+      - name: Build @ddradar/api and Deploy
+        id: swa-deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          # see: https://aka.ms/swaworkflowconfig
+          app_location: client/dist
+          skip_app_build: true
+          api_location: api
+          api_build_command: yarn build
+
+  close:
+    name: Close Pull Request
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Close Staging Environment
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: close
