@@ -89,6 +89,15 @@ const configuration: NuxtConfig = {
       return songs.map(s => ({ route: `/songs/${s.id}`, payload: s }))
     },
   },
+  hooks: {
+    // @ts-ignore
+    'build:done'() {
+      const modulesToClear = ['vue', 'vue/dist/vue.runtime.common.prod']
+      modulesToClear.forEach(entry => {
+        delete require.cache[require.resolve(entry)]
+      })
+    },
+  },
 }
 
 export default configuration
