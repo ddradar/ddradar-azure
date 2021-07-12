@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pages/help/index.vue { locale: "en" } snapshot test renders correctly 1`] = `
+<section class="section">
+  <h1 class="title">Guide</h1>
+  <section class="section">
+    <h1 class="title">User Resistration</h1>
+  </section>
+  <section class="section">
+    <h1 id="radar" class="title">Groove Radar</h1>
+    <h2 id="radar-common" class="subtitle">Common</h2>
+    <div class="content">
+      <ul>
+        <li></li>
+        <li>For more information, please see <a target="_blank" href="https://github.com/ddradar/ddradar/blob/master/core/score.ts#L65">
+            Implementation
+          </a>.</li>
+      </ul>
+    </div>
+    <h2 id="radar-stream" class="subtitle">STREAM</h2>
+    <div class="content">
+      <div class="box">(Chart's STREAM) * (Normal Score) / 1,000,000</div>
+      <ul>
+        <li>Same as official.</li>
+      </ul>
+    </div>
+    <h2 id="radar-voltage" class="subtitle">VOLTAGE</h2>
+    <div class="content">
+      <div class="box">(Chart's VOLTAGE) * (MAX COMBO) / (Chart's Note count + Chart's Shock Arrow count)</div>
+      <ul>
+        <li>Counted <b>GOOD Combo</b>, so it is NOT same as official.</li>
+      </ul>
+    </div>
+    <h2 id="radar-air" class="subtitle">AIR</h2>
+    <div class="content">
+      <div class="box">(Chart's AIR) * (Count) / (Chart's Note count + Chart's Shock Arrow count)</div>
+      <ul>
+        <li>
+          (Count) is like below:
+          <ul>
+            <li>Full Combo or above: (Chart's Note count + Chart's Shock Arrow count)</li>
+            <li>Life 4: (Chart's Note count + Chart's Shock Arrow count) - 3 (Treat as miss:3)</li>
+            <li>Else: (MAX COMBO)</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <h2 id="radar-freeze" class="subtitle">FREEZE</h2>
+    <div class="content">
+      <div class="box">(Chart's FREEZE) * (Count) / (Chart's Freeze Arrow count)</div>
+      <ul>
+        <li>
+          (Count) is like below:
+          <ul>
+            <li>Full Combo or above: (Chart's Freeze Arrow count)</li>
+            <li>Life 4: (Chart's Freeze Arrow count - 3) (Treat as miss:3)</li>
+            <li>Else: 0</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <h2 id="radar-chaos" class="subtitle">CHAOS</h2>
+    <div class="content">
+      <div class="box">(Chart's CHAOS) * (Count) / (Chart's Note count + Chart's Shock Arrow count)</div>
+      <ul>
+        <li>
+          (Count) is like below:
+          <ul>
+            <li>Full Combo or above: (Chart's Note count + Chart's Shock Arrow count)</li>
+            <li>Life 4: (Chart's Note count + Chart's Shock Arrow count) - 3 (Treat as miss:3)</li>
+            <li>Else: (MAX COMBO)</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+</section>
+`;
+
+exports[`pages/help/index.vue { locale: "ja" } snapshot test renders correctly 1`] = `
+<section class="section">
+  <h1 class="title">ガイド</h1>
+  <section class="section">
+    <h1 class="title">ユーザー登録</h1>
+  </section>
+  <section class="section">
+    <h1 id="radar" class="title">グルーブレーダー</h1>
+    <h2 id="radar-common" class="subtitle">共通事項</h2>
+    <div class="content">
+      <ul>
+        <li></li>
+        <li>計算式の詳細については、<a target="_blank" href="https://github.com/ddradar/ddradar/blob/master/core/score.ts#L65">
+            実装部分
+          </a>もご参照ください。</li>
+      </ul>
+    </div>
+    <h2 id="radar-stream" class="subtitle">STREAM</h2>
+    <div class="content">
+      <div class="box">(譜面のSTREAM値) * (通常スコア) / 1,000,000</div>
+      <ul>
+        <li>公式のMyグルーブレーダーと同じ計算式です。</li>
+      </ul>
+    </div>
+    <h2 id="radar-voltage" class="subtitle">VOLTAGE</h2>
+    <div class="content">
+      <div class="box">(譜面のVOLTAGE値) * (MAX COMBO) / (譜面のNOTE数 + 譜面のショックアロー数)</div>
+      <ul>
+        <li>公式のMyグルーブレーダーと異なり、<b>GOODで繋いだコンボ</b>でも加算されます。</li>
+      </ul>
+    </div>
+    <h2 id="radar-air" class="subtitle">AIR</h2>
+    <div class="content">
+      <div class="box">(譜面のAIR値) * (踏めた数) / (譜面のNOTE数 + 譜面のショックアロー数)</div>
+      <ul>
+        <li>
+          「踏めた数」は、以下の数字となります。
+          <ul>
+            <li>Full Combo以上: 「譜面のNOTE数 + 譜面のショックアロー数」</li>
+            <li>Life 4: 「譜面のNOTE数 + 譜面のショックアロー数 - 3」 (Miss3 扱い)</li>
+            <li>それ以外: 「MAX COMBO」</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <h2 id="radar-freeze" class="subtitle">FREEZE</h2>
+    <div class="content">
+      <div class="box">(譜面のFREEZE値) * (踏めた数) / (譜面のFREEZE ARROW数)</div>
+      <ul>
+        <li>
+          「踏めた数」は、以下の数字となります。
+          <ul>
+            <li>Full Combo以上: 「譜面のFREEZE ARROW数」</li>
+            <li>Life 4: 「譜面のFREEZE ARROW数 - 3」 (Miss3 扱い)</li>
+            <li>それ以外: 0</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <h2 id="radar-chaos" class="subtitle">CHAOS</h2>
+    <div class="content">
+      <div class="box">(譜面のCHAOS値) * (踏めた数) / (譜面のNOTE数 + 譜面のショックアロー数)</div>
+      <ul>
+        <li>
+          「踏めた数」は、以下の数字となります。
+          <ul>
+            <li>Full Combo以上: 「譜面のNOTE数 + 譜面のショックアロー数」</li>
+            <li>Life 4: 「譜面のNOTE数 + 譜面のショックアロー数 - 3」 (Miss3 扱い)</li>
+            <li>それ以外: 「MAX COMBO」</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+</section>
+`;
