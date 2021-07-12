@@ -86,9 +86,16 @@ const configuration: NuxtConfig = {
       if (!songsApiUri) return []
       const res = await fetch(songsApiUri)
       const songs: Api.SongInfo[] = await res.json()
-      return songs
-        .slice(0, 300)
-        .map(s => ({ route: `/songs/${s.id}`, payload: s }))
+      return songs.map(s => ({ route: `/songs/${s.id}`, payload: s }))
+    },
+  },
+  hooks: {
+    // @ts-ignore
+    'build:done'() {
+      const modulesToClear = ['vue', 'vue/dist/vue.runtime.common.prod']
+      modulesToClear.forEach(entry => {
+        delete require.cache[require.resolve(entry)]
+      })
     },
   },
 }
