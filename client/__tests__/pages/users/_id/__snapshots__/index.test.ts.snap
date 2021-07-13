@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/users/_id.vue { locale: "en" } snapshot test renders correctly 1`] = `
+exports[`/users/_id/index.vue { locale: "en" } snapshot test renders correctly 1`] = `
 <section class="section">
   <h1 class="title">User 1</h1>
   <h2 class="subtitle">Tokyo / 1234-5678</h2>
@@ -622,9 +622,9 @@ exports[`/users/_id.vue { locale: "en" } snapshot test renders correctly 1`] = `
 </section>
 `;
 
-exports[`/users/_id.vue { locale: "en" } snapshot test renders empty if no data 1`] = `<section class="section">User does not exist or is private</section>`;
+exports[`/users/_id/index.vue { locale: "en" } snapshot test renders empty if no data 1`] = `<section class="section">User does not exist or is private</section>`;
 
-exports[`/users/_id.vue { locale: "en" } snapshot test renders loading before fetch() 1`] = `
+exports[`/users/_id/index.vue { locale: "en" } snapshot test renders loading before fetch() 1`] = `
 <section class="section">
   <div class="b-skeleton is-animated">
     <div class="b-skeleton-item is-rounded"></div>
@@ -635,7 +635,7 @@ exports[`/users/_id.vue { locale: "en" } snapshot test renders loading before fe
 </section>
 `;
 
-exports[`/users/_id.vue { locale: "en" } snapshot test renders setting button if selfPage 1`] = `
+exports[`/users/_id/index.vue { locale: "en" } snapshot test renders setting button if selfPage 1`] = `
 <section class="section">
   <h1 class="title">User 1</h1>
   <h2 class="subtitle">Tokyo / 1234-5678</h2>
@@ -1265,7 +1265,7 @@ exports[`/users/_id.vue { locale: "en" } snapshot test renders setting button if
 </section>
 `;
 
-exports[`/users/_id.vue { locale: "ja" } snapshot test renders correctly 1`] = `
+exports[`/users/_id/index.vue { locale: "ja" } snapshot test renders correctly 1`] = `
 <section class="section">
   <h1 class="title">User 1</h1>
   <h2 class="subtitle">東京都 / 1234-5678</h2>
@@ -1887,9 +1887,9 @@ exports[`/users/_id.vue { locale: "ja" } snapshot test renders correctly 1`] = `
 </section>
 `;
 
-exports[`/users/_id.vue { locale: "ja" } snapshot test renders empty if no data 1`] = `<section class="section">ユーザーが存在しないか、非公開に設定されています。</section>`;
+exports[`/users/_id/index.vue { locale: "ja" } snapshot test renders empty if no data 1`] = `<section class="section">ユーザーが存在しないか、非公開に設定されています。</section>`;
 
-exports[`/users/_id.vue { locale: "ja" } snapshot test renders loading before fetch() 1`] = `
+exports[`/users/_id/index.vue { locale: "ja" } snapshot test renders loading before fetch() 1`] = `
 <section class="section">
   <div class="b-skeleton is-animated">
     <div class="b-skeleton-item is-rounded"></div>
@@ -1900,7 +1900,7 @@ exports[`/users/_id.vue { locale: "ja" } snapshot test renders loading before fe
 </section>
 `;
 
-exports[`/users/_id.vue { locale: "ja" } snapshot test renders setting button if selfPage 1`] = `
+exports[`/users/_id/index.vue { locale: "ja" } snapshot test renders setting button if selfPage 1`] = `
 <section class="section">
   <h1 class="title">User 1</h1>
   <h2 class="subtitle">東京都 / 1234-5678</h2>

@@ -1,6 +1,6 @@
 import type { Api } from '@ddradar/core'
 import { testSongData } from '@ddradar/core/__tests__/data'
-import { createLocalVue, mount, shallowMount } from '@vue/test-utils'
+import { createLocalVue, mount } from '@vue/test-utils'
 import Buefy from 'buefy'
 import { mocked } from 'ts-jest/utils'
 import VueI18n from 'vue-i18n'
@@ -11,6 +11,7 @@ import SearchBox from '~/components/pages/SearchBox.vue'
 jest.mock('~/api/song')
 
 const localVue = createLocalVue()
+localVue.use(Buefy)
 localVue.use(VueI18n)
 
 describe('/components/pages/SearchBox.vue', () => {
@@ -21,12 +22,9 @@ describe('/components/pages/SearchBox.vue', () => {
       { id: 'foo-foo', name: 'foo foo', nameKana: 'FOO FOO', artist: 'Beta' },
     ]
   const i18n = new VueI18n({ locale: 'ja', silentFallbackWarn: true })
-  const $fetchState = { pending: false }
+  const $fetchState = { pending: true }
 
   describe.each(['ja', 'en'])('{ locale: %s } snapshot test', locale => {
-    const localVue = createLocalVue()
-    localVue.use(Buefy)
-    localVue.use(VueI18n)
     const i18n = new VueI18n({ locale, silentFallbackWarn: true })
 
     test('{ loading: true } renders loading spin', async () => {
@@ -42,7 +40,7 @@ describe('/components/pages/SearchBox.vue', () => {
     })
     test('{ loading: false, term: "" } renders empty box', async () => {
       // Arrange
-      const mocks = { $fetchState }
+      const mocks = { $fetchState: { pending: false } }
       const data = () => ({ songList, term: '' })
 
       // Act
@@ -56,9 +54,9 @@ describe('/components/pages/SearchBox.vue', () => {
 
   // Computed
   describe('get filtered()', () => {
-    let wrapper: ReturnType<typeof shallowMount>
+    let wrapper: ReturnType<typeof mount>
     beforeEach(() => {
-      wrapper = shallowMount(SearchBox, {
+      wrapper = mount(SearchBox, {
         i18n,
         localVue,
         mocks: { $fetchState },
@@ -101,7 +99,7 @@ describe('/components/pages/SearchBox.vue', () => {
     test('sets songList', async () => {
       // Arrange
       const mocks = { $fetchState, $http: {} }
-      const wrapper = shallowMount(SearchBox, { i18n, localVue, mocks })
+      const wrapper = mount(SearchBox, { i18n, localVue, mocks })
 
       // Act
       // @ts-ignore
@@ -125,7 +123,7 @@ describe('/components/pages/SearchBox.vue', () => {
     test('calls $router.push("/songs/{id}")', () => {
       // Arrange
       const mocks = { $fetchState, $router: { push: jest.fn() } }
-      const wrapper = shallowMount(SearchBox, { i18n, localVue, mocks })
+      const wrapper = mount(SearchBox, { i18n, localVue, mocks })
       const id = 'foo'
 
       // Act

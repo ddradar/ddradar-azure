@@ -1,0 +1,909 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/components/pages/users/ScoreList.vue { locale: en } snapshot test { isLoggedIn : true } renders "Edit" button 1`] = `
+<div class="b-table">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div class="table-wrapper has-mobile-cards">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <!---->
+          <!---->
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Difficulty <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> EX Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Edit Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <!---->
+        </tr>
+        <!---->
+        <!---->
+      </thead>
+      <tbody>
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-basic"><span class="">DP/BASIC</span>
+              <!----></span> <span class="tag is-basic"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <td data-label="Edit Score" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <!---->
+      </tbody>
+      <!---->
+    </table>
+    <!---->
+  </div>
+  <div class="top level" sortable="sortable">
+    <div class="level-left"></div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="pagination"><a role="button" href="#" disabled="disabled" class="pagination-link pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a><a role="button" href="#" disabled="disabled" class="pagination-link pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a>
+          <ul class="pagination-list">
+            <!---->
+            <!---->
+            <li><a role="button" href="#" aria-current="true" class="pagination-link is-current ">1</a></li>
+            <!---->
+            <!---->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/components/pages/users/ScoreList.vue { locale: en } snapshot test { loading: false, scores: [...] } renders score list 1`] = `
+<div class="b-table">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div class="table-wrapper has-mobile-cards">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <!---->
+          <!---->
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Difficulty <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> EX Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <!---->
+        </tr>
+        <!---->
+        <!---->
+      </thead>
+      <tbody>
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-basic"><span class="">DP/BASIC</span>
+              <!----></span> <span class="tag is-basic"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <!---->
+      </tbody>
+      <!---->
+    </table>
+    <!---->
+  </div>
+  <div class="top level" sortable="sortable">
+    <div class="level-left"></div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="pagination"><a role="button" href="#" disabled="disabled" class="pagination-link pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a><a role="button" href="#" disabled="disabled" class="pagination-link pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a>
+          <ul class="pagination-list">
+            <!---->
+            <!---->
+            <li><a role="button" href="#" aria-current="true" class="pagination-link is-current ">1</a></li>
+            <!---->
+            <!---->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/components/pages/users/ScoreList.vue { locale: en } snapshot test { loading: false, scores: [] } renders empty 1`] = `
+<div class="b-table" charts="">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div class="table-wrapper has-mobile-cards">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <!---->
+          <!---->
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Difficulty <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> EX Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <!---->
+        </tr>
+        <!---->
+        <!---->
+      </thead>
+      <tbody>
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-basic"><span class="">DP/BASIC</span>
+              <!----></span> <span class="tag is-basic"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="Name" class=""><a>PARANOiA</a></td>
+          <td data-label="Difficulty" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="Score" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EX Score" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <!---->
+      </tbody>
+      <!---->
+    </table>
+    <!---->
+  </div>
+  <div class="top level" sortable="sortable">
+    <div class="level-left"></div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="pagination"><a role="button" href="#" disabled="disabled" class="pagination-link pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a><a role="button" href="#" disabled="disabled" class="pagination-link pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a>
+          <ul class="pagination-list">
+            <!---->
+            <!---->
+            <li><a role="button" href="#" aria-current="true" class="pagination-link is-current ">1</a></li>
+            <!---->
+            <!---->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/components/pages/users/ScoreList.vue { locale: en } snapshot test { loading: true } renders loading spin 1`] = `
+<div class="b-table">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div class="table-wrapper has-mobile-cards">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <!---->
+          <!---->
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Name <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> Difficulty <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> EX Score <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <!---->
+        </tr>
+        <!---->
+        <!---->
+      </thead>
+      <tbody>
+        <tr class="is-empty">
+          <td colspan="4">
+            <section class="section">
+              <div class="b-skeleton is-animated">
+                <div class="b-skeleton-item is-rounded"></div>
+              </div>
+              <div class="b-skeleton is-animated">
+                <div class="b-skeleton-item is-rounded"></div>
+              </div>
+              <div class="b-skeleton is-animated">
+                <div class="b-skeleton-item is-rounded"></div>
+              </div>
+            </section>
+          </td>
+        </tr>
+      </tbody>
+      <!---->
+    </table>
+    <transition-stub name="fade">
+      <div class="loading-overlay is-active">
+        <div class="loading-background"></div>
+        <div class="loading-icon"></div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class="top level" sortable="sortable">
+    <div class="level-left"></div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="pagination"><a role="button" href="#" disabled="disabled" class="pagination-link pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a><a role="button" href="#" disabled="disabled" class="pagination-link pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a>
+          <ul class="pagination-list">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/components/pages/users/ScoreList.vue { locale: ja } snapshot test { isLoggedIn : true } renders "Edit" button 1`] = `
+<div class="b-table">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div class="table-wrapper has-mobile-cards">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <!---->
+          <!---->
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> 難易度 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> スコア <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> EXスコア <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> スコア編集 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <!---->
+        </tr>
+        <!---->
+        <!---->
+      </thead>
+      <tbody>
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-basic"><span class="">DP/BASIC</span>
+              <!----></span> <span class="tag is-basic"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <td data-label="スコア編集" class=""><a><span class="icon"><i class="mdi mdi-pencil-box-outline mdi-24px"></i></span></a></td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <!---->
+      </tbody>
+      <!---->
+    </table>
+    <!---->
+  </div>
+  <div class="top level" sortable="sortable">
+    <div class="level-left"></div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="pagination"><a role="button" href="#" disabled="disabled" class="pagination-link pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a><a role="button" href="#" disabled="disabled" class="pagination-link pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a>
+          <ul class="pagination-list">
+            <!---->
+            <!---->
+            <li><a role="button" href="#" aria-current="true" class="pagination-link is-current ">1</a></li>
+            <!---->
+            <!---->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/components/pages/users/ScoreList.vue { locale: ja } snapshot test { loading: false, scores: [...] } renders score list 1`] = `
+<div class="b-table">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div class="table-wrapper has-mobile-cards">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <!---->
+          <!---->
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> 難易度 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> スコア <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> EXスコア <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <!---->
+        </tr>
+        <!---->
+        <!---->
+      </thead>
+      <tbody>
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-basic"><span class="">DP/BASIC</span>
+              <!----></span> <span class="tag is-basic"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <!---->
+      </tbody>
+      <!---->
+    </table>
+    <!---->
+  </div>
+  <div class="top level" sortable="sortable">
+    <div class="level-left"></div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="pagination"><a role="button" href="#" disabled="disabled" class="pagination-link pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a><a role="button" href="#" disabled="disabled" class="pagination-link pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a>
+          <ul class="pagination-list">
+            <!---->
+            <!---->
+            <li><a role="button" href="#" aria-current="true" class="pagination-link is-current ">1</a></li>
+            <!---->
+            <!---->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/components/pages/users/ScoreList.vue { locale: ja } snapshot test { loading: false, scores: [] } renders empty 1`] = `
+<div class="b-table" charts="">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div class="table-wrapper has-mobile-cards">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <!---->
+          <!---->
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> 難易度 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> スコア <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> EXスコア <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <!---->
+        </tr>
+        <!---->
+        <!---->
+      </thead>
+      <tbody>
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-basic"><span class="">DP/BASIC</span>
+              <!----></span> <span class="tag is-basic"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <tr draggable="false" class="">
+          <!---->
+          <!---->
+          <td data-label="曲名" class=""><a>PARANOiA</a></td>
+          <td data-label="難易度" class="">
+            <div class="tags has-addons"><span class="tag is-beginner"><span class="">SP/BEGINNER</span>
+              <!----></span> <span class="tag is-beginner"><span class="">4</span>
+              <!----></span>
+            </div>
+          </td>
+          <td data-label="スコア" class="has-text-right">
+            <scorebadge-stub lamp="6" score="999620"></scorebadge-stub>
+          </td>
+          <td data-label="EXスコア" class="has-text-right">
+            376
+          </td>
+          <!---->
+        </tr>
+        <transition-stub name="">
+          <!---->
+        </transition-stub>
+        <!---->
+        <!---->
+      </tbody>
+      <!---->
+    </table>
+    <!---->
+  </div>
+  <div class="top level" sortable="sortable">
+    <div class="level-left"></div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="pagination"><a role="button" href="#" disabled="disabled" class="pagination-link pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a><a role="button" href="#" disabled="disabled" class="pagination-link pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a>
+          <ul class="pagination-list">
+            <!---->
+            <!---->
+            <li><a role="button" href="#" aria-current="true" class="pagination-link is-current ">1</a></li>
+            <!---->
+            <!---->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/components/pages/users/ScoreList.vue { locale: ja } snapshot test { loading: true } renders loading spin 1`] = `
+<div class="b-table">
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div class="table-wrapper has-mobile-cards">
+    <table class="table is-striped">
+      <thead>
+        <tr>
+          <!---->
+          <!---->
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> 曲名 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap"><span class="is-relative"> 難易度 <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> スコア <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <th draggable="false" class="">
+            <div class="th-wrap is-numeric"><span class="is-relative"> EXスコア <span class="icon sort-icon is-small is-invisible"><i class="mdi mdi-arrow-up"></i></span></span></div>
+          </th>
+          <!---->
+        </tr>
+        <!---->
+        <!---->
+      </thead>
+      <tbody>
+        <tr class="is-empty">
+          <td colspan="4">
+            <section class="section">
+              <div class="b-skeleton is-animated">
+                <div class="b-skeleton-item is-rounded"></div>
+              </div>
+              <div class="b-skeleton is-animated">
+                <div class="b-skeleton-item is-rounded"></div>
+              </div>
+              <div class="b-skeleton is-animated">
+                <div class="b-skeleton-item is-rounded"></div>
+              </div>
+            </section>
+          </td>
+        </tr>
+      </tbody>
+      <!---->
+    </table>
+    <transition-stub name="fade">
+      <div class="loading-overlay is-active">
+        <div class="loading-background"></div>
+        <div class="loading-icon"></div>
+      </div>
+    </transition-stub>
+  </div>
+  <div class="top level" sortable="sortable">
+    <div class="level-left"></div>
+    <div class="level-right">
+      <div class="level-item">
+        <nav class="pagination"><a role="button" href="#" disabled="disabled" class="pagination-link pagination-previous"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-left mdi-24px"></i></span></a><a role="button" href="#" disabled="disabled" class="pagination-link pagination-next"><span class="icon" aria-hidden="true"><i class="mdi mdi-chevron-right mdi-24px"></i></span></a>
+          <ul class="pagination-list">
+            <!---->
+            <!---->
+            <!---->
+            <!---->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+`;

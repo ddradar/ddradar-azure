@@ -1,0 +1,321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/users/_id/scores.vue { locale: "en" } snapshot test renders correctly 1`] = `
+<section class="section">
+  <h1 class="title">Score Details - Public User</h1>
+  <section>
+    <div class="field">
+      <!---->
+      <div class="field-body">
+        <div class="field is-grouped is-grouped-multiline">
+          <!---->
+          <div class="field"><label class="label">SP/DP</label>
+            <div class="control"><span class="select"><select><!----><option value="0">(All)</option> <option value="1">
+            SINGLE
+          </option><option value="2">
+            DOUBLE
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <div class="field"><label class="label">Diff</label>
+            <div class="control"><span class="select"><select><!----><option value="-1">(All)</option> <option value="0">
+            BEGINNER
+          </option><option value="1">
+            BASIC
+          </option><option value="2">
+            DIFFICULT
+          </option><option value="3">
+            EXPERT
+          </option><option value="4">
+            CHALLENGE
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <div class="field"><label class="label">Lv</label>
+            <div class="control"><span class="select"><select><!----><option value="-1">(All)</option> <option value="1">
+            1
+          </option><option value="2">
+            2
+          </option><option value="3">
+            3
+          </option><option value="4">
+            4
+          </option><option value="5">
+            5
+          </option><option value="6">
+            6
+          </option><option value="7">
+            7
+          </option><option value="8">
+            8
+          </option><option value="9">
+            9
+          </option><option value="10">
+            10
+          </option><option value="11">
+            11
+          </option><option value="12">
+            12
+          </option><option value="13">
+            13
+          </option><option value="14">
+            14
+          </option><option value="15">
+            15
+          </option><option value="16">
+            16
+          </option><option value="17">
+            17
+          </option><option value="18">
+            18
+          </option><option value="19">
+            19
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <div class="field"><label class="label">Clear Status</label>
+            <div class="control"><span class="select"><select><!----><option value="-1">(All)</option> <option value="0">
+            Failed
+          </option><option value="1">
+            Assisted Clear
+          </option><option value="2">
+            Clear
+          </option><option value="3">
+            Life 4
+          </option><option value="4">
+            Full Combo
+          </option><option value="5">
+            Great Full Combo
+          </option><option value="6">
+            Perfect Full Combo
+          </option><option value="7">
+            Marvelous Full Combo
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <div class="field"><label class="label">Dance Level</label>
+            <div class="control"><span class="select"><select><!----><option value="">(All)</option> <option value="E">
+            E
+          </option><option value="D">
+            D
+          </option><option value="D+">
+            D+
+          </option><option value="C-">
+            C-
+          </option><option value="C">
+            C
+          </option><option value="C+">
+            C+
+          </option><option value="B-">
+            B-
+          </option><option value="B">
+            B
+          </option><option value="B+">
+            B+
+          </option><option value="A-">
+            A-
+          </option><option value="A">
+            A
+          </option><option value="A+">
+            A+
+          </option><option value="AA-">
+            AA-
+          </option><option value="AA">
+            AA
+          </option><option value="AA+">
+            AA+
+          </option><option value="AAA">
+            AAA
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <!---->
+        </div>
+      </div>
+      <!---->
+    </div>
+    <div class="field">
+      <!----><button type="button" class="button is-success">
+        <!----><span>
+        Search
+      </span>
+        <!---->
+      </button>
+      <!---->
+    </div>
+  </section>
+  <section>
+    <scorelist-stub scores=""></scorelist-stub>
+  </section>
+</section>
+`;
+
+exports[`/users/_id/scores.vue { locale: "ja" } snapshot test renders correctly 1`] = `
+<section class="section">
+  <h1 class="title">スコア詳細 - Public User</h1>
+  <section>
+    <div class="field">
+      <!---->
+      <div class="field-body">
+        <div class="field is-grouped is-grouped-multiline">
+          <!---->
+          <div class="field"><label class="label">SP/DP</label>
+            <div class="control"><span class="select"><select><!----><option value="0">(指定しない)</option> <option value="1">
+            SINGLE
+          </option><option value="2">
+            DOUBLE
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <div class="field"><label class="label">譜面</label>
+            <div class="control"><span class="select"><select><!----><option value="-1">(指定しない)</option> <option value="0">
+            BEGINNER
+          </option><option value="1">
+            BASIC
+          </option><option value="2">
+            DIFFICULT
+          </option><option value="3">
+            EXPERT
+          </option><option value="4">
+            CHALLENGE
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <div class="field"><label class="label">Lv</label>
+            <div class="control"><span class="select"><select><!----><option value="-1">(指定しない)</option> <option value="1">
+            1
+          </option><option value="2">
+            2
+          </option><option value="3">
+            3
+          </option><option value="4">
+            4
+          </option><option value="5">
+            5
+          </option><option value="6">
+            6
+          </option><option value="7">
+            7
+          </option><option value="8">
+            8
+          </option><option value="9">
+            9
+          </option><option value="10">
+            10
+          </option><option value="11">
+            11
+          </option><option value="12">
+            12
+          </option><option value="13">
+            13
+          </option><option value="14">
+            14
+          </option><option value="15">
+            15
+          </option><option value="16">
+            16
+          </option><option value="17">
+            17
+          </option><option value="18">
+            18
+          </option><option value="19">
+            19
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <div class="field"><label class="label">クリア状況</label>
+            <div class="control"><span class="select"><select><!----><option value="-1">(指定しない)</option> <option value="0">
+            Failed
+          </option><option value="1">
+            Assisted Clear
+          </option><option value="2">
+            Clear
+          </option><option value="3">
+            Life 4
+          </option><option value="4">
+            Full Combo
+          </option><option value="5">
+            Great Full Combo
+          </option><option value="6">
+            Perfect Full Combo
+          </option><option value="7">
+            Marvelous Full Combo
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <div class="field"><label class="label">ダンスレベル</label>
+            <div class="control"><span class="select"><select><!----><option value="">(指定しない)</option> <option value="E">
+            E
+          </option><option value="D">
+            D
+          </option><option value="D+">
+            D+
+          </option><option value="C-">
+            C-
+          </option><option value="C">
+            C
+          </option><option value="C+">
+            C+
+          </option><option value="B-">
+            B-
+          </option><option value="B">
+            B
+          </option><option value="B+">
+            B+
+          </option><option value="A-">
+            A-
+          </option><option value="A">
+            A
+          </option><option value="A+">
+            A+
+          </option><option value="AA-">
+            AA-
+          </option><option value="AA">
+            AA
+          </option><option value="AA+">
+            AA+
+          </option><option value="AAA">
+            AAA
+          </option></select></span>
+              <!---->
+            </div>
+            <!---->
+          </div>
+          <!---->
+        </div>
+      </div>
+      <!---->
+    </div>
+    <div class="field">
+      <!----><button type="button" class="button is-success">
+        <!----><span>
+        検索
+      </span>
+        <!---->
+      </button>
+      <!---->
+    </div>
+  </section>
+  <section>
+    <scorelist-stub scores=""></scorelist-stub>
+  </section>
+</section>
+`;

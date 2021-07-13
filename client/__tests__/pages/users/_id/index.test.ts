@@ -17,7 +17,7 @@ import {
   getScoreStatus,
   getUserInfo,
 } from '~/api/user'
-import UserPage from '~/pages/users/_id.vue'
+import UserPage from '~/pages/users/_id/index.vue'
 
 jest.mock('~/api/user')
 
@@ -25,7 +25,7 @@ const localVue = createLocalVue()
 localVue.use(Buefy)
 localVue.use(VueI18n)
 
-describe('/users/_id.vue', () => {
+describe('/users/_id/index.vue', () => {
   const user: Api.UserInfo = {
     id: 'user_1',
     name: 'User 1',
