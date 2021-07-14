@@ -42,8 +42,12 @@ export type ScoreListBody = Pick<
   | 'maxCombo'
   | 'clearLamp'
   | 'rank'
-> & { topScore?: number }
+> & {
+  /** World Record score */
+  topScore?: number
+}
 
+/** Type assertion of {@link ScoreListBody} */
 export function isScoreListBody(obj: unknown): obj is ScoreListBody {
   return (
     isScore(obj) &&

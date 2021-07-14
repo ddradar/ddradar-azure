@@ -10,6 +10,8 @@ type EagateScore = Omit<ScoreInfo, 'songId' | 'userId' | 'userName' | 'level'>
 
 /**
  * Convert music data to { songId: Score[] } Record.
+ * @description If you use this function on Node.js, please register {@link DOMParser} to global before.
+ * @see
  * - https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_single.html
  * - https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_data_double.html
  * - https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/nonstop_data_single.html
@@ -143,6 +145,8 @@ export function musicDataToScoreList(
 
 /**
  * Convert music detail to Score.
+ * @description If you use this function on Node.js, please register {@link DOMParser} to global before.
+ * @see
  * - https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/music_detail.html
  * - https://p.eagate.573.jp/game/ddr/ddra20/p/playdata/course_detail.html
  */

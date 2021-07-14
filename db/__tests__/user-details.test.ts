@@ -1,10 +1,8 @@
-import type { Container } from '@azure/cosmos'
 import type { Database } from '@ddradar/core'
 import { mocked } from 'ts-jest/utils'
 
-import { getContainer } from '../database'
+import { fetchGroupedList, fetchList } from '../database'
 import { fetchClearAndScoreStatus, generateGrooveRadar } from '../user-details'
-import { createMockContainer } from './util'
 
 jest.mock('../database')
 
@@ -20,38 +18,23 @@ describe('user-details.ts', () => {
       freeze: 100,
       chaos: 100,
     }
+    beforeEach(() => mocked(fetchGroupedList).mockClear())
 
     test('returns groove radar', async () => {
       // Arrange
-      const container = createMockContainer([{ ...radar }])
-      mocked(getContainer).mockReturnValue(container as unknown as Container)
+      mocked(fetchGroupedList).mockResolvedValue([{ ...radar }])
 
       // Act
       const result = await generateGrooveRadar('public_user', 1)
 
       // Assert
       expect(result).toStrictEqual({ ...radar, id: 'radar-public_user-1' })
-      expect(container.items.query).toBeCalledWith({
-        query:
-          'SELECT c.userId, "radar" AS type, c.playStyle, ' +
-          'MAX(c.radar.stream) AS stream, MAX(c.radar.voltage) AS voltage, MAX(c.radar.air) AS air, MAX(c.radar.freeze) AS freeze, MAX(c.radar.chaos) AS chaos ' +
-          'FROM c ' +
-          'WHERE c.userId = @id ' +
-          'AND c.playStyle = @playStyle ' +
-          'AND IS_DEFINED(c.radar) ' +
-          'AND ((NOT IS_DEFINED(c.ttl)) OR c.ttl = -1 OR c.ttl = null) ' +
-          'GROUP BY c.userId, c.playStyle',
-        parameters: [
-          { name: '@id', value: 'public_user' },
-          { name: '@playStyle', value: 1 },
-        ],
-      })
+      expect(mocked(fetchGroupedList)).toBeCalled()
     })
 
     test('returns empty groove radar if scores is empty', async () => {
       // Arrange
-      const container = createMockContainer([])
-      mocked(getContainer).mockReturnValue(container as unknown as Container)
+      mocked(fetchGroupedList).mockResolvedValue([])
 
       // Act
       const result = await generateGrooveRadar('public_user', 1)
@@ -62,26 +45,21 @@ describe('user-details.ts', () => {
         ...emptyRadar,
         id: 'radar-public_user-1',
       })
-      expect(container.items.query).toBeCalled()
+      expect(mocked(fetchGroupedList)).toBeCalled()
     })
   })
 
   describe('fetchClearAndScoreStatus()', () => {
-    test('returns [] ', async () => {
+    test('calls fetchList("*")', async () => {
       // Arrange
-      const container = createMockContainer([])
-      mocked(getContainer).mockReturnValue(container as unknown as Container)
+      mocked(fetchList).mockResolvedValue([])
 
       // Act
       const result = await fetchClearAndScoreStatus('foo')
 
       // Assert
       expect(result).toHaveLength(0)
-      expect(container.items.query).toBeCalledWith({
-        query:
-          'SELECT * FROM c WHERE c.userId = @id AND c.type = "clear" OR c.type = "score"',
-        parameters: [{ name: '@id', value: 'foo' }],
-      })
+      expect(mocked(fetchList)).toBeCalled()
     })
   })
 })

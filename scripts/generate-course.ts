@@ -4,7 +4,7 @@ import { config } from 'dotenv'
 config()
 
 import type { Database } from '@ddradar/core'
-import { getContainer } from '@ddradar/db'
+import { fetchList, getContainer } from '@ddradar/db'
 import consola from 'consola'
 
 const courseInfo = {
@@ -23,13 +23,12 @@ const ids = [
 
 async function main() {
   consola.ready(`Add ${courseInfo.name} (${courseInfo.id})`)
-  const container = getContainer('Songs')
-  const { resources } = await container.items
-    .query<Database.SongSchema>({
-      query: 'SELECT * FROM c WHERE ARRAY_CONTAINS(@ids, c.id)',
-      parameters: [{ name: '@ids', value: ids }],
-    })
-    .fetchAll()
+  const resources = (await fetchList(
+    'Songs',
+    '*',
+    [{ condition: 'ARRAY_CONTAINS(@, c.id)', value: ids }],
+    { _ts: 'ASC' }
+  )) as Database.SongSchema[]
 
   if (resources.length !== 4) {
     consola.warn('Not found 4 songs. Please check has been registered.')
@@ -104,7 +103,7 @@ async function main() {
     }),
   }
 
-  await container.items.create(course)
+  await getContainer('Songs').items.create(course)
   consola.success(`Added ${course.name} (${course.id})`)
 }
 

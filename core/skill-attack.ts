@@ -19,6 +19,7 @@ export function readTextAsync(file: File): Promise<string> {
 /**
  * Convert Skill Attack score list to ScoreList
  * - http://skillattack.com/sa4/data/dancer/{ddrCode}/score_{ddrCode}.txt
+ * @description If you use this function on Node.js, please register {@link DOMParser} to global before.
  */
 export function scoreTexttoScoreList(
   text: string

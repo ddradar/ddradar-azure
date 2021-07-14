@@ -10,36 +10,65 @@ import type {
 import type { UserSchema } from './users'
 import { isAreaUser } from './users'
 
+/**
+ * DB schema of "Scores" container
+ * @example
+ * {
+ *   "userId": "some_user1",
+ *   "userName": "User1",
+ *   "isPublic": true,
+ *   "songId": "QPd01OQqbOIiDoO1dbdo1IIbb60bqPdl",
+ *   "songName": "愛言葉",
+ *   "playStyle": 1,
+ *   "difficulty": 0,
+ *   "level": 3,
+ *   "score": 1000000,
+ *   "exScore": 402,
+ *   "maxCombo": 122,
+ *   "clearLamp": 7,
+ *   "rank": "AAA",
+ *   "radar": {
+ *     "stream": 21,
+ *     "voltage": 22,
+ *     "air": 7,
+ *     "freeze": 26,
+ *     "chaos": 0
+ *   }
+ * }
+ */
 export type ScoreSchema = Pick<
   StepChartSchema,
   'playStyle' | 'difficulty' | 'level'
 > & {
-  /** User ID */
+  /**
+   * {@link UserSchema.id}
+   * @description This property is the partition key.
+   */
   userId: string
+  /** {@link UserSchema.name} */
   userName: string
   /** `true` if this score is public, otherwize `false`. */
   isPublic: boolean
-  /**
-   * Song id that depend on official site.
-   * @example `^([01689bdiloqDIOPQ]*){32}$`
-   */
+  /** {@link SongSchema.id} */
   songId: string
+  /** {@link SongSchema.name} */
   songName: string
   /** Normal score (0-1000000) */
   score: number
   exScore?: number
   maxCombo?: number
+  /** @see {@link ClearLamp} */
   clearLamp: ClearLamp
   /** Clear rank (`"E"`～`"AAA"`) */
   rank: DanceLevel
-  /** Groove Radar */
+  /** My Groove Radar (only user & song score) */
   radar?: Pick<
     StepChartSchema,
     'stream' | 'voltage' | 'air' | 'freeze' | 'chaos'
   >
   /**
-   * Song is deleted or not.
-   * If true, this score is not counted.
+   * Song (or course) is deleted or not.
+   * If `true`, this score is not counted on UserDetails.
    */
   deleted?: boolean
 }
@@ -88,11 +117,12 @@ const danceLevels = [
   'AA+',
   'AAA',
 ] as const
+/** `"E"`～`"AAA"` */
 export type DanceLevel = Unwrap<typeof danceLevels>
 export const danceLevelSet: ReadonlySet<DanceLevel> = new Set(danceLevels)
 
 /**
- * Create ScoreSchema from song, chart, user and score.
+ * Create {@link ScoreSchema} from song, chart, user and score.
  */
 export function createScoreSchema(
   song: Pick<SongSchema | CourseSchema, 'id' | 'name' | 'deleted'>,

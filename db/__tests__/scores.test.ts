@@ -1,15 +1,14 @@
-import type { Container, ItemDefinition } from '@azure/cosmos'
+import type { ItemDefinition } from '@azure/cosmos'
 import type { Database, Score } from '@ddradar/core'
 import { mocked } from 'ts-jest/utils'
 
-import { fetchList, fetchOne, getContainer } from '../database'
+import { fetchGroupedList, fetchList, fetchOne } from '../database'
 import {
   fetchScore,
   fetchScoreList,
   fetchSummaryClearLampCount,
   fetchSummaryRankCount,
 } from '../scores'
-import { createMockContainer } from './util'
 
 jest.mock('../database')
 
@@ -33,7 +32,8 @@ describe('scores.ts', () => {
         clearLamp: 7,
         rank: 'AAA',
       }
-      mocked(fetchOne).mockResolvedValue(resource)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      mocked(fetchOne).mockResolvedValue(resource as any)
 
       // Act
       const result = await fetchScore('foo', '', 1, 0)
@@ -76,7 +76,8 @@ describe('scores.ts', () => {
         Database.ScoreSchema,
         'userId' | 'userName' | 'isPublic'
       >[] = []
-      mocked(fetchList).mockResolvedValue(resources)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      mocked(fetchList).mockResolvedValue(resources as any)
 
       // Act
       const result = await fetchScoreList('foo')
@@ -138,7 +139,8 @@ describe('scores.ts', () => {
           Database.ScoreSchema,
           'userId' | 'userName' | 'isPublic'
         >[] = []
-        mocked(fetchList).mockResolvedValue(resources)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        mocked(fetchList).mockResolvedValue(resources as any)
 
         // Act
         const result = await fetchScoreList('foo', conditions, includeCourse)
@@ -177,48 +179,44 @@ describe('scores.ts', () => {
   describe('fetchSummaryClearLampCount', () => {
     test('returns ClearStatusSchema[]', async () => {
       // Arrange
-      const length = 19 * 8
-      const container = createMockContainer<Database.ClearStatusSchema>(
-        [...Array(length).keys()].map(i => ({
-          userId: 'foo',
-          type: 'clear' as const,
-          playStyle: ((i % 2) + 1) as 1 | 2,
-          level: (i % 19) + 1,
-          clearLamp: (i % 8) as Score.ClearLamp,
-          count: 10,
-        }))
-      )
-      mocked(getContainer).mockReturnValue(container as unknown as Container)
+      const clearCounts = [...Array(19 * 8).keys()].map(i => ({
+        userId: 'foo',
+        type: 'clear' as const,
+        playStyle: ((i % 2) + 1) as 1 | 2,
+        level: (i % 19) + 1,
+        clearLamp: (i % 8) as Score.ClearLamp,
+        count: 10,
+      }))
+      mocked(fetchGroupedList).mockResolvedValue(clearCounts)
 
       // Act
       const result = await fetchSummaryClearLampCount()
 
       // Assert
-      expect(result).toHaveLength(length)
+      expect(result).toBe(clearCounts)
+      expect(mocked(fetchGroupedList)).toBeCalled()
     })
   })
 
   describe('fetchSummaryRankCount()', () => {
     test('returns ScoreStatusSchema[]', async () => {
       // Arrange
-      const length = 19 * 8
-      const container = createMockContainer<Database.ScoreStatusSchema>(
-        [...Array(length).keys()].map(i => ({
-          userId: 'foo',
-          type: 'score' as const,
-          playStyle: ((i % 2) + 1) as 1 | 2,
-          level: (i % 19) + 1,
-          rank: 'AA' as const,
-          count: 10,
-        }))
-      )
-      mocked(getContainer).mockReturnValue(container as unknown as Container)
+      const rankCounts = [...Array(19 * 2).keys()].map(i => ({
+        userId: 'foo',
+        type: 'score' as const,
+        playStyle: ((i % 2) + 1) as 1 | 2,
+        level: (i % 19) + 1,
+        rank: 'AA' as const,
+        count: 10,
+      }))
+      mocked(fetchGroupedList).mockResolvedValue(rankCounts)
 
       // Act
       const result = await fetchSummaryRankCount()
 
       // Assert
-      expect(result).toHaveLength(length)
+      expect(result).toBe(rankCounts)
+      expect(mocked(fetchGroupedList)).toBeCalled()
     })
   })
 })

@@ -1,7 +1,8 @@
 import type { ItemDefinition } from '@azure/cosmos'
 import type { Database, Song } from '@ddradar/core'
 
-import { Condition, fetchList, fetchOne, getContainer } from './database'
+import type { Condition } from './database'
+import { fetchGroupedList, fetchList, fetchOne } from './database'
 
 export function fetchScore(
   userId: string,
@@ -56,10 +57,7 @@ export function fetchScoreList(
   ]
   if (!includeCourse) condition.push({ condition: 'IS_DEFINED(c.radar)' })
 
-  return fetchList<
-    'Scores',
-    Omit<Database.ScoreSchema, 'userId' | 'userName' | 'isPublic'>
-  >(
+  return fetchList(
     'Scores',
     [
       'songId',
@@ -83,24 +81,41 @@ export function fetchScoreList(
 export function fetchSummaryClearLampCount(): Promise<
   Database.ClearStatusSchema[]
 > {
-  return summaryScores<Database.ClearStatusSchema>('score', 'rank')
+  return fetchGroupedList(
+    'Scores',
+    [
+      'userId',
+      '"score" AS type',
+      'playStyle',
+      'level',
+      'clearLamp',
+      'COUNT(1) AS count',
+    ],
+    [
+      { condition: 'IS_DEFINED(c.radar)' },
+      { condition: 'NOT IS_DEFINED(c.ttl)' },
+      { condition: 'NOT (IS_DEFINED(c.deleted) AND c.deleted = true)' },
+    ],
+    ['userId', 'playStyle', 'level', 'clearLamp']
+  )
 }
 
 export function fetchSummaryRankCount(): Promise<Database.ScoreStatusSchema[]> {
-  return summaryScores<Database.ScoreStatusSchema>('clear', 'clearLamp')
-}
-
-async function summaryScores<T>(
-  type: string,
-  groupedProp: keyof Database.ScoreSchema
-) {
-  const container = getContainer('Scores')
-  const { resources } = await container.items
-    .query<T>(
-      `SELECT c.userId, "${type}" AS type, c.playStyle, c.level, c.${groupedProp}, COUNT(1) AS count ` +
-        'WHERE IS_DEFINED(c.radar) AND (NOT IS_DEFINED(c.ttl)) AND NOT (IS_DEFINED(c.deleted) AND c.deleted = true)' +
-        `GROUP BY c.userId, c.playStyle, c.level, c.${groupedProp}`
-    )
-    .fetchAll()
-  return resources
+  return fetchGroupedList(
+    'Scores',
+    [
+      'userId',
+      '"score" AS type',
+      'playStyle',
+      'level',
+      'rank',
+      'COUNT(1) AS count',
+    ],
+    [
+      { condition: 'IS_DEFINED(c.radar)' },
+      { condition: 'NOT IS_DEFINED(c.ttl)' },
+      { condition: 'NOT (IS_DEFINED(c.deleted) AND c.deleted = true)' },
+    ],
+    ['userId', 'playStyle', 'level', 'rank']
+  )
 }

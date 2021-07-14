@@ -3,7 +3,6 @@ import { config } from 'dotenv'
 // load .env file
 config()
 
-import type { Database } from '@ddradar/core'
 import { fetchOne } from '@ddradar/db'
 import consola from 'consola'
 import fetch from 'node-fetch'
@@ -18,8 +17,6 @@ const {
   BASE_URI: apiBasePath,
 } = process.env
 /* eslint-enable node/no-process-env */
-
-type UserAuth = Pick<Database.UserSchema, 'id' | 'name' | 'password'>
 
 async function main(ddrCode: string) {
   const code = parseInt(ddrCode, 10)
@@ -40,11 +37,10 @@ async function main(ddrCode: string) {
   }
 
   // Fetch user info
-  const user = await fetchOne<'Users', UserAuth>(
-    'Users',
-    ['id', 'name', 'password'],
-    { condition: 'c.code = @', value: code }
-  )
+  const user = await fetchOne('Users', ['id', 'name', 'password'], {
+    condition: 'c.code = @',
+    value: code,
+  })
   if (!user) {
     consola.warn(`Not Found DDR-Code:${code} user.`)
     return

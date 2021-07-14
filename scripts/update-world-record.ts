@@ -3,7 +3,7 @@ import { config } from 'dotenv'
 // load .env file
 config()
 
-import type { Api, Database } from '@ddradar/core'
+import type { Api } from '@ddradar/core'
 import { Song } from '@ddradar/core'
 import { fetchList } from '@ddradar/db'
 import consola from 'consola'
@@ -41,13 +41,7 @@ async function main(userId: string, password: string) {
   }
 
   // Load no MFCed top score from DDRadar DB
-  const resources = await fetchList<
-    'Scores',
-    Pick<
-      Database.ScoreSchema,
-      'songId' | 'songName' | 'playStyle' | 'difficulty' | 'score'
-    >
-  >(
+  const resources = await fetchList(
     'Scores',
     ['songId', 'songName', 'playStyle', 'difficulty', 'score'],
     [

@@ -3,6 +3,7 @@ import type { ClearLamp, GrooveRadar, StepChartSchema } from './db'
 import { DanceLevel, danceLevelSet } from './db'
 import { hasIntegerProperty, hasStringProperty } from './typeUtils'
 
+/** Type assertion of {@link ScoreBody} */
 export function isScore(obj: unknown): obj is ScoreBody {
   return (
     hasIntegerProperty(obj, 'score', 'clearLamp') &&
@@ -19,6 +20,7 @@ export function isScore(obj: unknown): obj is ScoreBody {
   )
 }
 
+/** Returns merged score */
 export function mergeScore(
   left: Readonly<ScoreBody>,
   right: Readonly<ScoreBody>
@@ -35,6 +37,7 @@ export function mergeScore(
   return result
 }
 
+/** Validate score from chart. */
 export function isValidScore(
   {
     notes,
@@ -62,6 +65,7 @@ export function isValidScore(
   return !maxCombo || (isPositiveInteger(maxCombo) && maxCombo <= fullCombo)
 }
 
+/** Calcurate My Groove Radar from score. */
 export function calcMyGrooveRadar(
   chart: Omit<StepChartSchema, 'playStyle' | 'difficulty' | 'level'>,
   score: ScoreBody
@@ -91,6 +95,7 @@ export function calcMyGrooveRadar(
   }
 }
 
+/** Complement score from chart info. */
 export function setValidScoreFromChart(
   {
     notes,
@@ -345,6 +350,7 @@ export function setValidScoreFromChart(
   }
 }
 
+/** Get {@link DanceLevel} from {@link ScoreBody.score} */
 export function getDanceLevel(score: number): Exclude<DanceLevel, 'E'> {
   if (!isPositiveInteger(score))
     throw new RangeError(

@@ -6,7 +6,7 @@ import { fetchList, fetchOne } from './database'
 export function fetchUser(id: string): Promise<Database.UserSchema | null> {
   return fetchOne(
     'Users',
-    ['id', 'loginId', 'name', 'area', 'code', 'isPublic'] as const,
+    ['id', 'loginId', 'name', 'area', 'code', 'isPublic'],
     { condition: 'c.id = @', value: id }
   )
 }
@@ -27,15 +27,15 @@ export function fetchUserList(
   name?: string,
   code?: number
 ): Promise<Api.UserInfo[]> {
-  const columns = ['id', 'name', 'area', 'code'] as const
   const cond: Condition[] = [
+    { condition: 'IS_DEFINED(c.loginId)' },
     { condition: '(c.isPublic = true OR c.loginId = @)', value: loginId },
   ]
   if (area !== undefined) cond.push({ condition: 'c.area = @', value: area })
   if (name) cond.push({ condition: 'CONTAINS(c.name, @, true)', value: name })
   if (code) cond.push({ condition: 'c.code = @', value: code })
-  cond.push({ condition: 'IS_DEFINED(c.loginId)' })
-  return fetchList<'Users', Api.UserInfo>('Users', columns, cond, {
+
+  return fetchList('Users', ['id', 'name', 'area', 'code'], cond, {
     name: 'ASC',
   })
 }

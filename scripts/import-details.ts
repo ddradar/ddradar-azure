@@ -3,9 +3,9 @@ import { config } from 'dotenv'
 // load .env file
 config()
 
-import type { Api, Database } from '@ddradar/core'
+import type { Api } from '@ddradar/core'
 import { Song } from '@ddradar/core'
-import { getContainer } from '@ddradar/db'
+import { fetchList } from '@ddradar/db'
 import consola from 'consola'
 import fetch from 'node-fetch'
 import { launch } from 'puppeteer-core'
@@ -37,17 +37,15 @@ async function main(userId: string, password: string) {
     return
   }
 
-  const container = getContainer('Songs')
-  const { resources } = await container.items
-    .query<Pick<Database.SongSchema, 'id' | 'name' | 'charts'>>({
-      query:
-        'SELECT s.id, s.name, s.charts ' +
-        'FROM s ' +
-        'WHERE s.nameIndex > 0 AND s.series = @series ' +
-        'ORDER BY s.nameIndex, s.nameKana',
-      parameters: [{ name: '@series', value: 'DDR 1st' }],
-    })
-    .fetchAll()
+  const resources = await fetchList(
+    'Songs',
+    ['id', 'name', 'charts'],
+    [
+      { condition: 'c.nameIndex > 0' },
+      { condition: 'c.series = @', value: 'DDR 1st' },
+    ],
+    { nameIndex: 'ASC', nameKana: 'ASC' }
+  )
 
   let count = 1
   for (const s of resources) {
